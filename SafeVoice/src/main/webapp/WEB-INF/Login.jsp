@@ -37,7 +37,7 @@
     type="text"
            name="id"
            placeholder="아이디"
-           value="${fn:escapeXml(param.email)}" />
+           value="${fn:escapeXml(param.id)}" />
     <br><br>
 
     <input class="input-field"
@@ -74,7 +74,7 @@ type="password"
 
     <!-- 회원가입 · 비밀번호 찾기 -->
     <div class="small-text">
-      <a href="${pageContext.request.contextPath}/sign_up.jsp">회원가입</a> |
+      <a href="${pageContext.request.contextPath}/SignIn.jsp">회원가입</a> |
       <a href="#">비밀번호 찾기</a>
     </div>
   </div>

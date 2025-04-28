@@ -4,27 +4,31 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-         
+
+<!-- Login.jsp mapping -->
+
 <servlet>
   <servlet-name>LoginPage</servlet-name>
   <jsp-file>/WEB-INF/Login.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
   <servlet-name>LoginPage</servlet-name>
-  <url-pattern>/login</url-pattern>
+  <url-pattern>/Login.jsp</url-pattern>
 </servlet-mapping>
 
-<!-- SignIn.jsp (로그인 페이지) 매핑 -->
+<!-- SignIn.jsp mapping -->
+<!-- SignIn.jsp 留ㅽ븨 -->
 <servlet>
   <servlet-name>SignInPage</servlet-name>
   <jsp-file>/WEB-INF/SignIn.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
   <servlet-name>SignInPage</servlet-name>
-  <url-pattern>/signin</url-pattern>
+  <url-pattern>/SignIn.jsp</url-pattern>
 </servlet-mapping>
 
-<!-- Join.jsp (회원가입 페이지) 매핑 -->
+
+<!-- Join.jsp mapping -->
 <servlet>
   <servlet-name>JoinPage</servlet-name>
   <jsp-file>/WEB-INF/Join.jsp</jsp-file>

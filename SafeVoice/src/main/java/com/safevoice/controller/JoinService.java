@@ -25,11 +25,12 @@ public class JoinService extends HttpServlet implements Command {
 		String address = "test";
 		String ptel = "test";
 		
-		MemberVO member = new MemberVO(id, pw, name, tell, email, gender, address, ptel);
+//		MemberVO member = new MemberVO(id, pw, name, tell, email, gender, address, ptel);
 		
 		MemberDAO dao = new MemberDAO();
 		
-		int row = dao.join(member);
+//		int row = dao.join(member);
+		int row = 1;
 		
 		if(row>0) {
 			System.out.println("성공");

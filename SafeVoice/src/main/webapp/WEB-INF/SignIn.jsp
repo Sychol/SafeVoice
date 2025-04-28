@@ -1,85 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+ <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/css/SignIn.css">
+<script src="${pageContext.request.contextPath}/js/SignIn.js" defer></script>
 </head>
 <body>
-<form action="Join" method="post">
-	    <h5>È¸¿ø°¡ÀÔ</h5>
-		<input type="text" placeholder="EmailÀ» ÀÔ·ÂÇÏ¼¼¿ä" name="email"><br>
-		<input type="text" placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä" name="id"><br>
-		<input type="password" placeholder="PW¸¦ ÀÔ·ÂÇÏ¼¼¿ä" name="pw"><br>
-		<input type="text" placeholder="ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä" name="name"><br>
+<div class="container">
+    <!-- ë‹¤í¬ ëª¨ë“œ í† ê¸€ -->
+    <div class="mode-toggle">
+      <button id="toggleMode">ğŸŒ™</button>
+    </div>
+    <form action="Join" method="post">
+	    <h5>íšŒì›ê°€ì…</h5>
+		<input class="input-field" type="text" placeholder="Emailì„ ì…ë ¥í•˜ì„¸ìš”" name="email"><br>
+		<input class="input-field" type="text" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”" name="id"><br>
+		<input class="input-field" type="password" placeholder="PWë¥¼ ì…ë ¥í•˜ì„¸ìš”" name="pw"><br>
+		<input class="input-field" type="text" placeholder="ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”" name="name"><br>
 		<input type="date" name="birth"><br>
-		<input type="text" id="sample6_postcode" placeholder="¿ìÆí¹øÈ£" name = "postcode">
-		<input type="button" onclick="sample6_execDaumPostcode()" value="¿ìÆí¹øÈ£ Ã£±â"><br>
-		<input type="text" id="sample6_address" placeholder="ÁÖ¼Ò" name = "address">
-		<input type="text" id="sample6_extraAddress" placeholder="Âü°íÇ×¸ñ" name = "extraAddress"><br>
-		<input type="text" id="sample6_detailAddress" placeholder="»ó¼¼ÁÖ¼Ò" name = "detailAddress">
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
-
-                // °¢ ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-                // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-                var addr = ''; // ÁÖ¼Ò º¯¼ö
-                var extraAddr = ''; // Âü°íÇ×¸ñ º¯¼ö
-
-                //»ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò Å¸ÀÔ¿¡ µû¶ó ÇØ´ç ÁÖ¼Ò °ªÀ» °¡Á®¿Â´Ù.
-                if (data.userSelectedType === 'R') { // »ç¿ëÀÚ°¡ µµ·Î¸í ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì
-                    addr = data.roadAddress;
-                } else { // »ç¿ëÀÚ°¡ Áö¹ø ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì(J)
-                    addr = data.jibunAddress;
-                }
-
-                // »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò°¡ µµ·Î¸í Å¸ÀÔÀÏ¶§ Âü°íÇ×¸ñÀ» Á¶ÇÕÇÑ´Ù.
-                if(data.userSelectedType === 'R'){
-                    // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-                    // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
-                    if(data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // Á¶ÇÕµÈ Âü°íÇ×¸ñÀ» ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // Ä¿¼­¸¦ »ó¼¼ÁÖ¼Ò ÇÊµå·Î ÀÌµ¿ÇÑ´Ù.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
-</script>
-			<br><input type="text" placeholder="ÀüÈ­¹øÈ£ ÀÔ·Â" name="tel">
+		<input type="text" id="sample6_postcode" placeholder="ìš°í¸ë²ˆí˜¸" name = "postcode">
+		<input type="button" onclick="sample6_execDaumPostcode()" value="ìš°í¸ë²ˆí˜¸ ì°¾ê¸°"><br>
+		<input type="text" id="sample6_address" placeholder="ì£¼ì†Œ" name = "address">
+		<input type="text" id="sample6_extraAddress" placeholder="ì°¸ê³ í•­ëª©" name = "extraAddress"><br>
+		<input type="text" id="sample6_detailAddress" placeholder="ìƒì„¸ì£¼ì†Œ" name = "detailAddress">
+			<br><input type="text" placeholder="ì „í™”ë²ˆí˜¸ ì…ë ¥" name="tel">
 			<br><select name = "gender">
-				  <option value = "woman">¿©¼º</option>
-        		  <option value = "man">³²¼º</option>
+				  <option value = "woman">ì—¬ì„±</option>
+        		  <option value = "man">ë‚¨ì„±</option>
       			  </select>
-			<input type="text" placeholder="°¡Á· ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä" name="pTel"><br>
-			<input type="radio" name="pOrC" value = "parent"> ºÎ¸ğ
-			<input type="radio" name="pOrC" value = "child"> ÀÚ³à
+			<input type="text" placeholder="ê°€ì¡± ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”" name="pTel"><br>
+			<input type="radio" name="pOrC" value = "parent"> ë¶€ëª¨
+			<input type="radio" name="pOrC" value = "child"> ìë…€
 			
 			<br><input type="submit" value="JoinUs" class="button fit">
 			</form>
+    <div class="small-text"> ì´ë¯¸ ê³„ì •ì´ ìˆìœ¼ì‹ ê°€ìš”?
+  <a href="${pageContext.request.contextPath}/Login.jsp">ë¡œê·¸ì¸</a>
+</div>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
 </body>
 </html>

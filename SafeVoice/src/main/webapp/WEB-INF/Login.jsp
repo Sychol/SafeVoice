@@ -23,21 +23,21 @@
     <!-- 로고 & 타이틀 -->
     <img src="${pageContext.request.contextPath}/image/Safe_Voice.png"
          alt="Safe Voice 로고" class="logo">
-    <h1 class="title">Safe Voice</h1>
+         <h3 class="title">로그인</h3>
     <p class="subtitle">
       당신의 아이를 지키는 작은 관심<br><br>
       - AI 음성 분석 기반 학교폭력 조기감지 서비스 -
     </p>
 <!-- 로그인 폼 -->
      <form id="loginForm"
-        action="${pageContext.request.contextPath}/LoginService"
+        action="MenuMain.do"
         method="post">
 
     <input class="input-field"
     type="text"
            name="id"
            placeholder="아이디"
-           value="${fn:escapeXml(param.email)}" />
+           value="${fn:escapeXml(param.id)}" />
     <br><br>
 
     <input class="input-field"
@@ -55,8 +55,6 @@ type="password"
         자동 로그인
       </label>
     </div>
-    <br>
-
     <button type="submit" class="submit-button">로그인</button>
   </form>
 
@@ -76,7 +74,7 @@ type="password"
 
     <!-- 회원가입 · 비밀번호 찾기 -->
     <div class="small-text">
-      <a href="${pageContext.request.contextPath}/sign_up.jsp">회원가입</a> |
+      <a href="${pageContext.request.contextPath}/SignIn.jsp">회원가입</a> |
       <a href="#">비밀번호 찾기</a>
     </div>
   </div>

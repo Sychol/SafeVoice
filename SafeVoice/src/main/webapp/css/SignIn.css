@@ -1,0 +1,101 @@
+@charset "UTF-8";
+/* ── 공통 레이아웃 ── */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f3f8fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* ── 회원가입 컨테이너 ── */
+.container {
+  position: relative;
+  width: 360px;
+  height: 700px;
+  margin: 50px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow-y: auto;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+
+/* ── 다크 모드 토글 버튼 ── */
+.mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.mode-toggle button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ── 다크모드 구현 CSS ── */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+body.dark-mode .container {
+  background-color: #2c2c2c;
+  color: #eee;
+}
+body.dark-mode .input-field {
+  background-color: #444;
+  color: #eee;
+  border: 1px solid #666;
+}
+body.dark-mode .submit-button,
+body.dark-mode .modal-content button {
+  background-color: #66bb6a;
+}
+/* ── 입력 필드 ── */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+
+/* ── 관계 선택 라디오 ── */
+.login-options {
+  display: flex;
+  font-size: 13px;
+  color: #444;
+  margin: 10px 0 20px;
+}
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.login-options label + label {
+  margin-left: 10px;
+}
+
+/* ── 작은 안내 텍스트 ── */
+.small-text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 16px;
+}
+.small-text a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+.small-text a:hover {
+  text-decoration: underline;
+}

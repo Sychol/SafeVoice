@@ -23,7 +23,7 @@
     <!-- 로고 & 타이틀 -->
     <img src="${pageContext.request.contextPath}/image/Safe_Voice.png"
          alt="Safe Voice 로고" class="logo">
-    <h1 class="title">Safe Voice</h1>
+         <h3 class="title">로그인</h3>
     <p class="subtitle">
       당신의 아이를 지키는 작은 관심<br><br>
       - AI 음성 분석 기반 학교폭력 조기감지 서비스 -
@@ -55,8 +55,6 @@ type="password"
         자동 로그인
       </label>
     </div>
-    <br>
-
     <button type="submit" class="submit-button">로그인</button>
   </form>
 

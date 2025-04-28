@@ -5,6 +5,8 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+ <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/css/SignIn.css">
 </head>
 <body>
 <form action="Join" method="post">

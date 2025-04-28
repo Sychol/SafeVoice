@@ -11,13 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cloud.controller.Command;
-import com.cloud.controller.EmailCheckService;
-import com.cloud.controller.JoinService;
-import com.cloud.controller.LoginService;
-import com.cloud.controller.LogoutService;
-import com.cloud.controller.SelectAllService;
-import com.cloud.controller.UpdateService;
+import com.safevoice.controller.Command;
+import com.safevoice.controller.SignInService;
+import com.safevoice.controller.LoginService;
+import com.safevoice.controller.LogoutService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -26,7 +23,7 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		map.put("Join.do", new JoinService());
+		map.put("SignIn.do", new SignInService());
 		map.put("Login.do", new LoginService());
 		map.put("Logout.do", new LogoutService());
 	}
@@ -58,7 +55,6 @@ public class FrontController extends HttpServlet {
 		} else {
 
 			if (finalPath.contains("Go")) {
-
 				moveUrl = finalPath.replace("Go", "").replace(".do", ".jsp");
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
 				rd.forward(request, response);

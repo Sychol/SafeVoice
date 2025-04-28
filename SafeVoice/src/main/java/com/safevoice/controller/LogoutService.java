@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.cloud.controller.Command;
+import com.safevoice.controller.Command;
 
 public class LogoutService implements Command {
 	

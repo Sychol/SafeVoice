@@ -30,7 +30,7 @@
     </p>
 <!-- 로그인 폼 -->
      <form id="loginForm"
-        action="${pageContext.request.contextPath}/LoginService"
+        action="MenuMain.do"
         method="post">
 
     <input class="input-field"
@@ -74,7 +74,7 @@ type="password"
 
     <!-- 회원가입 · 비밀번호 찾기 -->
     <div class="small-text">
-      <a href="${pageContext.request.contextPath}/sign_up.jsp">회원가입</a> |
+      <a href="MainPageAdult.jsp">회원가입</a>
       <a href="#">비밀번호 찾기</a>
     </div>
   </div>

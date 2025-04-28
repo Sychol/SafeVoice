@@ -14,5 +14,25 @@
   <url-pattern>/login</url-pattern>
 </servlet-mapping>
 
+<!-- SignIn.jsp (로그인 페이지) 매핑 -->
+<servlet>
+  <servlet-name>SignInPage</servlet-name>
+  <jsp-file>/WEB-INF/SignIn.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>SignInPage</servlet-name>
+  <url-pattern>/signin</url-pattern>
+</servlet-mapping>
+
+<!-- Join.jsp (회원가입 페이지) 매핑 -->
+<servlet>
+  <servlet-name>JoinPage</servlet-name>
+  <jsp-file>/WEB-INF/Join.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>JoinPage</servlet-name>
+  <url-pattern>/join</url-pattern>
+</servlet-mapping>
+
 
 </web-app>

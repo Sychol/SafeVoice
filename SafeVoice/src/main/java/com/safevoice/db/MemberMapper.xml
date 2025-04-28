@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL구문 작성하는 공간 -->
+<mapper namespace="com.safevoice.db.MemberDAO">
+	<!-- 
+	<insert id="join" parameterType ="membervo">
+		insert into WEB_MEMBER
+		values(#{email},#{pw},#{tell},#{address})	
+	</insert>
+
+	<select id="login" parameterType ="membervo" resultType="membervo">
+		SELECT EMAIL, TELL, ADDRESS 
+		FROM WEB_MEMBER
+		WHERE EMAIL= #{email} 
+		and PW= #{pw}
+	</select>
+	
+	<select id="selectAll" resultType="membervo">
+		SELECT EMAIL, TELL, ADDRESS
+		FROM WEB_MEMBER
+		WHERE EMAIL != 'admin'
+	</select>
+	
+	<update id="update" parameterType ="membervo">
+		UPDATE WEB_MEMBER
+		SET PW = #{pw},
+		TELL = #{tell},
+		ADDRESS = #{address}
+		WHERE EMAIL = #{email}
+	</update>
+	 -->
+	 <insert id="join" parameterType = "membervo">
+	 	insert into member
+	 	values(#{id},#{div},#{pw},#{name},#{tel},#{email},#{birth},#{gender},#{address},#{ptel})
+	 </insert>
+	 
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+	<!-- 클래스 객체의 별칭은 membervo로 지정한다. -->
+		<typeAlias type="com.safevoice.model.MemberVO" alias="membervo"></typeAlias>
+	</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <!-- mysql과 연결하기 위한 driver, url, username, password 작성 -->
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://project-db-cgi.smhrd.com:3307/CGI_24IS_CLOUD_P2_3?serverTimezone=Asia/Seoul"/>
+        <property name="username" value="CGI_24IS_CLOUD_P2_3"/>
+        <property name="password" value="smhrd3"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="com/safevoice/db/MemberMapper.xml"/>
+  </mappers>
+</configuration>

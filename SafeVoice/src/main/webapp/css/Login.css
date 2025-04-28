@@ -25,9 +25,21 @@ body, .container, .input-field, .submit-button {
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+  /* 스크롤은 가능하게, 스크롤바만 숨기기 */
   overflow-y: auto;
+
+  /* IE, Edge용 스크롤바 숨기는 코드 */
+  -ms-overflow-style: none;
+
+  /* Firefox용 스크롤바 숨기는 코드 */
+  scrollbar-width: none;
 }
 
+/* Chrome, Safari, Opera/WebKit용 스크롤바 숨기는 코드 */
+.container::-webkit-scrollbar {
+  display: none;
+}
 /* ── 다크 모드 토글 버튼 ── */
 .mode-toggle {
   position: absolute;
@@ -41,7 +53,7 @@ body, .container, .input-field, .submit-button {
   cursor: pointer;
 }
 
-/* ── 로고 / 제목 / 부제목 ── */
+/* ── 로고 / 서비스명 / 슬로건 ── */
 .logo {
   width: 140px;
   margin-bottom: 10px;
@@ -80,7 +92,7 @@ body, .container, .input-field, .submit-button {
   gap: 5px;
 }
 .login-options label + label {
-  margin-left: 60px;
+  margin-left: 10px;
 }
 .submit-button {
   background-color: #64a862;

@@ -28,27 +28,37 @@
       당신의 아이를 지키는 작은 관심<br><br>
       - AI 음성 분석 기반 학교폭력 조기감지 서비스 -
     </p>
+<!-- 로그인 폼 -->
+     <form id="loginForm"
+        action="${pageContext.request.contextPath}/LoginService"
+        method="post">
 
-    <!-- 로그인 폼: LoginServlet 으로 POST -->
-    <form id="loginForm" action="${pageContext.request.contextPath}/LoginServlet" method="post">
-      <input class="input-field" 
-             type="text" 
-             name="username" 
-             placeholder="아이디"
-             value="${fn:escapeXml(param.username)}" />
+    <input class="input-field"
+    type="text"
+           name="id"
+           placeholder="아이디"
+           value="${fn:escapeXml(param.email)}" />
+    <br><br>
 
-      <input class="input-field" 
-             type="password" 
-             name="password" 
-             placeholder="비밀번호" />
+    <input class="input-field"
+type="password"
+           name="pw"
+           placeholder="비밀번호" />
+    <br>
+    <div class="login-options">
+      <label>
+        <input type="checkbox" name="saveId" />
+        아이디 저장
+      </label>
+      <label>
+        <input type="checkbox" name="autoLogin" />
+        자동 로그인
+      </label>
+    </div>
+    <br>
 
-      <div class="login-options">
-        <label><input type="checkbox" name="saveId" /> 아이디 저장</label>
-        <label><input type="checkbox" name="autoLogin" /> 자동 로그인</label>
-      </div>
-
-      <button type="submit" class="submit-button">로그인</button>
-    </form>
+    <button type="submit" class="submit-button">로그인</button>
+  </form>
 
     <!-- 소셜 로그인 버튼 -->
     <div class="social-login">

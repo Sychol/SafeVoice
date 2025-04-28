@@ -10,7 +10,7 @@
 <form action="Join" method="post">
 	    <h5>회원가입</h5>
 		<input type="text" placeholder="Email을 입력하세요" name="email"><br>
-		<input type="text" placeholder="아이디를 입력하세요" name="email"><br>
+		<input type="text" placeholder="아이디를 입력하세요" name="id"><br>
 		<input type="password" placeholder="PW를 입력하세요" name="pw"><br>
 		<input type="text" placeholder="이름을 입력하세요" name="tel"><br>
 		<input type="date" name="birth">

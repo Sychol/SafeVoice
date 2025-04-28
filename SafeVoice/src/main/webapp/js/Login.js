@@ -1,4 +1,4 @@
-// sign_in.js
+
 document.addEventListener('DOMContentLoaded', () => {
   // ─── 다크모드 토글 ───
   const toggleButton = document.getElementById("toggleMode");

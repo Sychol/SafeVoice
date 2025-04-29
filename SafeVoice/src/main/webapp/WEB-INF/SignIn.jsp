@@ -15,7 +15,7 @@
     <div class="mode-toggle">
       <button id="toggleMode">🌙</button>
     </div>
-    <form action="Join" method="post">
+    <form action="Login.do" method="post">
 	    <h5>회원가입</h5>
 		<input class="input-field" type="text" placeholder="Email을 입력하세요" name="email"><br>
 		<input class="input-field" type="text" placeholder="아이디를 입력하세요" name="id"><br>

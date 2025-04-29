@@ -28,12 +28,10 @@ public class SignInService implements Command {
 		
 		MemberVO member = new MemberVO(email, id, pw, name, birth, tel, postcode, address, detailAddress, extraAddress, gender, pTel, pOrC);
 		
-//		MemberDAO dao = new MemberDAO();
-//		
-//		int row = dao.join(member);
+		MemberDAO dao = new MemberDAO();
 		
-		int row = 1;
-
+		int row = dao.SignIn(member);
+		
 		if (row > 0) {
 			return "MenuMain.do";
 		} else {

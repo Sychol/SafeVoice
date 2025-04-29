@@ -1,64 +1,168 @@
-document.addEventListener('DOMContentLoaded', () => {
-	// ─── 다크모드 토글 ───
-	  const toggleButton = document.getElementById("toggleMode");
-	  if (toggleButton) {
-	    if (localStorage.getItem("theme") === "dark") {
-	      document.body.classList.add("dark-mode");
-	      toggleButton.textContent = "☀️";
-	    }
-	    toggleButton.addEventListener("click", () => {
-	      const isDark = document.body.classList.toggle("dark-mode");
-	      toggleButton.textContent = isDark ? "☀️" : "🌙";
-	      localStorage.setItem("theme", isDark ? "dark" : "light");
-	    });
-	  }
 
-// 카카오 주소 API
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+// 전역으로 정의된 path 변수를 받아 사용
+// Kakao 주소 API 함수 (독립 모듈)
+export function execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            let addr = '';
+            let extraAddr = '';
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
+            // 도로명 주소 선택 시 추가 정보 처리
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress;
+                if (data.bname && /[동|로|가]$/.test(data.bname)) extraAddr += data.bname;
+                if (data.buildingName && data.apartment === 'Y') {
+                    extraAddr += extraAddr ? `, ${data.buildingName}` : data.buildingName;
                 }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                if (extraAddr) extraAddr = ` (${extraAddr})`;
+                document.getElementById('extraAddress').value = extraAddr;
+            } else {
+                // 지번 주소 선택 시
+                addr = data.jibunAddress;
+                document.getElementById('extraAddress').value = '';
             }
-        }).open();
+
+            // 우편번호 및 주소 할당
+            document.getElementById('postcode').value = data.zonecode;
+            document.getElementById('address').value  = addr;
+            document.getElementById('detailAddress').focus();
+        }
+    }).open();
+}
+
+// 모든 기능 초기화 함수
+export function initSignInFeatures(path) {
+    // 1. 아이디 유효성 검사 및 중복 확인
+    const usernameInput = document.getElementById('username');
+    const usernameMsg   = document.getElementById('username-msg');
+    const checkBtn      = document.getElementById('check-username');
+    let isValidUsername = false;
+
+    if (usernameInput && usernameMsg && checkBtn) {
+        usernameInput.addEventListener('input', function () {
+            const str = this.value.trim();
+            const valid = /^[0-9a-zA-Z]{4,10}$/.test(str);
+            usernameMsg.textContent = valid
+                ? '형식이 올바릅니다. 중복 확인을 해주세요.'
+                : '아이디는 영문+숫자 조합, 4~10자로 입력하세요.';
+            usernameMsg.className = `message ${valid ? 'blue' : 'red'}`;
+            isValidUsername = valid;
+        });
+
+        checkBtn.addEventListener('click', function () {
+            const str = usernameInput.value.trim();
+            if (!isValidUsername) {
+                usernameMsg.textContent = '형식을 먼저 올바르게 입력하세요.';
+                usernameMsg.className = 'message red';
+                return;
+            }
+            $.ajax({
+                url: `${path}/users/duplicated/0?str=${encodeURIComponent(str)}`,
+                type: 'GET', cache: false,
+                success(data) {
+                    usernameMsg.textContent = data.success
+                        ? '사용 가능한 아이디입니다.'
+                        : data.msg;
+                    usernameMsg.className = `message ${data.success ? 'green' : 'red'}`;
+                },
+                error() {
+                    usernameMsg.textContent = '서버 오류가 발생했습니다.';
+                    usernameMsg.className = 'message red';
+                }
+            });
+        });
     }
-	});
+
+    // 2. 생년월일(년도, 월, 일) 옵션 생성 및 일 수 조정
+    const yearEl  = document.getElementById('birth-year');
+    const monthEl = document.getElementById('birth-month');
+    const dayEl   = document.getElementById('birth-day');
+    let yearDone = false, monthDone = false;
+
+    function isLeap(y) {
+        return (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
+    }
+
+    function fillDays() {
+        const y = parseInt(yearEl.value, 10) || new Date().getFullYear();
+        const m = parseInt(monthEl.value, 10);
+        if (!m) return;
+        const counts = [31, isLeap(y) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        dayEl.innerHTML = '<option value="">일</option>';
+        for (let d = 1; d <= counts[m - 1]; d++) {
+            dayEl.add(new Option(d, d));
+        }
+    }
+
+    if (yearEl) {
+        yearEl.addEventListener('focus', () => {
+            if (!yearDone) {
+                yearDone = true;
+                const current = new Date().getFullYear();
+                for (let y = 1940; y <= current; y++) yearEl.add(new Option(y, y));
+            }
+        });
+        yearEl.addEventListener('change', fillDays);
+    }
+    if (monthEl) {
+        monthEl.addEventListener('focus', () => {
+            if (!monthDone) {
+                monthDone = true;
+                for (let m = 1; m <= 12; m++) monthEl.add(new Option(m, m));
+            }
+        });
+        monthEl.addEventListener('change', fillDays);
+    }
+
+    // 3. 이메일 도메인 선택
+    const domainList = document.getElementById('domain-list');
+    const domainTxt  = document.getElementById('domain-txt');
+    if (domainList && domainTxt) {
+        domainList.addEventListener('change', e => {
+            const val = e.target.value;
+            domainTxt.value = val !== 'type' ? val : '';
+            domainTxt.disabled = val !== 'type';
+            if (val === 'type') domainTxt.focus();
+        });
+    }
+
+    // 4. 전화번호 자동 포커스 및 숫자만 허용
+    [['phone1','phone2','phone3','MyNum'], ['phone4','phone5','phone6','FamilyNum']]
+        .forEach(ids => {
+            const elems = ids.map(id => document.getElementById(id));
+            const [p1, p2, p3, output] = elems;
+            if (p1 && p2 && p3) {
+                [p1, p2, p3].forEach((el, idx, arr) => {
+                    el.addEventListener('input', () => {
+                        el.value = el.value.replace(/\D/g, '');
+                        if (el.value.length === el.maxLength) {
+                            if (idx < 2) arr[idx + 1].focus();
+                            else if (output)
+                                output.textContent = `입력한 전화번호: ${p1.value}-${p2.value}-${p3.value}`;
+                        }
+                    });
+                });
+            }
+        });
+
+    // 5. 다크 모드 토글
+    const toggleBtn = document.getElementById('toggleMode');
+    if (toggleBtn) {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️';
+        }
+        toggleBtn.addEventListener('click', () => {
+            const dark = document.body.classList.toggle('dark-mode');
+            toggleBtn.textContent = dark ? '☀️' : '🌙';
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        });
+    }
+}
+
+// 문서 준비 후 자동 초기화
+if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initSignInFeatures(window.path || '');
+    });
+}

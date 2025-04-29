@@ -30,7 +30,7 @@ public class LoginService implements Command {
 			session.setAttribute("loginvo", resultVo);
 		} else {
 		}
-		return "redirect:/Gomain.do";
+		return "redirect:/login.do"; // 여기 수정해야됨!
 
 		
 	}

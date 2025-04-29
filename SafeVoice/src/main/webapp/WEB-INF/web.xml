@@ -5,37 +5,26 @@
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-<!-- Login.jsp mapping -->
-
-<servlet>
-  <servlet-name>LoginPage</servlet-name>
-  <jsp-file>/WEB-INF/Login.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-  <servlet-name>LoginPage</servlet-name>
-  <url-pattern>/Login.jsp</url-pattern>
-</servlet-mapping>
-
 <!-- SignIn.jsp mapping -->
 <!-- SignIn.jsp 매핑 -->
 <servlet>
-  <servlet-name>SignInPage</servlet-name>
+  <servlet-name>JoinService</servlet-name>
   <jsp-file>/WEB-INF/SignIn.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-  <servlet-name>SignInPage</servlet-name>
-  <url-pattern>/SignIn.jsp</url-pattern>
+  <servlet-name>JoinService</servlet-name>
+  <url-pattern>/SignIn.do</url-pattern>
 </servlet-mapping>
 
 
-<!-- Join.jsp mapping -->
+<!-- Login.jsp mapping -->
 <servlet>
-  <servlet-name>JoinPage</servlet-name>
-  <jsp-file>/WEB-INF/Join.jsp</jsp-file>
+  <servlet-name>LoginService</servlet-name>
+  <jsp-file>/WEB-INF/Login.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-  <servlet-name>JoinPage</servlet-name>
-  <url-pattern>/join</url-pattern>
+  <servlet-name>LoginService</servlet-name>
+  <url-pattern>/Login.do</url-pattern>
 </servlet-mapping>
 
 

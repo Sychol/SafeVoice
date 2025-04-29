@@ -39,7 +39,7 @@
 			<br><input type="submit" value="JoinUs" class="button fit">
 			</form>
     <div class="small-text"> 이미 계정이 있으신가요?
-  <a href="${pageContext.request.contextPath}/Login.jsp">로그인</a>
+  <a href="Login.do">로그인</a>
 </div>
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

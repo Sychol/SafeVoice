@@ -9,23 +9,41 @@ public class MemberDAO {
 
 	private SqlSessionFactory factory = MySqlSessionManager.getFactory();
 
-	public int join(MemberVO member) {
+	public int signIn() {
 
 		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.insert("join", member);
-		return row;
+	//	int row = sqlsession.insert("join", member);
+		return 1;
 	}
-
+	
+	
 	public int login(MemberVO mvo) {
 
 		return 1;
 	}
 
-	public void selectAll() {
-
+	public void logout() {
+		
 	}
-
+	
+	public void setFamilyCode() {
+		
+	}
+	
+	public void matchChild() {
+		
+	}
+	
 	public void update(MemberVO paravo) {
 
 	}
+	
+	public void findPw() {
+
+	}
+	
+	public void signOut() {
+		
+	}
+
 }

@@ -27,5 +27,15 @@
   <url-pattern>/Login.do</url-pattern>
 </servlet-mapping>
 
+<!-- FindPassword -->
+<servlet>
+  <servlet-name>FindPasswordService</servlet-name>
+  <jsp-file>/WEB-INF/FindPassword.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>FindPasswordService</servlet-name>
+  <url-pattern>/FindPassword.do</url-pattern>
+</servlet-mapping>
+
 
 </web-app>

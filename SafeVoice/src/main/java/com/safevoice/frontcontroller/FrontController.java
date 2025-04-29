@@ -28,7 +28,7 @@ public class FrontController extends HttpServlet {
 		map.put("Logout.do", new LogoutService());
 	}
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String uri = request.getRequestURI();

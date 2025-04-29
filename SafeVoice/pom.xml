@@ -5,6 +5,14 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <dependencies>
+  
+  <!-- MimeMessage 라이브러리 -->
+  <dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.2</version> 
+</dependency>
+  
   <!-- mybatis 라이브러리 다운로드-->
   	<dependency>
 		<groupId>org.mybatis</groupId>

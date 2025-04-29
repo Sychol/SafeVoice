@@ -46,4 +46,11 @@ public class MemberDAO {
 		
 	}
 
+
+	public MemberVO findUser(String userId, String phone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.safevoice.controller.ChangePasswordService;
 import com.safevoice.controller.Command;
 import com.safevoice.controller.SignInService;
+import com.safevoice.controller.VerifyIdentityService;
 import com.safevoice.controller.LoginService;
 import com.safevoice.controller.LogoutService;
 
@@ -26,9 +28,11 @@ public class FrontController extends HttpServlet {
 		map.put("SignIn.do", new SignInService());
 		map.put("Login.do", new LoginService());
 		map.put("Logout.do", new LogoutService());
+		map.put("ChangePassword.do", new ChangePasswordService());
+		map.put("VerifyIdentity.do", new VerifyIdentityService());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String uri = request.getRequestURI();
@@ -38,6 +42,8 @@ public class FrontController extends HttpServlet {
 		String finalPath = uri.substring(cp.length() + 1);
 
 		request.setCharacterEncoding("UTF-8");
+		
+		String email = request.getParameter("email");
 
 		String moveUrl = "";
 		Command com = null;

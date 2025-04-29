@@ -141,7 +141,7 @@ public class MemberVO {
 	public void setpOrC(String pOrC) {
 		this.pOrC = pOrC;
 	}
-	
 
+	
 	
 }

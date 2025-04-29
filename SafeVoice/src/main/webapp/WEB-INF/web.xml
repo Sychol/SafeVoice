@@ -8,12 +8,12 @@
 <!-- SignIn.jsp mapping -->
 <!-- SignIn.jsp 매핑 -->
 <servlet>
-  <servlet-name>JoinService</servlet-name>
+  <servlet-name>SignInService</servlet-name>
   <jsp-file>/WEB-INF/SignIn.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-  <servlet-name>JoinService</servlet-name>
-  <url-pattern>/SignIn.do</url-pattern>
+  <servlet-name>SignInService</servlet-name>
+  <url-pattern>/SignIn.jsp</url-pattern>
 </servlet-mapping>
 
 

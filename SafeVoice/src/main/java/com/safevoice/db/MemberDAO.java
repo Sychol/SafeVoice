@@ -21,11 +21,22 @@ public class MemberDAO {
 		return 1;
 	}
 
-	public void selectAll() {
+	public void pTelGrant() {
+		
+	}
+	
+	public void selectAllMember() {
 
 	}
 
 	public void update(MemberVO paravo) {
 
 	}
+	
+	public void findPw() {
+
+	}
+	
+	
+
 }

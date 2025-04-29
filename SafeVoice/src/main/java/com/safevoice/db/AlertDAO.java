@@ -6,7 +6,11 @@ public class AlertDAO {
 
 	private SqlSessionFactory factory = MySqlSessionManager.getFactory();
 	
-	public void selectAllAlert() {
+	public void getAlertHistory() {
+		
+	}
+	
+	public void setAlertInfo() {
 		
 	}
 	

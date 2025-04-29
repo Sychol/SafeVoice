@@ -5,11 +5,7 @@
 <!-- SQL구문 작성하는 공간 -->
 <mapper namespace="com.safevoice.db.MemberDAO">
 	<!-- 
-	<insert id="join" parameterType ="membervo">
-		insert into WEB_MEMBER
-		values(#{email},#{pw},#{tell},#{address})	
-	</insert>
-
+	
 	<select id="login" parameterType ="membervo" resultType="membervo">
 		SELECT EMAIL, TELL, ADDRESS 
 		FROM WEB_MEMBER
@@ -31,9 +27,29 @@
 		WHERE EMAIL = #{email}
 	</update>
 	 -->
-	 <insert id="join" parameterType = "membervo">
-	 	insert into member
-	 	values(#{id},#{div},#{pw},#{name},#{tel},#{email},#{birth},#{gender},#{address},#{ptel})
+	 <insert id="SignIn" parameterType = "membervo">
+	 	INSERT INTO MEMBERS
+	 	VALUES(#{id},#{email},#{pw},#{name},#{birth},#{tel},#{postcode},#{address},#{detailAddress},#{extraAddress},#{gender},#{pTel},#{pOrC})
 	 </insert>
 	 
+	 <select id="Login" parameterType = "membervo" resultType = "membervo">
+	 	SELECT ID, EMAIL, NAME
+	 	FROM MEMBERS
+	 	WHERE ID = #{id}
+	 	AND PW = #{pw}
+	 </select>
+	 
+	 <delete id="SignOut" parameterType = "membervo">
+		DELETE *
+		FROM MEMBERS
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="SetFamilyCode" parameterType = "membervo">
+		UPDATE MEMBERS
+		SET FAMILYCODE = #{familyCode}
+		WHERE ID = #{pId} OR ID = #{cId}
+	</update>
+	
+	
 </mapper>

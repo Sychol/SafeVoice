@@ -15,6 +15,7 @@ public class MemberVO {
 	String gender;
 	String pTel;
 	String pOrC;
+	String ChildId;
 	
 	public MemberVO(String email, String id, String pw, String name, String birth, String tel, String postcode,
 			String address, String detailAddress, String extraAddress, String gender, String pTel, String pOrC) {

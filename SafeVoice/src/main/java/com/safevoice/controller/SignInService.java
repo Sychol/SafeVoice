@@ -41,12 +41,10 @@ public class SignInService implements Command {
 		
 //		System.out.println(member);
 		
-//		MemberDAO dao = new MemberDAO();
-//		
-//		int row = dao.join(member);
+		MemberDAO dao = new MemberDAO();
 		
-		int row = 1;
-
+		int row = dao.SignIn(member);
+		
 		if (row > 0) {
 			return "SignIn.do";
 		} else {

@@ -74,7 +74,7 @@ type="password"
 
     <!-- 회원가입 · 비밀번호 찾기 -->
     <div class="small-text">
-      <a href="SignIn.jsp">회원가입</a> |
+      <a href="GoSignIn.do">회원가입</a> |
       <a href="#">비밀번호 찾기</a>
     </div>
   </div>

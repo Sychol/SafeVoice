@@ -9,41 +9,57 @@ public class MemberDAO {
 
 	private SqlSessionFactory factory = MySqlSessionManager.getFactory();
 
-	public int signIn() {
-
+	public int SignIn(MemberVO member) {
+		
 		SqlSession sqlsession = factory.openSession(true);
-	//	int row = sqlsession.insert("join", member);
-		return 1;
+		int row = sqlsession.insert("SignIn", member);
+		return row;
 	}
 	
 	
-	public int login(MemberVO mvo) {
-
-		return 1;
+	public MemberVO Login(MemberVO mvo) {
+		
+		SqlSession sqlsession = factory.openSession(true);
+		MemberVO resultVO = sqlsession.selectOne("Login", mvo);
+		sqlsession.close();
+		return resultVO;
+	}
+	
+	public void IdDuplicateCheck() {
+		
 	}
 
-	public void logout() {
+//	public int SetFamilyCode(MemberVO family)  {
+//		SqlSession sqlsession = factory.openSession(true);
+//		int row = sqlsession.update("SetFamilyCode",family);
+//		return row;
+//	}
+	
+	public void FcDuplicateCheck() {
+		
+	}
+
+	public void FcNullCheck() {
 		
 	}
 	
-	public void setFamilyCode() {
+	public void MatchChild() {
 		
 	}
 	
-	public void matchChild() {
-		
-	}
-	
-	public void update(MemberVO paravo) {
+	public void Update(MemberVO paravo) {
 
 	}
 	
-	public void findPw() {
-
+	public void FindPw() {
+		
 	}
 	
-	public void signOut() {
+	public int SignOut(MemberVO member) {
 		
+		SqlSession sqlsession = factory.openSession(true);
+		int row = sqlsession.delete("SignOut", member);
+		return row;
 	}
 
 

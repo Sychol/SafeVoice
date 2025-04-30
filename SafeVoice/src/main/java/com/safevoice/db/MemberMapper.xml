@@ -4,69 +4,66 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- SQL구문 작성하는 공간 -->
 <mapper namespace="com.safevoice.db.MemberDAO">
-	<!-- 
 	
-	<select id="login" parameterType ="membervo" resultType="membervo">
-		SELECT EMAIL, TELL, ADDRESS 
-		FROM WEB_MEMBER
-		WHERE EMAIL= #{email} 
-		and PW= #{pw}
-	</select>
-	
-	<select id="selectAll" resultType="membervo">
-		SELECT EMAIL, TELL, ADDRESS
-		FROM WEB_MEMBER
-		WHERE EMAIL != 'admin'
-	</select>
-	
-	<update id="update" parameterType ="membervo">
-		UPDATE WEB_MEMBER
-		SET PW = #{pw},
-		TELL = #{tell},
-		ADDRESS = #{address}
-		WHERE EMAIL = #{email}
-	</update>
-	 -->
 	 <insert id="signIn" parameterType = "membervo">
 	 	INSERT INTO MEMBERS
-	 	VALUES(#{id},#{email},#{pw},#{name},#{birth},#{tel},#{postcode},#{address},#{detailAddress},#{extraAddress},#{gender},#{pTel},#{pOrC})
+	 	VALUES(#{id},#{email},#{pw},#{name},#{birthdate},#{phone},#{postcode},#{address},#{detailAddress},#{gender},#{memType})
 	 </insert>
 	 
+	 <!-- 로그인 할 때 입력하는 정보 중 세션에 집어넣어야 할 정보가 있다.
+	 로그인 SQL 에서는 그렇게 세션에 입력해야 할 정보를 입력해야 한다. -->
 	 <select id="login" parameterType = "membervo" resultType = "membervo">
-	 	SELECT ID, EMAIL, NAME
+	 	SELECT ID, EMAIL, NAME, PHONE
 	 	FROM MEMBERS
 	 	WHERE ID = #{id}
 	 	AND PW = #{pw}
 	 </select>
-	 
-	 <delete id="signOut" parameterType = "membervo">
-		DELETE *
+
+	<select id="idDuplicateCheck" parameterType = "String">
+		SELECT COUNT(*)
 		FROM MEMBERS
 		WHERE ID = #{id}
-	</delete>
+	</select>
 
-	<!--
-	
-	<update id="setFamilyCode" parameterType = "membervo">
-
+	<update id="updateMember" parameterType = "membervo">
 		UPDATE MEMBERS
-		SET FAMILYCODE = #{familyCode}
-		WHERE ID = #{pId} OR ID = #{cId}
-	</update>
-
-	  
-	<update id="Update" parameterType = "memberve">
-		UPDATE MEMBERS
-		SET 
+		SET  
+		ID = #{id},
+		EMAIL = #{email},
+		NAME = #{name},
+		BIRTHDATE = #{birthdate},
+		PHONE = #{phone},
+		POSTCODE = #{postcode},
+		ADDRESS = #{address},
+		DETAIL_ADDRESS = #{detailAddress},
+		GENDER = #{gender},
+		MEM_TYPE = #{memType}
 		WHERE ID = #{id}
 	</update>
-	-->
 	
-	<select id="findMember" parameterType = "membervo" resultType = "membervo">
+	<update id="updatdFamilyCd" parameterType = "membervo">
+		UPDATE MEMBERS
+		SET FAMILY_CD = (UUID())
+		WHERE ID = #{id}
+	</update>
+	
+	<delete id="signOut" parameterType = "membervo">
+		DELETE *
+		FROM MEMBERS
+		WHERE ID = #{id} 
+		AND PW = #{pw}
+	</delete>
+	
+	<select id="findMember" parameterType = "membervo">
 	 	SELECT *
 	 	FROM MEMBERS
 	 	WHERE ID = #{id}
-	 	AND TEL = #{tel}
 	</select>
 	
+	<update id="updatePw" parameterType = "membervo">
+		UPDATE MEMBERS
+		SET PW = #{pw}
+		WHERE ID = #{id}
+		AND PHONE = #{phone}
+	</update>
 </mapper>

@@ -6,31 +6,32 @@ public class MemberVO {
 	String id;
 	String pw;
 	String name;
-	String birth;
-	String tel;
+	String birthDate;
+	String phone;
 	String postcode;
 	String address;
 	String detailAddress;
 	String gender;
 	String familyCode;
-	String div;
+	String memType;
 	String ChildId;
 	
-	public MemberVO(String email, String id, String pw, String name, String birth, String tel, String postcode,
-			String address, String detailAddress, String gender, String familyCode, String div) {
+	public MemberVO(String email, String id, String pw, String name, String birthDate, String phone, String postcode,
+			String address, String detailAddress, String gender, String familyCode, String memType, String childId) {
 		super();
 		this.email = email;
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
-		this.birth = birth;
-		this.tel = tel;
+		this.birthDate = birthDate;
+		this.phone = phone;
 		this.postcode = postcode;
 		this.address = address;
 		this.detailAddress = detailAddress;
 		this.gender = gender;
 		this.familyCode = familyCode;
-		this.div = div;
+		this.memType = memType;
+		ChildId = childId;
 	}
 	
 	public MemberVO() {
@@ -69,20 +70,20 @@ public class MemberVO {
 		this.name = name;
 	}
 
-	public String getBirth() {
-		return birth;
+	public String getBirthDate() {
+		return birthDate;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
-	public String getTel() {
-		return tel;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getPostcode() {
@@ -125,12 +126,12 @@ public class MemberVO {
 		this.familyCode = familyCode;
 	}
 
-	public String getDiv() {
-		return div;
+	public String getMemType() {
+		return memType;
 	}
 
-	public void setDiv(String div) {
-		this.div = div;
+	public void setMemType(String memType) {
+		this.memType = memType;
 	}
 
 	public String getChildId() {
@@ -140,7 +141,7 @@ public class MemberVO {
 	public void setChildId(String childId) {
 		ChildId = childId;
 	}
-
+	
 	
 	
 }

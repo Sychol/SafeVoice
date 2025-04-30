@@ -2,9 +2,6 @@ package com.safevoice.controller;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,35 +9,31 @@ import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
 public class VerifyIdentityService implements Command {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
     	// 아이디 / 비밀번호 / 전화번호 입력받기
     	String id = request.getParameter("id");
-        String tel = request.getParameter("tel");
+        String phone = request.getParameter("phone");
         
         // 유저 정보 불러오기
-        MemberDAO dao = new MemberDAO();
-        MemberVO vo = new MemberVO();
-        vo.setId(id);
-        vo.setTel(tel);
+        MemberDAO mdao = new MemberDAO();
+        MemberVO mvo = new MemberVO();
+        mvo.setId(id);
+        mvo.setPhone(phone);
         
         // dao.findMember 실행
-        int row = dao.findMember(vo);
+        int row = mdao.findMember(mvo);
         
         // 입력한 아이디 / 전화번호 > 해당하는 유저 있나 확인
         if (row != 0) {
         	// 동일
             request.setAttribute("id", id);
-            response.sendRedirect("changePassword.do"); //?id=" + id);
+            return "ChangePassword.do"; //?id=" + id);
         } else {
             // 틀렸어!
-            response.sendRedirect("verifyIdentity.jsp?error=true");
+            return "VerifyIdentity.jsp?error=true"; 
+            // ㄴ 요거 수정? 을? 흠... 고민중입니다... 쿼리 파라미터를 붙이는게 맞을지.,.. 쿼리파라미터 이해가잘안돼서... 고민중...
         }
     }
 
-	@Override
-	public String execute(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

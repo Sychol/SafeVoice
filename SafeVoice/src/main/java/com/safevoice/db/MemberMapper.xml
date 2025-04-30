@@ -25,22 +25,24 @@
 		WHERE ID = #{id}
 	</select>
 
-	<update id="updateMember" parameterType = "membervo">
-		UPDATE MEMBERS
-		SET  
-		ID = #{id},
-		EMAIL = #{email},
-		NAME = #{name},
-		BIRTHDATE = #{birthdate},
-		PHONE = #{phone},
-		POSTCODE = #{postcode},
-		ADDRESS = #{address},
-		DETAIL_ADDRESS = #{detailAddress},
-		GENDER = #{gender},
-		MEM_TYPE = #{memType}
-		WHERE ID = #{id}
-	</update>
-	
+	<update id="updateMember" parameterType="membervo">
+    UPDATE member
+    <set>
+        <if test="email != null and email != ''">
+            email = #{email},
+        </if>
+        <if test="phone != null and phone != ''">
+            phone = #{phone},
+        </if>
+        <if test="address != null and address != ''">
+            address = #{address},
+        </if>
+        <if test="pw != null and pw != ''">
+            pw = #{pw},
+        </if>
+    </set>
+    WHERE id = #{id}
+</update>
 	<update id="updatdFamilyCd" parameterType = "membervo">
 		UPDATE MEMBERS
 		SET FAMILY_CD = (UUID())

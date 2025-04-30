@@ -51,5 +51,9 @@
 		WHERE ID = #{pId} OR ID = #{cId}
 	</update>
 	
-	
+	<update id="Update" parameterType = "memberve">
+		UPDATE MEMBERS
+		SET 
+		WHERE ID = #{id}
+	</update>
 </mapper>

@@ -48,10 +48,14 @@ public class MemberDAO {
 	}
 	
 	public void Update(MemberVO paravo) {
-
+		
+		SqlSession sqlsession = factory.openSession(true);
+		int row = sqlsession.update("");
 	}
 	
 	public void FindPw() {
+		
+		SqlSession sqlsession = factory.openSession(true);
 		
 	}
 	

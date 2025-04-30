@@ -23,7 +23,7 @@ public class SignInService implements Command {
 		String gender = request.getParameter("gender");
 		String familyCode = request.getParameter("familyCode"); // 가족 번호
 		
-		MemberVO member = new MemberVO(email, id, pw, name, birthDate, phone, postcode, address, detailAddress, gender, familyCode, memType);
+		MemberVO member = new MemberVO();
 
 		System.out.println(email);
 		System.out.println(id);

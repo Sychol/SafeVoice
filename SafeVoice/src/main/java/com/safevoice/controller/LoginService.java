@@ -1,12 +1,9 @@
 package com.safevoice.controller;
 
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.safevoice.controller.Command;
 import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
@@ -27,7 +24,7 @@ public class LoginService implements Command {
 		
 		if (resultVo != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", resultVo);
+			session.setAttribute("loginMember", resultVo);
 		} else {
 		}
 		return "redirect:/login.do"; // 여기 수정해야됨!

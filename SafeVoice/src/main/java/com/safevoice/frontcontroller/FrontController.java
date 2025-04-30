@@ -18,6 +18,7 @@ import com.safevoice.controller.SignOutService;
 import com.safevoice.controller.VerifyIdentityService;
 import com.safevoice.controller.LoginService;
 import com.safevoice.controller.LogoutService;
+import com.safevoice.controller.ModifyMemberService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -32,6 +33,7 @@ public class FrontController extends HttpServlet {
 		map.put("ChangePassword.do", new ChangePasswordService());
 		map.put("VerifyIdentity.do", new VerifyIdentityService());
 		map.put("SignOut.do", new SignOutService());
+		map.put("ModifyMember.do", new ModifyMemberService());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="Verifyidentity.do" method="post">
+<form action="VerifyIdentity.do" method="post">
     아이디: <input type="text" name="id"><br>
     전화번호: <input type="text" name="tel"><br>
     <button type="submit">본인 확인</button>

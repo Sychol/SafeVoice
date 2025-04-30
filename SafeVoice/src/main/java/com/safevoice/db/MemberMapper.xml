@@ -27,29 +27,36 @@
 		WHERE EMAIL = #{email}
 	</update>
 	 -->
-	 <insert id="SignIn" parameterType = "membervo">
+	 <insert id="signIn" parameterType = "membervo">
 	 	INSERT INTO MEMBERS
 	 	VALUES(#{id},#{email},#{pw},#{name},#{birth},#{tel},#{postcode},#{address},#{detailAddress},#{extraAddress},#{gender},#{pTel},#{pOrC})
 	 </insert>
 	 
-	 <select id="Login" parameterType = "membervo" resultType = "membervo">
+	 <select id="login" parameterType = "membervo" resultType = "membervo">
 	 	SELECT ID, EMAIL, NAME
 	 	FROM MEMBERS
 	 	WHERE ID = #{id}
 	 	AND PW = #{pw}
 	 </select>
 	 
-	 <delete id="SignOut" parameterType = "membervo">
+	 <delete id="signOut" parameterType = "membervo">
 		DELETE *
 		FROM MEMBERS
 		WHERE ID = #{id}
 	</delete>
 	
-	<update id="SetFamilyCode" parameterType = "membervo">
+	<update id="setFamilyCode" parameterType = "membervo">
 		UPDATE MEMBERS
 		SET FAMILYCODE = #{familyCode}
 		WHERE ID = #{pId} OR ID = #{cId}
 	</update>
+	
+	<select id="findMember" parameterType = "membervo" resultType = "membervo">
+	 	SELECT *
+	 	FROM MEMBERS
+	 	WHERE ID = #{id}
+	 	AND TEL = #{tel}
+	</select>
 	
 	
 </mapper>

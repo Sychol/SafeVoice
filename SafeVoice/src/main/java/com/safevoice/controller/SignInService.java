@@ -23,7 +23,7 @@ public class SignInService implements Command {
 		String gender = request.getParameter("gender");
 		String familyCode = request.getParameter("familyCode"); // 가족 번호
 		
-		MemberVO member = new MemberVO(email, id, pw, name, birth, tel, postcode, address, detailAddress, extraAddress, gender, familyCode, div);
+		MemberVO member = new MemberVO(email, id, pw, name, birth, tel, postcode, address, detailAddress, gender, familyCode, div);
 
 		System.out.println(email);
 		System.out.println(id);
@@ -43,7 +43,7 @@ public class SignInService implements Command {
 		
 		MemberDAO dao = new MemberDAO();
 
-		int row = dao.SignIn(member);
+		int row = dao.signIn(member);
 
 		if (row > 0) {
 			return "SignIn.do";

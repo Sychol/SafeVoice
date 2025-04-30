@@ -1,5 +1,9 @@
 package com.safevoice.db;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -9,7 +13,7 @@ public class MemberDAO {
 
 	private SqlSessionFactory factory = MySqlSessionManager.getFactory();
 
-	public int SignIn(MemberVO member) {
+	public int signIn(MemberVO member) {
 		
 		SqlSession sqlsession = factory.openSession(true);
 		int row = sqlsession.insert("SignIn", member);
@@ -17,7 +21,7 @@ public class MemberDAO {
 	}
 	
 	
-	public MemberVO Login(MemberVO mvo) {
+	public MemberVO login(MemberVO mvo) {
 		
 		SqlSession sqlsession = factory.openSession(true);
 		MemberVO resultVO = sqlsession.selectOne("Login", mvo);
@@ -25,7 +29,7 @@ public class MemberDAO {
 		return resultVO;
 	}
 	
-	public void IdDuplicateCheck() {
+	public void idDuplicateCheck() { // 아이디중복체크
 		
 	}
 
@@ -35,42 +39,47 @@ public class MemberDAO {
 //		return row;
 //	}
 	
-	public void FcDuplicateCheck() {
+	public void fcDuplicateCheck() {
 		
 	}
 
-	public void FcNullCheck() {
+	public void fcNullCheck() {
 		
 	}
 	
-	public void MatchChild() {
+	public void matchChild() {
 		
 	}
 	
-	public void Update(MemberVO paravo) {
+
+	public void update(MemberVO paravo) {
 		
 		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.update("");
+//		int row = sqlsession.update("");
+
 	}
 	
-	public void FindPw() {
+	public void findPw() {
 		
 		SqlSession sqlsession = factory.openSession(true);
 		
 	}
 	
-	public int SignOut(MemberVO member) {
+	public int signOut(MemberVO member) {
 		
 		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.delete("SignOut", member);
+		int row = sqlsession.delete("signOut", member);
 		return row;
 	}
 
 
-	public MemberVO findUser(String userId, String phone) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public int findMember(MemberVO member) {
+		
+		SqlSession sqlsession = factory.openSession(true);
+		int row = sqlsession.selectOne("findMember", member);
+	    	    
+	    return row;
 
+	}
 
 }

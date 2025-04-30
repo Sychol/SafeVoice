@@ -137,7 +137,7 @@
   </form>
 
   <div class="small-text">
-    이미 계정이 있으신가요? <a href="${pageContext.request.contextPath}/Login.do">로그인</a>
+    이미 계정이 있으신가요? <a href="GoLogin.do">로그인</a>
   </div>
 </body>
 </html>

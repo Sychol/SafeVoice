@@ -75,7 +75,7 @@ type="password"
     <!-- 회원가입 · 비밀번호 찾기 -->
     <div class="small-text">
       <a href="GoSignIn.do">회원가입</a> |
-      <a href="#">비밀번호 찾기</a>
+      <a href="GoVerifyIdentity.do">비밀번호 찾기</a>
     </div>
   </div>
 

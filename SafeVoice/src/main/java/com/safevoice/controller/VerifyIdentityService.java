@@ -16,19 +16,22 @@ public class VerifyIdentityService implements Command {
         
     	// 아이디 / 비밀번호 / 전화번호 입력받기
     	String id = request.getParameter("id");
-    	String currentPw = request.getParameter("currentPw");
         String tel = request.getParameter("tel");
         
         // 유저 정보 불러오기
         MemberDAO dao = new MemberDAO();
-        MemberVO user = dao.findUser(id, tel);
-
+        MemberVO vo = new MemberVO();
+        vo.setId(id);
+        vo.setTel(tel);
         
-        // 입력받은 정보가 기존 정보랑 동일한지 확인
-        if (user != null && user.getPw().equals(currentPw)) {
+        // dao.findMember 실행
+        int row = dao.findMember(vo);
+        
+        // 입력한 아이디 / 전화번호 > 해당하는 유저 있나 확인
+        if (row != 0) {
         	// 동일
             request.setAttribute("id", id);
-            request.getRequestDispatcher("FindPassword.jsp").forward(request, response);
+            response.sendRedirect("changePassword.do"); //?id=" + id);
         } else {
             // 틀렸어!
             response.sendRedirect("verifyIdentity.jsp?error=true");

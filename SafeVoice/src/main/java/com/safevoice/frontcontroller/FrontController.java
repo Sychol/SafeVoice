@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		String email = request.getParameter("email");
+//		String email = request.getParameter("email");
 
 		String moveUrl = "";
 		Command com = null;

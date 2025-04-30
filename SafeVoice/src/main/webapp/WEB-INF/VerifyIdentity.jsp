@@ -8,10 +8,9 @@
 </head>
 <body>
 
-<form action="GoVerifyidentity.do" method="post">
+<form action="VerifyIdentity.do" method="post">
     아이디: <input type="text" name="id"><br>
     전화번호: <input type="text" name="tel"><br>
-    현재 비밀번호: <input type="password" name="currentPw"><br>
     <button type="submit">본인 확인</button>
 </form>
 

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.safevoice.controller.ChangePasswordService;
 import com.safevoice.controller.Command;
 import com.safevoice.controller.SignInService;
+import com.safevoice.controller.SignOutService;
 import com.safevoice.controller.VerifyIdentityService;
 import com.safevoice.controller.LoginService;
 import com.safevoice.controller.LogoutService;
@@ -30,6 +31,7 @@ public class FrontController extends HttpServlet {
 		map.put("Logout.do", new LogoutService());
 		map.put("ChangePassword.do", new ChangePasswordService());
 		map.put("VerifyIdentity.do", new VerifyIdentityService());
+		map.put("SignOut.do", new SignOutService());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -51,7 +53,7 @@ public class FrontController extends HttpServlet {
 		com = map.get(finalPath);
 
 		if (com != null) {
-			moveUrl = com.execute(request);
+			moveUrl = com.execute(request, response);
 		}
 
 		if (moveUrl == null) {

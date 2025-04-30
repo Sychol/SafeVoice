@@ -44,16 +44,17 @@
 		FROM MEMBERS
 		WHERE ID = #{id}
 	</delete>
-	
+	<!--
 	<update id="SetFamilyCode" parameterType = "membervo">
 		UPDATE MEMBERS
 		SET FAMILYCODE = #{familyCode}
 		WHERE ID = #{pId} OR ID = #{cId}
 	</update>
-	
+	  
 	<update id="Update" parameterType = "memberve">
 		UPDATE MEMBERS
 		SET 
 		WHERE ID = #{id}
 	</update>
+	-->
 </mapper>

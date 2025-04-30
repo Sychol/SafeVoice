@@ -65,7 +65,7 @@
 			<br><input type="submit" value="JoinUs" class="button fit">
 			</form>
     <div class="small-text"> 이미 계정이 있으신가요?
-  <a href="Login.do">로그인</a>
+  <a href="GoLogin.do">로그인</a>
 </div>
 
     <!-- 비밀번호 -->
@@ -134,7 +134,7 @@
   </form>
 
   <div class="small-text">
-    이미 계정이 있으신가요? <a href="Login.do">로그인</a>
+    이미 계정이 있으신가요? <a href="GoLogin.do">로그인</a>
   </div>
 
   <!-- 카카오 주소 API -->

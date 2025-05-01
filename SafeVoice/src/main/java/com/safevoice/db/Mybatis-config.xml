@@ -5,8 +5,11 @@
   
 <configuration>
 	<typeAliases>
-	<!-- 클래스 객체의 별칭은 membervo로 지정한다. -->
+	<!-- member 관리를 위한 객체의 별칭은 membervo로 지정한다. -->
+	<!-- alert 관리를 위한 객체의 별칭은 alertvo로 지정한다.  -->
 		<typeAlias type="com.safevoice.model.MemberVO" alias="membervo"></typeAlias>
+		<typeAlias type="com.safevoice.model.AlertVO" alias="alertvo"></typeAlias>
+		
 	</typeAliases>
   <environments default="development">
     <environment id="development">

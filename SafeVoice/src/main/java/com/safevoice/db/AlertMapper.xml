@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL구문 작성하는 공간 -->
+<mapper namespace="com.safevoice.db.AlertDAO">
+	
+	 <select id="getAlertHistory" parameterType = "memberVO" resultType = "alertvo">
+	 	SELECT M.MEMBER_ID, ALERT_TYPE, ALERT_TIME, LAT, LON, ALERT_CONTEXT
+	 	FROM MEMBERS AS M INNER JOIN ALERTS AS A
+	 	ON M.MEMBER_ID = A.MEMBER_ID
+	 	WHERE M.MEMBER_ID = #{id}
+	 </select>
+	 
+	 <insert id="setAlertInfo" parameterType = "alertvo">
+	 	INSERT INTO ALERTS (MEMBER_ID, ALERT_TYPE, LAT, LON, ALERT_CONTEXT)
+	 	VALUES (#{memberId}, #{alertType}, #{rat}, #{lon}, #{alertContext})
+	 </insert>
+	 
+</mapper>

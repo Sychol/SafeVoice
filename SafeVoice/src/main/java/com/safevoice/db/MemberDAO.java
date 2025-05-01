@@ -17,7 +17,7 @@ public class MemberDAO {
 	public int signIn(MemberVO member) {
 		
 		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.insert("SignIn", member);
+		int row = sqlsession.insert("signIn", member);
 		sqlsession.close();
 		return row;
 	}
@@ -27,7 +27,7 @@ public class MemberDAO {
 	public MemberVO login(MemberVO mvo) {
 		
 		SqlSession sqlsession = factory.openSession(true);
-		MemberVO resultVO = sqlsession.selectOne("Login", mvo);
+		MemberVO resultVO = sqlsession.selectOne("login", mvo);
 		sqlsession.close();
 		return resultVO;
 	}

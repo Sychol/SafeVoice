@@ -7,6 +7,8 @@ import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
 public class SignInService implements Command {
+	
+	// 회원가입
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 				

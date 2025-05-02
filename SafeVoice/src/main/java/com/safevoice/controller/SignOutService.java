@@ -13,6 +13,8 @@ import com.safevoice.model.MemberVO;
 
 public class SignOutService extends HttpServlet implements Command {
 	private static final long serialVersionUID = 1L;
+	
+	// 회원탈퇴
        
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         

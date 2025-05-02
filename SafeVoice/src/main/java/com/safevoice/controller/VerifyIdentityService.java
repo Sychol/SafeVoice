@@ -9,6 +9,9 @@ import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
 public class VerifyIdentityService implements Command {
+	
+	// 비밀번호 변경 (본인확인)
+	
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
     	// 아이디 / 비밀번호 / 전화번호 입력받기

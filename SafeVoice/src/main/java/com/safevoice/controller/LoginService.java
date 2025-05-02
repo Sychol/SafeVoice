@@ -10,6 +10,8 @@ import com.safevoice.model.MemberVO;
 public class LoginService implements Command {
 	
 	public String execute (HttpServletRequest request, HttpServletResponse response) {
+		
+		// 로그인
 
 		String id = request.getParameter("id"); 
 		String pw = request.getParameter("pw"); 

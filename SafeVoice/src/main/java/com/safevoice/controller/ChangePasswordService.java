@@ -7,6 +7,8 @@ import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
 public class ChangePasswordService implements Command {
+	
+	// 비밀번호 변경
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");

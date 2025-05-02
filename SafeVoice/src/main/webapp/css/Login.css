@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* ── base & 공통 레이아웃 ── */
 body {
   font-family: 'Noto Sans KR', sans-serif;
@@ -8,8 +9,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: auto;
 }
+
 body, .container, .input-field, .submit-button {
   transition: background-color 0.5s, color 0.5s, border-color 0.5s;
 }
@@ -18,14 +20,15 @@ body, .container, .input-field, .submit-button {
 .container {
   position: relative;
   width: 360px;
-  height: 700px;
-  margin: 50px auto;
+  height: auto;              /* 내용물에 맞춰 자동 높이 */
+  margin: 20px auto;         /* 상하 20px */
   background: white;
-  padding: 40px;
+  padding: 20px;             /* 사방 20px */
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+
 /* ── 다크 모드 토글 버튼 ── */
 .mode-toggle {
   position: absolute;
@@ -42,32 +45,39 @@ body, .container, .input-field, .submit-button {
 /* ── 로고 / 서비스명 / 슬로건 ── */
 .logo {
   width: 140px;
-  display: block;        /* 블록으로 바꿔야 margin auto가 적용되기에 작성 */
-  margin: 1rem auto 0.5rem;
+  display: block;
+  margin: 0.5rem auto 0.25rem;
 }
-
 .title {
-  font-size: 28px;       /* 글자 크기 */
-  font-weight: bold;	/* 글자 굵기 */
-  color: #000;			/* 글자 색상 */
-  margin: 0.5rem 0 1rem; 
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+  margin: 0.25rem 0 0.5rem;
 }
 .subtitle {
   font-size: 14px;
   color: #888;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 /* ── 로그인 폼 ── */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;                  /* 입력창 사이 4px 간격 */
+}
 .input-field {
   width: 100%;
-  padding: 12px;
-  margin: 6px 0;
+  padding: 8px 12px;         /* 수직 8px, 좌우 12px */
+  margin: 0;                 /* 완전 리셋 */
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   box-sizing: border-box;
   font-size: 14px;
+  line-height: 1.4;
 }
+
+/* 로그인 옵션 (체크박스, 라디오 등) */
 .login-options {
   display: flex;
   font-size: 13px;
@@ -82,13 +92,15 @@ body, .container, .input-field, .submit-button {
 .login-options label + label {
   margin-left: 10px;
 }
+
+/* ── 로그인 버튼 ── */
 .submit-button {
   background-color: #64a862;
   color: white;
   font-weight: bold;
   width: 100%;
   padding: 12px;
-  margin-top: 30px;
+  margin-top: 16px;          /* 위아래 간격 축소 */
   border: none;
   border-radius: 10px;
   font-size: 16px;
@@ -97,47 +109,145 @@ body, .container, .input-field, .submit-button {
 .submit-button:hover {
   background-color: #539e51;
 }
+/* ── 소셜 로그인 구분선 + 텍스트 ── */
+.social-divider {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;       /* 위아래 간격 조절 */
+}
+.social-divider::before,
+.social-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+.social-divider::before {
+  margin-right: 8px;
+}
+.social-divider::after {
+  margin-left: 8px;
+}
+.social-divider span {
+  font-size: 13px;
+  color: #888;
+  white-space: nowrap;
+}
 
 /* ── 소셜 로그인 ── */
 .social-login {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-}
-.kakao-login, .naver-login {
-  display: flex;
+  flex-wrap: wrap;  
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 100%;
+  gap: 70px;                  /* 버튼 사이 간격 */
+  margin: 0px 0;  
+  margin-bottom: 0px;          /* 위아래 12px */
+}
+
+/* ── 구글 로그인 버튼 ── */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #747775;
+  border-radius: 4px;
   box-sizing: border-box;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 14px;
+  height: 40px;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 40px;
+  min-width: min-content;
 }
-.kakao-login {
-  background-color: #FEE500;
-  color: #3C1E1E;
-}
-.naver-login {
-  background-color: #03C75A;
-  color: white;
-}
-.social-icon {
+.gsi-material-button .gsi-material-button-icon {
   width: 20px;
   height: 20px;
-  object-fit: contain;
+  padding: 9px;
+  margin: 0;
+}
+.gsi-material-button .gsi-material-button-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+.gsi-material-button .gsi-material-button-contents {
+  flex-grow: 1;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gsi-material-button .gsi-material-button-state {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  opacity: 0;
+  transition: opacity .218s;
+}
+.gsi-material-button:not(:disabled):hover {
+  box-shadow: 0 1px 2px rgba(60,64,67,.30), 0 1px 3px rgba(60,64,67,.15);
+}
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+  background-color: #303030;
+  opacity: 8%;
+}
+.gsi-material-button:not(:disabled):active .gsi-material-button-state,
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+  background-color: #303030;
+  opacity: 12%;
+}
+.gsi-material-button:disabled {
+  cursor: default;
+  background-color: #ffffff61;
+  border-color: #1f1f1f1f;
+}
+.gsi-material-button:disabled .gsi-material-button-icon,
+.gsi-material-button:disabled .gsi-material-button-contents {
+  opacity: 38%;
+}
+
+/* ── 네이버 로그인 버튼 ── */
+.naver-login-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #03c75a;
+  border-radius: 4px;
+  background-color: #03c75a;
+  overflow: hidden;
+}
+.naver-login-btn .naver-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* ── 링크 텍스트 ── */
 .small-text {
   font-size: 12px;
   color: #666;
-  margin-top: 16px;
+  margin: 8px 0;
+  text-align: center;
 }
 .small-text a {
   color: #4a90e2;
@@ -205,4 +315,18 @@ body.dark-mode .input-field {
 body.dark-mode .submit-button,
 body.dark-mode .modal-content button {
   background-color: #66bb6a;
+}
+
+/* ── override: small-text를 flex 행에서 분리하고 아래로 배치 ── */
+.social-login .small-text {
+  /* flex 아이템으로 남되, 한 줄 전체 폭 차지 */
+  flex-basis: 100%;
+  /* 순서를 뒤로 밀어서 아이콘 뒤에 나오게 */
+  order: 1;
+  /* block 으로 만들어 줄 바꿈 보장 */
+  display: block;
+  /* 아이콘과의 간격 */
+  margin-top: 0px;
+  /* 중앙 정렬 */
+  text-align: center;
 }

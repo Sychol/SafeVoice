@@ -54,7 +54,7 @@ public class MemberDAO {
 	public int updateFamilyCd(MemberVO member) {
 		
 		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.update("updateFamilyCd");
+		int row = sqlsession.update("updateFamilyCd", member);
 		sqlsession.close();
 		return row;
 	}

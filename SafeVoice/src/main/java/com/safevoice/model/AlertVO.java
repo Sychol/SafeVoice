@@ -2,17 +2,19 @@ package com.safevoice.model;
 
 public class AlertVO {
 
-	String memberId;
-	String alertType;
-	String rat;
-	String lon;
-	String alertContext;
+	String memberId; // 참조한 멤버 아이디
+	String alertType; // 알림 타입 -> SOS, 경고, 위험, 심각 등
+	String alertTime; // 알림 시간
+	String lat; // 위도 = latitude
+	String lon; // 경도 = longitude
+	String alertContext; // 알림 내용
 	
-	public AlertVO(String memberId, String alertType, String rat, String lon, String alertContext) {
+	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, String alertContext) {
 		super();
 		this.memberId = memberId;
 		this.alertType = alertType;
-		this.rat = rat;
+		this.alertTime = alertTime;
+		this.lat = lat;
 		this.lon = lon;
 		this.alertContext = alertContext;
 	}
@@ -37,12 +39,20 @@ public class AlertVO {
 		this.alertType = alertType;
 	}
 
-	public String getRat() {
-		return rat;
+	public String getAlertTime() {
+		return alertTime;
 	}
 
-	public void setRat(String rat) {
-		this.rat = rat;
+	public void setAlertTime(String alertTime) {
+		this.alertTime = alertTime;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
 	}
 
 	public String getLon() {

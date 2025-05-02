@@ -14,7 +14,7 @@
 	 
 	 <insert id="setAlertInfo" parameterType = "alertvo">
 	 	INSERT INTO ALERTS (MEMBER_ID, ALERT_TYPE, LAT, LON, ALERT_CONTEXT)
-	 	VALUES (#{memberId}, #{alertType}, #{rat}, #{lon}, #{alertContext})
+	 	VALUES (#{memberId}, #{alertType}, #{lat}, #{lon}, #{alertContext})
 	 </insert>
 	 
 </mapper>

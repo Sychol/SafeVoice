@@ -6,12 +6,12 @@ public class MemberVO {
 	String id;
 	String pw;
 	String name;
-	String birthDate;
-	String phone;
+	String birthDate;//
+	String phone;//
 	String postcode;
 	String address;
 	String detailAddress;
-	String gender;
+	String gender;//
 	String familyCode;
 	String memType;
 	String childId;

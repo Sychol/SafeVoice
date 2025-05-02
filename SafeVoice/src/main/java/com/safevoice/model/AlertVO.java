@@ -7,7 +7,7 @@ public class AlertVO {
 	String alertTime; // 알림 시간
 	String lat; // 위도 = latitude
 	String lon; // 경도 = longitude
-	String alertContext;
+	String alertContext; // 알림 내용
 	
 	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, String alertContext) {
 		super();

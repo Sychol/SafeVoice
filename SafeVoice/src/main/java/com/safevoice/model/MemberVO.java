@@ -17,7 +17,7 @@ public class MemberVO {
 	String childId;
 	
 	public MemberVO(String email, String id, String pw, String name, String birthDate, String phone, String postcode,
-			String address, String detailAddress, String gender, String familyCode, String memType, String childId) {
+			String address, String detailAddress, String gender, String familyCode, String memType) {
 		super();
 		this.email = email;
 		this.id = id;
@@ -31,7 +31,6 @@ public class MemberVO {
 		this.gender = gender;
 		this.familyCode = familyCode;
 		this.memType = memType;
-		this.childId = childId;
 	}
 	
 	public MemberVO() {

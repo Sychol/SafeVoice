@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 public class LogoutService implements Command {
 	
 	public String execute (HttpServletRequest request, HttpServletResponse response) {
+		
+		// 로그아웃
 
 		HttpSession session = request.getSession();
 

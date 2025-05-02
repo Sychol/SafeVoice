@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 public class VerifyCodeService implements Command {
 	
+	// 자녀 연결 (자녀 메일로 간 코드랑 입력한 코드 일치하는지 확인)
+	
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String realCode = (String) session.getAttribute("realCode");

@@ -9,6 +9,9 @@ import com.safevoice.model.MemberVO;
 public class ModifyMemberService implements Command {
 
     public String execute(HttpServletRequest request, HttpServletResponse response) {
+    	
+    	// 회원 정보 수정 (이메일 / 전화번호 / 주소)
+    	
         String id = request.getParameter("id");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");

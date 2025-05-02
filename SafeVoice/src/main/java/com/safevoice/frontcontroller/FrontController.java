@@ -29,15 +29,15 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		map.put("SignIn.do", new SignInService());
-		map.put("Login.do", new LoginService());
-		map.put("Logout.do", new LogoutService());
-		map.put("ChangePassword.do", new ChangePasswordService());
-		map.put("VerifyIdentity.do", new VerifyIdentityService());
-		map.put("SignOut.do", new SignOutService());
-		map.put("ModifyMember.do", new ModifyMemberService());
-	    map.put("RequestConnection.do", new RequestConnectionService());
-	    map.put("VerifyCode.do", new VerifyCodeService());
+		map.put("SignIn.do", new SignInService()); // 회원가입
+		map.put("Login.do", new LoginService()); // 로그인
+		map.put("Logout.do", new LogoutService()); // 로그아웃
+		map.put("ChangePassword.do", new ChangePasswordService()); // 비밀번호변경 - 진짜변경
+		map.put("VerifyIdentity.do", new VerifyIdentityService()); // 비밀번호변경 - 본인확인
+		map.put("SignOut.do", new SignOutService()); // 회원탈퇴
+		map.put("ModifyMember.do", new ModifyMemberService()); // 회원정보수정
+	    map.put("RequestConnection.do", new RequestConnectionService()); // 자녀 등록 - 자녀 연결 (코드 전송)
+	    map.put("VerifyCode.do", new VerifyCodeService()); // 자녀 등록 - 자녀 연결 (코드 확인)
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

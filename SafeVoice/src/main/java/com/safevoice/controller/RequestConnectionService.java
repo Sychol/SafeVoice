@@ -16,6 +16,8 @@ import com.safevoice.db.MemberDAO;
 
 public class RequestConnectionService implements Command {
 	
+	// 자녀 연결 (자녀에게 인증번호 (메일) 보내기)
+	
 	public String execute (HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id = request.getParameter("id");
         String email = request.getParameter("email");

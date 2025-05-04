@@ -62,36 +62,30 @@
                 <p class="time">AM:10:42:33</p>
               </div>
             </div>
-            <section class="action-buttons">
-              <div class="action-button">
-              
-            <a href="넣어야함">
-                <div class="button-icon">
-                  <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <span>위치확인</span>
-              </div>
-             </a>
-              
-            <a href="넣어야함">
-              <div class="action-button">
-                <div class="button-icon">
-                  <i class="fas fa-phone-alt"></i>
-                </div>
-                <span>전화걸기</span>
-              </div>
-             </a> 
-              
-             <a href="넣어야함">
-              <div class="action-button">
-                <div class="button-icon">
-                  <i class="fas fa-bell"></i>
-                  <span class="badge">1</span>
-                </div>
-                <span>알림내역확인</span>
-              </div>
-             </a>
-            </section>
+           <section class="action-buttons">
+  <a href="넣어야함" class="action-button">
+    <div class="button-icon">
+      <i class="fas fa-map-marker-alt"></i>
+    </div>
+    <span>위치확인</span>
+  </a>
+
+  <a href="넣어야함" class="action-button">
+    <div class="button-icon">
+      <i class="fas fa-phone-alt"></i>
+    </div>
+    <span>전화걸기</span>
+  </a>
+
+  <a href="넣어야함" class="action-button">
+    <div class="button-icon">
+      <i class="fas fa-bell"></i>
+      <span class="badge">1</span>
+    </div>
+    <span>알림내역확인</span>
+  </a>
+</section>
+
           
             <!-- 오른쪽: 날씨 + 알림 -->
             <div class="right-section">
@@ -103,26 +97,26 @@
               </div>
               
               
-              <div class="alerts-section">
           	<a href="GoAlterHistory.do">
+              <div class="alerts-section">
                 <div class="alerts-container">
-                  <div class="alert alert-sos">
-                    <span class="alert-icon">!</span>
-                    <span class="alert-text">SOS 알림</span>
-                    <span class="alert-count">1회</span>
-                  </div>
-                  <div class="alert alert-warning">
-                    <span class="alert-icon">!</span>
-                    <span class="alert-text">경고 알림</span>
-                    <span class="alert-count">2회</span>
-                  </div>
-                  <div class="alert alert-caution">
-                    <span class="alert-icon">!</span>
-                    <span class="alert-text">주의 알림</span>
-                    <span class="alert-count">4회</span>
-                  </div>
-                 </a>
-                </div>
+  <a href="GoAlertHistory.do" class="alert alert-sos">
+    <span class="alert-icon">!</span>
+    <span class="alert-text">SOS 알림</span>
+    <span class="alert-count">1회</span>
+  </a>
+  <a href="GoAlertHistory.do" class="alert alert-warning">
+    <span class="alert-icon">!</span>
+    <span class="alert-text">경고 알림</span>
+    <span class="alert-count">2회</span>
+  </a>
+  <a href="GoAlertHistory.do" class="alert alert-caution">
+    <span class="alert-icon">!</span>
+    <span class="alert-text">주의 알림</span>
+    <span class="alert-count">4회</span>
+  </a>
+</div>
+
               </div>
             </div>
           </section>
@@ -133,7 +127,7 @@
             <div class="bottom-navbar">
                 <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/알림1.png" alt="알림" /><span>알림</span></a>
                 <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/홈.png" alt="홈" /><span>홈</span></a>
-                <a href = "GoMeunMain.do"><img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" /><span>메뉴</span></a>
+                <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" /><span>메뉴</span></a>
             </div>
         </footer>
     </div>

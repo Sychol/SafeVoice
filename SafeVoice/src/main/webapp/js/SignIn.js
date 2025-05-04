@@ -210,7 +210,7 @@ if (formEl && welcomeModal && welcomeMsg && welcomeOk) {
     fetch(formEl.action, { method: formEl.method, body: formData })
       .then(res => res.json())
       .then(result => {
-        if (result.success) {
+		if (result.success) {
           const selectedType = document.querySelector('input[name="div"]:checked')?.value;
           const userName = document.getElementById('name').value.trim();
           welcomeMsg.textContent = selectedType === 'parent'

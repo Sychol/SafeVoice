@@ -10,10 +10,10 @@
 
 <form action="RequestConnection.do" method="post">
     <label>상대방 ID:</label>
-    <input type="text" name="id" required />
+    <input type="text" name="targetId" required />
 
     <br> <label>상대방 이메일:</label>
-    <input type="email" name="email" required />
+    <input type="email" name="targetEmail" required />
 
     <input type="submit" value="이메일로 인증번호 보내기" />
 </form>

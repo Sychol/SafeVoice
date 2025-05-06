@@ -11,16 +11,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.safevoice.controller.ChangePasswordService;
 import com.safevoice.controller.Command;
-import com.safevoice.controller.SignInService;
-import com.safevoice.controller.SignOutService;
-import com.safevoice.controller.VerifyCodeService;
-import com.safevoice.controller.VerifyIdentityService;
-import com.safevoice.controller.LoginService;
-import com.safevoice.controller.LogoutService;
-import com.safevoice.controller.ModifyMemberService;
-import com.safevoice.controller.RequestConnectionService;
+import com.safevoice.controller.Alert.SaveSubscriptionService;
+import com.safevoice.controller.Alert.SendPushNotificationService;
+import com.safevoice.controller.Member.ChangePasswordService;
+import com.safevoice.controller.Member.LoginService;
+import com.safevoice.controller.Member.LogoutService;
+import com.safevoice.controller.Member.ModifyMemberService;
+import com.safevoice.controller.Member.RequestConnectionService;
+import com.safevoice.controller.Member.SignInService;
+import com.safevoice.controller.Member.SignOutService;
+import com.safevoice.controller.Member.VerifyCodeService;
+import com.safevoice.controller.Member.VerifyIdentityService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -38,6 +40,9 @@ public class FrontController extends HttpServlet {
 		map.put("ModifyMember.do", new ModifyMemberService()); // 회원정보수정
 	    map.put("RequestConnection.do", new RequestConnectionService()); // 자녀 등록 - 자녀 연결 (코드 전송)
 	    map.put("VerifyCode.do", new VerifyCodeService()); // 자녀 등록 - 자녀 연결 (코드 확인)
+	    map.put("test/SendPush.do", new SendPushNotificationService());
+	    map.put("SaveSubscription.do", new SaveSubscriptionService());
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -52,6 +57,8 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 //		String email = request.getParameter("email");
+		
+		
 
 		String moveUrl = "";
 		Command com = null;

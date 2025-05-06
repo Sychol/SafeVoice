@@ -1,4 +1,4 @@
-package com.safevoice.controller;
+package com.safevoice.controller.Member;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

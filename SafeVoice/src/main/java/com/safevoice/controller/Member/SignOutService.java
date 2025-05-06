@@ -1,4 +1,4 @@
-package com.safevoice.controller;
+package com.safevoice.controller.Member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.safevoice.controller.Command;
 import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 

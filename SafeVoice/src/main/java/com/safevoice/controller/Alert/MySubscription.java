@@ -2,10 +2,15 @@ package com.safevoice.controller.Alert;
 
 public class MySubscription {
     private String endpoint;
+    private String expirationTime;
     private Keys keys;
 
     public String getEndpoint() {
         return endpoint;
+    }
+
+    public String getExpirationTime() {
+        return expirationTime;
     }
 
     public Keys getKeys() {

@@ -1,39 +1,88 @@
 package com.safevoice.controller.Alert;
 
-import org.apache.commons.codec.binary.Base64;
-
+import java.math.BigInteger;
 import java.security.*;
-import java.security.spec.*;
+import java.security.interfaces.ECPrivateKey;
+import java.security.interfaces.ECPublicKey;
+import java.security.spec.ECPoint;
+import java.security.spec.EllipticCurve;
+
+import org.apache.commons.codec.binary.Base64;
+import org.bouncycastle.jce.ECNamedCurveTable;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+import org.bouncycastle.jce.spec.ECPrivateKeySpec;
+import org.bouncycastle.jce.spec.ECPublicKeySpec;
 
 public class Utils {
 
-    // VAPID 전용 키 쌍 생성 (secp256r1 곡선)
-    public static KeyPair generateVapidKeys() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException {
-        KeyPairGenerator generator = KeyPairGenerator.getInstance("EC");
-        ECGenParameterSpec ecSpec = new ECGenParameterSpec("secp256r1");
+    static {
+        if (Security.getProvider("BC") == null) {
+            Security.addProvider(new BouncyCastleProvider());
+        }
+    }
+
+    // 🔐 VAPID 키쌍 생성 (secp256r1)
+    public static KeyPair generateVapidKeys() throws Exception {
+        KeyPairGenerator generator = KeyPairGenerator.getInstance("ECDSA", "BC");
+        ECNamedCurveParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("P-256");
         generator.initialize(ecSpec);
         return generator.generateKeyPair();
     }
 
-    // Base64url (URL-safe) 로 인코딩
+    // 📤 공개키를 URL-safe Base64로 인코딩
     public static String encodePublicKey(PublicKey publicKey) {
-        return Base64.encodeBase64URLSafeString(publicKey.getEncoded());
+        ECPublicKey ecPublicKey = (ECPublicKey) publicKey;
+        ECPoint point = ecPublicKey.getW();
+        EllipticCurve curve = ecPublicKey.getParams().getCurve();
+
+        int fieldSize = (curve.getField().getFieldSize() + 7) / 8;
+        byte[] x = padToSize(point.getAffineX().toByteArray(), fieldSize);
+        byte[] y = padToSize(point.getAffineY().toByteArray(), fieldSize);
+
+        byte[] encoded = new byte[1 + fieldSize * 2];
+        encoded[0] = 0x04;
+        System.arraycopy(x, 0, encoded, 1, fieldSize);
+        System.arraycopy(y, 0, encoded, 1 + fieldSize, fieldSize);
+
+        return Base64.encodeBase64URLSafeString(encoded);
     }
 
+    // 📤 개인키를 URL-safe Base64로 인코딩 (raw scalar only)
     public static String encodePrivateKey(PrivateKey privateKey) {
-        return Base64.encodeBase64URLSafeString(privateKey.getEncoded());
+        ECPrivateKey ecPrivateKey = (ECPrivateKey) privateKey;
+        BigInteger s = ecPrivateKey.getS();
+        return Base64.encodeBase64URLSafeString(s.toByteArray());
     }
 
-    // 디코딩해서 Key 객체로 복원할 때 사용하는 메서드
-    public static PublicKey loadPublicKey(String base64PublicKey) throws Exception {
-        byte[] decoded = Base64.decodeBase64(base64PublicKey);
-        KeyFactory factory = KeyFactory.getInstance("EC");
-        return factory.generatePublic(new X509EncodedKeySpec(decoded));
+    // 📥 공개키 복원
+    public static PublicKey loadPublicKey(String base64) throws Exception {
+        byte[] decoded = java.util.Base64.getUrlDecoder().decode(base64);  // ✅ FIXED
+
+        ECNamedCurveParameterSpec params = ECNamedCurveTable.getParameterSpec("P-256");
+        org.bouncycastle.math.ec.ECPoint bcPoint = params.getCurve().decodePoint(decoded);
+        ECPublicKeySpec pubSpec = new ECPublicKeySpec(bcPoint, params);
+
+        KeyFactory kf = KeyFactory.getInstance("ECDSA", "BC");
+        return kf.generatePublic(pubSpec);
     }
 
-    public static PrivateKey loadPrivateKey(String base64PrivateKey) throws Exception {
-        byte[] decoded = Base64.decodeBase64(base64PrivateKey);
-        KeyFactory factory = KeyFactory.getInstance("EC");
-        return factory.generatePrivate(new PKCS8EncodedKeySpec(decoded));
+
+    // 📥 개인키 복원
+    public static PrivateKey loadPrivateKey(String base64) throws Exception {
+        byte[] decoded = java.util.Base64.getUrlDecoder().decode(base64);  // ✅ FIXED
+        BigInteger s = new BigInteger(1, decoded);
+        ECNamedCurveParameterSpec params = ECNamedCurveTable.getParameterSpec("P-256");
+        ECPrivateKeySpec privSpec = new ECPrivateKeySpec(s, params);
+        KeyFactory kf = KeyFactory.getInstance("ECDSA", "BC");
+        return kf.generatePrivate(privSpec);
+    }
+
+
+    private static byte[] padToSize(byte[] src, int size) {
+        if (src.length == size) return src;
+        byte[] dest = new byte[size];
+        System.arraycopy(src, Math.max(0, src.length - size), dest, size - Math.min(size, src.length), Math.min(size, src.length));
+        return dest;
     }
 }

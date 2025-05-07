@@ -1,8 +1,10 @@
-package com.safevoice.controller;
+package com.safevoice.controller.Member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.safevoice.controller.Command;
 public class LogoutService implements Command {
 	
 	public String execute (HttpServletRequest request, HttpServletResponse response) {

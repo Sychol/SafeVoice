@@ -38,7 +38,7 @@
           <a href="notice.html"><i class="fas fa-bullhorn"></i> 공지사항</a>
         </li>
         <li class="menu-item">
-          <a href="alert-settings.html"><i class="fas fa-bell"></i> 알림 설정</a>
+          <a href="GoAlertConfig.do"><i class="fas fa-bell"></i> 자녀 관리</a>
         </li>
         <li class="menu-item">
           <a href="terms.html"><i class="fas fa-file-alt"></i> 이용약관</a>

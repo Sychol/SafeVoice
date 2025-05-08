@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ✅ 테스트용 알림 데이터 (alertVO처럼 구성)
+  
+  // 1. 프론트로부터 검색하려는 id를 받아오기
+  const id = 'ID 1'
+  // 2. id를 MemberVO에 담기
+  
   const alertData = [
     {
       memberId: '학생001',

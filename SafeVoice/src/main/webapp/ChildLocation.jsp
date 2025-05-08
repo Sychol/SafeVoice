@@ -9,13 +9,12 @@
   <title>위치 확인</title>
 
   <!-- CSS 연결 -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ChildLocation.css"/>
+  <link rel="stylesheet"
+        href="<c:url value='/css/ChildLocation.css'/>"/>
 
-  <!-- Kakao Maps SDK: JS 키는 web.xml 또는 컨텍스트 파라미터로 관리 -->
+  <!-- Kakao Maps SDK -->
   <script
-    src="https://dapi.kakao.com/v2/maps/sdk.js"
-    data-appkey="${fn:escapeXml(initParam.KAKAO_JS_KEY)}"
-    data-autoload="false">
+    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=${fn:escapeXml(initParam.KAKAO_JS_KEY)}&autoload=false">
   </script>
 </head>
 <body>
@@ -56,12 +55,18 @@
     </div>
   </div>
 
-  <!-- JSP에서 contextPath 전역 변수로 선언 (XSS 방지) -->
-  <script>
-    const contextPath = '${fn:escapeXml(pageContext.request.contextPath)}';
-  </script>
-
+  <!-- 6. 알림 팝업 엘리먼트 (초기엔 hidden) -->
+  <div id="notificationPopup" class="notification-popup hidden">
+    <div class="popup-header">알림</div>
+    <ul id="notificationList" class="popup-list"></ul>
+    <button id="closePopupBtn" class="popup-close">닫기</button>
+  </div>
+  
   <!-- JS 로드 -->
-  <script src="${pageContext.request.contextPath}/js/ChildLocation.js"></script>
+<script src="<c:url value='/js/ChildLocation.js'/>"></script>
+
+
+
 </body>
 </html>
+

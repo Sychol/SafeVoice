@@ -13,9 +13,9 @@ public class AlertDAO {
 	private SqlSessionFactory factory = MySqlSessionManager.getFactory();
 	
 	// 조회하려는 아이디에 따른 모든 Alert 를 확인하는 메서드 
-	public List<AlertVO> getAlertHistory(MemberVO member) {
+	public List<AlertVO> getAlertHistory(String id) {
 		SqlSession sqlsession = factory.openSession(true);
-		List<AlertVO> alertList = sqlsession.selectList("getAlertHistory", member);
+		List<AlertVO> alertList = sqlsession.selectList("getAlertHistory", id);
 		sqlsession.close();
 		return alertList;
 	}

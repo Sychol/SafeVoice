@@ -1,6 +1,11 @@
-// 1) 환경변수로 서비스 키 관리
-//    직접 키를 하드코딩하지 않고, 빌드/런타임 시에 설정된 환경변수에서 불러옵니다.
-const rawKey = process.env.KAKAO_SERVICE_KEY;
+// 1) 스크립트 태그에서 서비스 키와 contextPath 한 번에 꺼내기
+const _script = document.currentScript
+              || Array.from(document.getElementsByTagName('script'))
+                      .find(s => /ChildLocation\.js$/.test(s.src));
+
+const contextPath = (_script.src.match(/^(?:https?:\/\/[^\/]+)?(\/[^\/]+)\/js\/ChildLocation\.js$/) || [])[1] || '';
+const rawKey      = _script.dataset.serviceKey;  // 여기서 안전하게 가져와요!
+
 
 // 2) 지도 초기화
 kakao.maps.load(async function() {
@@ -26,7 +31,8 @@ kakao.maps.load(async function() {
   let searchMarker   = null;
   let mode           = 'child';
   let isSkyView      = false;
-
+ 
+ 
   // 5) 기관 데이터 로드 URL (HTTPS 보장)
   const instUrl =
     `https://api.example.com/getTeenDscsnSrcnList?` +
@@ -169,3 +175,44 @@ kakao.maps.load(async function() {
   });
 });
 
+// 알림 버튼, 팝업, 리스트, 닫기 버튼 참조
+const alertBtn  = document.getElementById('alertBtn');
+const popup     = document.getElementById('notificationPopup');
+const list      = document.getElementById('notificationList');
+const closeBtn  = document.getElementById('closePopupBtn');
+
+
+// 13) 알림 확인 버튼 클릭 시
+alertBtn.addEventListener('click', () => {
+  fetch(`${contextPath}/api/notifications`)
+    .then(res => {
+      if (!res.ok) throw new Error('네트워크 응답 오류');
+      return res.json();
+    })
+    .then(data => {
+      // 기존 리스트 초기화
+      list.innerHTML = '';
+      if (data.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = '새로운 알림이 없어요~';
+        list.appendChild(li);
+      } else {
+        data.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = `• ${item.title} (${item.timestamp})`;
+          list.appendChild(li);
+        });
+      }
+      // 팝업 표시
+      popup.classList.remove('hidden');
+    })
+    .catch(err => {
+      console.error(err);
+      alert('알림 정보를 불러오는 중 문제가 생겼어요!'); 
+    });
+});
+
+// 14) 닫기 버튼 클릭 시 팝업 닫기
+closeBtn.addEventListener('click', () => {
+  popup.classList.add('hidden');
+});

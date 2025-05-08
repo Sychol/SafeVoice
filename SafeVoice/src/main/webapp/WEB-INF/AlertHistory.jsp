@@ -49,7 +49,6 @@
       </main>
   
     
-       
        <footer>
             <div class="bottom-navbar">
                 <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/알림1.png" alt="알림" /><span>알림</span></a>

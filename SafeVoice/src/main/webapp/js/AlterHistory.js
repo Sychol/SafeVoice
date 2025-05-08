@@ -31,46 +31,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
     alertList.prepend(article);
   }
+  
+  // 전역에서 변수 선언
+  let alertData = [];
+  
+  // json 형태의 알림 데이터 가져오기
+    fetch('/SafeVoice/GetAlertHistory.do')
+    	.then(res => res.json())
+  		.then(data => {
+			console.log(data);
+  			data.forEach(item => {
+				//  alerttime 의 날짜와 시간이 붙어 있으므로, 그것을 떼어준다.
+				if(item.alertTime){
+					const [date, time] = item.alertTime.split(' ');
+					item.date = date;
+					item.time = time;
+				}
+			});
+		// 가져온 데이터를 전역 변수에 입력
+		alertData = data;
+		if (Array.isArray(alertData)) {
+		    alertData.forEach(alert => {
+		      addAlert(
+		  	`${alert.memberId}`,
+		  	`${alert.date}<br>${alert.time || ''}`,   // 날짜와 시간 사이에 줄바꿈
+		  	`${alert.alertType} - ${alert.alertContext || ''}`
+		);
+		    });
+		  } else {
+		    console.warn("⚠️ alertData가 정의되지 않았거나 배열이 아님");
+		  }
+  	})
+  	.catch(error => {
+  		console.error("오류:", error);
+  	})
+	
 
-  // ✅ 테스트용 알림 데이터 (alertVO처럼 구성)
-  const alertData = [
-    {
-      memberId: '학생001',
-      alertType: 'SOS',
-      // rat: '38.1654',
-      // lon: '129.2485',
-      // alertContext: '비명 감지됨',
-      date: '2025-05-02',
-      time: '16:30:44'
-    },
-    {
-      memberId: '학생002',
-      alertType: '주의',
-      // rat: '38.1654',
-      // lon: '129.2485',
-      // alertContext: '이상 행동',
-      date: '2025-05-02'
-    },
-    {
-      memberId: '학생003',
-      alertType: '경고',
-      // rat: '38.1654',
-      // lon: '129.2485',
-      // alertContext: '위험 감지',
-      date: '2025-05-02'
-    }
-  ];
-
-  // 알림 데이터 화면에 추가
-  if (Array.isArray(alertData)) {
-    alertData.forEach(alert => {
-      addAlert(
-  	`${alert.memberId}`,
-  	`${alert.date}<br>${alert.time || ''}`,   // 날짜와 시간 사이에 줄바꿈
-  	`${alert.alertType} - ${alert.alertContext || ''}`
-);
-    });
-  } else {
-    console.warn("⚠️ alertData가 정의되지 않았거나 배열이 아님");
-  }
 });

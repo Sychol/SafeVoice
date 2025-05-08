@@ -9,15 +9,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 프로필 이미지 클릭 이벤트
-    const childProfiles = document.querySelectorAll('.child-profile');
-    childProfiles.forEach(profile => {
-        profile.addEventListener('click', function() {
-            // 여기에 프로필 클릭 시 동작 추가
-            console.log('아이 프로필이 클릭되었습니다.');
-        });
-    });
+	 
+	// 프로필 이미지 클릭 이벤트
+	const childProfiles = document.querySelectorAll('.child-profile');
+	childProfiles.forEach(profile => {
+	    profile.addEventListener('click', function() {
+	        const img = this.dataset.img;
+	        const name = this.dataset.name;
+	        const alert = this.dataset.alert;
+	        const date = this.dataset.date;
+	        const time = this.dataset.time;
 
+	        // 메인 프로필에 반영
+	        document.getElementById('main-profile-img').src = `${contextPath}/image/${img}`;
+	        document.getElementById('main-profile-name').textContent = name;
+	        document.getElementById('main-profile-alert').textContent = alert;
+	        document.getElementById('main-profile-date').textContent = date;
+	        document.getElementById('main-profile-time').textContent = time;
+
+	        console.log(`자녀 "${name}" 선택됨`);
+	    });
+	});
+
+
+	
     // 액션 버튼 클릭 이벤트
     const actionButtons = document.querySelectorAll('.action-button');
     actionButtons.forEach(button => {

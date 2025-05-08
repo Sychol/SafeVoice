@@ -1,4 +1,4 @@
-package com.safevoice.controller.Alert;
+	package com.safevoice.controller.Alert;
 
 import java.io.BufferedReader;
 import java.io.IOException;

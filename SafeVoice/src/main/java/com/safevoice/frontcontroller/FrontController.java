@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.safevoice.controller.Command;
+import com.safevoice.controller.Alert.GetAlertHistoryService;
 import com.safevoice.controller.Alert.InputFileService;
 import com.safevoice.controller.Alert.RepeatAlertService;
 import com.safevoice.controller.Alert.SaveSubscriptionService;
@@ -48,7 +49,8 @@ public class FrontController extends HttpServlet {
 	    map.put("InputFile.do", new InputFileService());
 	    map.put("RepeatAlert.do", new RepeatAlertService());
 	    map.put("StopNotification.do", new StopNotificationService());
-
+	    map.put("GetAlertHistory.do", new GetAlertHistoryService());
+	    
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

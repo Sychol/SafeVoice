@@ -11,7 +11,7 @@
   }
   
   .container {
-    max-width: 430px;
+    max-width: 480px;
     margin: 0 auto;
     background-color: #fff;
     min-height: 100vh;
@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #d8f5d1;
+    background-color: #c2f3aa;
     padding: 16px;
     border-radius: 0 0 20px 20px;
   }
@@ -36,15 +36,12 @@
     color: #333;
   }
   
-.back-button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;               /* 마우스를 올렸을 때 손가락 모양 */
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-}
+.back-button{
+	width:24px;
+	height:24px;
+	cursor:pointer;
+	justify-content:flex-end;
+	}
 
 /* .back-button img {
   width: 40px;
@@ -56,8 +53,8 @@
 }
   
   
-  .back-button,
-  .parent-icon {
+
+ .parent-icon {
     width: 50px;
     height: 50px;
   }

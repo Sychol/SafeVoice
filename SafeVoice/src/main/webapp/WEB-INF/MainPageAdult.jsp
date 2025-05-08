@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe Voice - 아이 안전 서비스</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/MainPageAdult.css">
+    <script>const contextPath = '${pageContext.request.contextPath}';</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
     <div class="container">
         <header>
         	<a href="GoMainPageAdult.do">
@@ -63,21 +65,21 @@
               </div>
             </div>
            <section class="action-buttons">
-  <a href="넣어야함" class="action-button">
+  <a href="#" class="action-button">
     <div class="button-icon">
       <i class="fas fa-map-marker-alt"></i>
     </div>
     <span>위치확인</span>
   </a>
 
-  <a href="넣어야함" class="action-button">
+  <a href="#" class="action-button">
     <div class="button-icon">
       <i class="fas fa-phone-alt"></i>
     </div>
     <span>전화걸기</span>
   </a>
 
-  <a href="넣어야함" class="action-button">
+  <a href="GoAlertHistory.do" class="action-button">
     <div class="button-icon">
       <i class="fas fa-bell"></i>
       <span class="badge">1</span>
@@ -97,7 +99,7 @@
               </div>
               
               
-          	<a href="GoAlterHistory.do">
+          	<a href="#">
               <div class="alerts-section">
                 <div class="alerts-container">
   <a href="GoAlertHistory.do" class="alert alert-sos">
@@ -132,6 +134,6 @@
         </footer>
     </div>
 
-    <script src="${pageContext.request.contextPath}/js/MainPageAdult.js"></script>
+<%--     <script src="${pageContext.request.contextPath}/js/MainPageAdult.js"></script>--%>
 </body>
 </html>

@@ -16,7 +16,9 @@
 <body>
   <div class="menu-container">
     <header>
-      <i class="fas fa-arrow-left"></i>
+    
+<img src="${pageContext.request.contextPath}/image/뒤로가기.png" alt="뒤로가기" class="back-button" />
+     
       <div class="header-title">메뉴</div>
       <img class="profile-img" src="${pageContext.request.contextPath}/image/Mom.png" alt="프로필">
     </header>
@@ -29,25 +31,25 @@
 
     <ul class="menu-list">
         <li class="menu-item">
-          <a href="account.html"><i class="fas fa-user"></i> 계정 정보</a>
+          <a href="#"><i class="fas fa-user"></i> 계정 정보</a>
         </li>
         <li class="menu-item">
-          <a href="child-settings.html"><i class="fas fa-child"></i> 자녀 설정</a>
+          <a href="#"><i class="fas fa-bell"></i> 알림 설정</a>
         </li>
         <li class="menu-item">
-          <a href="notice.html"><i class="fas fa-bullhorn"></i> 공지사항</a>
+          <a href="#"><i class="fas fa-bullhorn"></i> 공지사항</a>
         </li>
         <li class="menu-item">
-          <a href="GoAlertConfig.do"><i class="fas fa-bell"></i> 자녀 관리</a>
+          <a href="GoAlertConfig.do"><i class="fas fa-child"></i> 자녀 관리</a>
         </li>
         <li class="menu-item">
-          <a href="terms.html"><i class="fas fa-file-alt"></i> 이용약관</a>
+          <a href="#"><i class="fas fa-file-alt"></i> 이용약관</a>
         </li>
         <li class="menu-item">
-          <a href="privacy.html"><i class="fas fa-shield-alt"></i> 개인정보 처리방침</a>
+          <a href="#"><i class="fas fa-shield-alt"></i> 개인정보 처리방침</a>
         </li>
         <li class="menu-item">
-          <a href="program-info.html"><i class="fas fa-info-circle"></i> 프로그램 정보</a>
+          <a href="#"><i class="fas fa-info-circle"></i> 프로그램 정보</a>
         </li>
       </ul>
       
@@ -62,7 +64,9 @@
         </div>
     </footer>
 </div>
-</body>
 
+ <script src="${pageContext.request.contextPath}/js/MenuMain.js"></script>
+
+</body>
 </html>
 

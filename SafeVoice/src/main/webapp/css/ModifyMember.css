@@ -1,42 +1,51 @@
-/* ── 기본 배경 & 폰트 ── */
+/* ==========================================================================
+   1. 기본 배경 및 폰트 설정
+   – 페이지 전체의 배경색, 기본 폰트, 여백을 초기화합니다.
+========================================================================== */
 body {
-  background-color: #fafafa;
-  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fafafa;               /* 라이트한 회색 배경 */
+  font-family: 'Noto Sans KR', sans-serif; /* 한국어 전용 서체 */
   margin: 0;
   padding: 0;
-  color: #222;
+  color: #222;                             /* 기본 텍스트 색상 */
 }
 
-/* ── 카드형 전체 컨테이너 ── */
+/* ==========================================================================
+   2. 카드형 전체 컨테이너 (.sign-container)
+   – 중앙 고정, 둥근 모서리, 그림자 효과로 카드 UI를 구현합니다.
+========================================================================== */
 .sign-container {
-  max-width: 360px;
-  margin: 1.5rem auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
+  max-width: 360px;                        /* 모바일 가로폭에 최적화 */
+  margin: 1.5rem auto;                     /* 상하 여백 + 중앙 정렬 */
+  background: #fff;                        /* 흰색 배경 */
+  border-radius: 12px;                     /* 둥근 모서리 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);    /* 은은한 그림자 */
+  overflow: hidden;                        /* 내부 오버플로우 감춤 */
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* ── 상단 헤더 바 ── */
+/* ==========================================================================
+   3. 상단 헤더 바 (.form-header-bar)
+   – 타이틀과 뒤로가기 버튼을 포함하는 영역입니다.
+========================================================================== */
 .form-header-bar {
-  position: relative;
-  background-color: #69B56C;
-  padding: 1rem;
+  position: relative;                      /* 자식 .back-btn 절대 위치 기준 */
+  background-color: #69B56C;               /* 카카오 테마와 유사한 녹색 */
+  padding: 1rem;                           /* 내부 여백 */
   text-align: center;
 }
 .form-header-bar h1 {
   margin: 0;
-  font-size: 1.2rem;
-  color: #fff;
+  font-size: 1.2rem;                       /* 타이틀 폰트 크기 */
+  color: #fff;                             /* 흰색 텍스트 */
 }
-/* 뒤로가기 버튼 */
+/* 뒤로가기 버튼: 헤더 우측/좌측 배치 선택 가능 */
 .back-btn {
   position: absolute;
   top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-  width: 24px;
+  left: 1rem;                              /* 좌측 배치: left → 우측 배치 시 right로 변경 */
+  transform: translateY(-50%);             /* 세로 중앙 정렬 */
+  width: 24px;                             /* 아이콘 크기 */
   height: 24px;
 }
 .back-btn img {
@@ -44,70 +53,86 @@ body {
   height: 100%;
 }
 
-/* ── 내부 패딩 ── */
+/* ==========================================================================
+   4. 내부 패딩 (.boardWrite)
+   – 카드 내부의 전체 레이아웃 여백을 잡습니다.
+========================================================================== */
 .boardWrite {
   padding: 1rem;
 }
 
-/* ── 섹션 카드 ── */
+/* ==========================================================================
+   5. 섹션 카드 (.section-card)
+   – 정보 그룹을 카드 형태로 감싸서 시각적 구분을 제공합니다.
+========================================================================== */
 .section-card {
   background: #fff;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-radius: 8px;                      /* 카드 둥근 모서리 */
+  margin-bottom: 1rem;                     /* 카드 간 간격 */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);   /* 가벼운 그림자 */
   overflow: hidden;
   transition: background-color 0.3s, border-color 0.3s;
 }
-/* 카드 제목 */
+/* 카드 제목 영역 */
 .card-title {
-  background-color: #f7f7f7;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
+  background-color: #f7f7f7;               /* 연한 회색 배경 */
+  padding: 0.75rem 1rem;                   /* 제목 영역 여백 */
+  font-size: 0.95rem;                      /* 제목 폰트 크기 */
+  font-weight: 600;                        /* 굵기 강조 */
+  border-bottom: 1px solid #eee;           /* 구분선 */
   color: #333;
 }
 
-/* ── 카드 콘텐츠 (행) ── */
+/* ==========================================================================
+   6. 카드 콘텐츠 (행 단위 레이아웃)
+   – .info-row: 레이블과 값을 수평 정렬합니다.
+========================================================================== */
 .card-content .info-row {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #eee;
+  padding: 0.75rem 1rem;                   /* 행 여백 */
+  border-bottom: 1px solid #eee;           /* 행 간 구분선 */
 }
 .card-content .info-row:last-child {
-  border-bottom: none;
+  border-bottom: none;                     /* 마지막 행에선 구분선 제거 */
 }
-/* 레이블 / 값 분할 */
+/* 레이블 영역 */
 .info-row .label {
-  width: 30%;
+  width: 30%;                              /* 레이블 폭 고정 */
   font-size: 0.9rem;
   color: #555;
 }
+/* 값 영역 */
 .info-row .value {
-  flex: 1;
+  flex: 1;                                 /* 나머지 공간 사용 */
   font-size: 0.9rem;
   color: #222;
 }
 
-/* ── 입력 필드 너비 제한 ── */
+/* ==========================================================================
+   7. 입력 필드 너비 제한
+   – 너무 길어 보이지 않도록 폭과 최대폭을 지정합니다.
+========================================================================== */
 .info-row .value input[type="text"],
 .info-row .value input[type="password"],
 .info-row .value input[type="email"],
 .info-row .value input[type="tel"],
 .info-row .value input[type="date"] {
-  width: 70%;
-  max-width: 300px;
+  width: 70%;                              /* 카드 대비 70% */
+  max-width: 300px;                        /* 최대 300px */
   padding: 0.5rem;
   font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  margin-bottom: 0;
+  margin-bottom: 0;                        /* 아래 마진 없음 */
   background: #fff;
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* ── 라디오 그룹 ── */
+/* ==========================================================================
+   8. 라디오 그룹 (.radio-group)
+   – 라디오 버튼과 레이블을 가로 정렬합니다.
+========================================================================== */
 .radio-group {
   display: flex;
   gap: 1rem;
@@ -120,11 +145,14 @@ body {
   font-size: 0.9rem;
 }
 
-/* ── 자녀 추가 버튼 ── */
+/* ==========================================================================
+   9. 자녀 추가 버튼 (#addChildBtn)
+   – 작고 명확한 액션 버튼 스타일입니다.
+========================================================================== */
 #addChildBtn {
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
-  background: #1976d2;
+  background: #1976d2;                     /* 기본 파란 버튼 */
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -135,7 +163,10 @@ body {
   background: #145bb5;
 }
 
-/* ── 자녀 리스트 항목 ── */
+/* ==========================================================================
+   10. 자녀 리스트 항목 (#myChildrenList .child-item)
+   – 개별 자녀 정보를 카드처럼 보여줍니다.
+========================================================================== */
 #myChildrenList .child-item {
   padding: 0.6rem 0.8rem;
   background: #f3f3f3;
@@ -144,7 +175,10 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* ── 버튼 영역 ── */
+/* ==========================================================================
+   11. 버튼 영역 (.btnArea.type2)
+   – 하단의 저장/취소 버튼을 중앙 정렬합니다.
+========================================================================== */
 .btnArea.type2 {
   text-align: center;
   padding: 1rem 0;
@@ -161,14 +195,14 @@ body {
   transition: background-color 0.2s;
 }
 .btnArea.type2 .btnSubmit {
-  background: #28a745;
+  background: #28a745;                     /* 초록색 저장 버튼 */
   color: #fff;
 }
 .btnArea.type2 .btnSubmit:hover {
   background: #218838;
 }
 .btnArea.type2 .btnEm {
-  background: #6c757d;
+  background: #6c757d;                     /* 회색 취소 버튼 */
   color: #fff;
   text-decoration: none;
 }
@@ -176,27 +210,93 @@ body {
   background: #5a6268;
 }
 
-/* ── 우편번호 검색 레이어 ── */
+/* ========================================================================== */
+/* 우편번호 검색 레이어 전체 배경 및 중앙 정렬                                */
+/* ========================================================================== */
 .postcode-layer {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
+  display: none;                        /* JS로 제어 */
+  position: fixed; inset: 0;            /* 화면 전체 */
+  background: rgba(0,0,0,0.3);          /* 반투명 백드롭 */
   z-index: 1000;
-}
-.postcode-wrap {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 90%; height: 80%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: background-color 0.3s;
+  display: flex;                        /* 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
 }
 
-/* ── 다크 모드 ── */
+/* ========================================================================== */
+/* 우편번호 검색 박스 스타일링 (.postcode-wrap)                               */
+/* ========================================================================== */
+.postcode-wrap {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  height: 80%;
+  background: #fff;
+  border-radius: 12px;                  /* 부드러운 모서리 */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+/* ========================================================================== */
+/* 검색 입력창(헤더) 스타일링                                                */
+/* ========================================================================== */
+.postcode-wrap .wrap .searchInput-wrap {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;        /* 구분선 */
+}
+.postcode-wrap .wrap .searchInput-wrap input {
+  width: calc(100% - 48px);             /* 아이콘 공간 제외 */
+  height: 48px;
+  font-size: 1.4rem;
+  color: #999;
+  border: none;
+  outline: none;
+  padding: 0 12px;
+}
+.postcode-wrap .wrap .searchInput-wrap .searchBtn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+}
+
+/* ========================================================================== */
+/* 결과 리스트 스크롤바 스타일링                                             */
+/* ========================================================================== */
+.postcode-wrap .wrap .postcode_body::-webkit-scrollbar {
+  width: 6px;
+}
+.postcode-wrap .wrap .postcode_body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.postcode-wrap .wrap .postcode_body::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+/* ========================================================================== */
+/* 닫기 버튼 (.postcode-close-btn)                                            */
+/* ========================================================================== */
+.postcode-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* ==========================================================================
+   13. 다크 모드 설정 (body.dark-mode ~)
+   – 배경색, 카드, 텍스트, 버튼 색상을 어둡게 변경합니다.
+========================================================================== */
 body.dark-mode {
   background-color: #1e1e1e;
   color: #eee;
@@ -237,3 +337,4 @@ body.dark-mode .btnArea.type2 .btnSubmit {
 body.dark-mode .btnArea.type2 .btnEm {
   background: #888;
 }
+

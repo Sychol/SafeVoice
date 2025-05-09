@@ -49,7 +49,7 @@
         </div>
         <div class="child-actions">
           <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" />
-          <img src="${pageContext.request.contextPath}/image/연필.png" alt="메뉴" />
+          <img src="${pageContext.request.contextPath}/image/연필.png" alt="수정" />
           <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" />
         </div>
       </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="child-actions">
           <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" />
-          <img src="${pageContext.request.contextPath}/image/연필.png" alt="메뉴" />
+          <img src="${pageContext.request.contextPath}/image/연필.png" alt="수정" />
           <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" />
         </div>
       </div>
@@ -79,7 +79,7 @@
       <div class="bottom-navbar">
           <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/알림1.png" alt="알림" /><span>알림</span></a>
           <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/홈.png" alt="홈" /><span>홈</span></a>
-          <a href = "GoMeunMain.do"><img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" /><span>메뉴</span></a>
+          <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" /><span>메뉴</span></a>
       </div>
   </footer>
 </div>

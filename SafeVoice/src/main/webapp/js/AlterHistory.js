@@ -10,17 +10,22 @@ document.addEventListener("DOMContentLoaded", function () {
   // 알림 항목 추가 함수
   function addAlert(date, time, type) {
     if (!alertList) return;
-    const article = document.createElement('article');
-    article.className = 'alert-item';
-    article.innerHTML = `
-      <div class="alert-content">
-        <div class="alert-date">${date}</div>
-        <div class="alert-time">${time}</div>
-        <div class="alert-type toggle-details" style="display: none;">${type}</div>
-      </div>
-      <div class="alert-icon">!</div>
-    `;
+	
+	let colorClass = '';
+	  if (type.startsWith('S')) colorClass = 'icon-red';
+	  else if (type.startsWith('D')) colorClass = 'icon-orange';
+	  else if (type.startsWith('C')) colorClass = 'icon-yellow';
 
+	  const article = document.createElement('article');
+	  article.className = 'alert-item';
+	  article.innerHTML = `
+	    <div class="alert-content">
+	      <div class="alert-date">${date}</div>
+	      <div class="alert-time">${time}</div>
+	      <div class="alert-type toggle-details" style="display: none;">${type}</div>
+	    </div>
+	    <div class="alert-icon ${colorClass}">!</div> <!-- ← 여기 가능함 -->
+	  `
     // 클릭 시 상세 정보 토글
     article.addEventListener('click', () => {
       const detail = article.querySelector('.toggle-details');
@@ -35,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 전역에서 변수 선언
   let alertData = [];
   
-  // json 형태의 알림 데이터 가져오기
+  // json 형태의 알림 데이터 가져오기(DB에서 값 가져오기)
     fetch('/SafeVoice/GetAlertHistory.do')
     	.then(res => res.json())
   		.then(data => {

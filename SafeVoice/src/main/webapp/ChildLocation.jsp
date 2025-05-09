@@ -14,7 +14,7 @@
 
   <!-- Kakao Maps SDK -->
   <script
-    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=${fn:escapeXml(initParam.KAKAO_JS_KEY)}&autoload=false">
+    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1031f8c6ed74b6212ade7b9f349ba68d&autoload=false">
   </script>
 </head>
 <body>

@@ -109,6 +109,60 @@ footer {
 
 }
 
+
+.alert-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.alert-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.alert-type {
+  font-weight: bold;
+  color: #666;
+}
+
+.alert-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+/* 알림 색상 */
+.icon-red {
+  background-color: #f44336;
+}
+
+.icon-orange {
+  background-color: #ff9800;
+}
+
+.icon-yellow {
+  background-color: #ffeb3b;
+  color: #333; /* 노랑 배경일 땐 검정 느낌표가 더 잘 보여 */
+}
+
+
+
+
 .page-title {
   font-family: var(--header-2-font-family);
   font-size: var(--header-2-font-size);

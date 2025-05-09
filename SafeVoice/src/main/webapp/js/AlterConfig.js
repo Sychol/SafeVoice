@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 자녀 정보를 HTML 구조로 삽입
       newChild.innerHTML = `
-        <img src="${contextPath}/image/child_new.png" class="child-avatar" />
+        <img src="${contextPath}/image/이홍진.png" class="child-avatar" />
         <div class="child-info">
           <div class="child-name">새 자녀</div>
           <div class="child-date">최근 조회 날짜<br>${today}</div>

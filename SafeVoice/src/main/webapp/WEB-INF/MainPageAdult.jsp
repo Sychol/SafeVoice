@@ -1,14 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safe Voice - ¾ÆÀÌ ¾ÈÀü ¼­ºñ½º</title>
+    <title>Safe Voice - ì•„ì´ ì•ˆì „ ì„œë¹„ìŠ¤</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/MainPageAdult.css">
     <script>const contextPath = '${pageContext.request.contextPath}';</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 </head>
 <body>
 
@@ -16,34 +17,33 @@
         <header>
         	<a href="GoMainPageAdult.do">
             <div class="logo">
-                <img src="${pageContext.request.contextPath}/image/Safe_Voice.png" alt="Safe Voice ·Î°í">
-                <div class="logo-text">Safe Voice</div>
+                <img src="${pageContext.request.contextPath}/image/Safe_Voice.png" alt="Safe Voice ë¡œê³ ">
             </div>
           	</a>       
           	
             <div class="header-right">
             <div class="profile-icon">
-                <img src="${pageContext.request.contextPath}/image/Mom.png" alt="ÇÁ·ÎÇÊ">
+                <img src="${pageContext.request.contextPath}/image/Mom.png" alt="í”„ë¡œí•„">
             </div>
             <div class="menu-icon">
-                <img src="${pageContext.request.contextPath}/image/¸Þ´º.png" alt="¸Þ´º">
+                <img src="${pageContext.request.contextPath}/image/ë©”ë‰´.png" alt="ë©”ë‰´">
             </div>
         </div>
         </header>
 
         <section class="main-title">
-            <h1>¾ÆÀÌ°¡ ÇÏ±³ÇÒ ½Ã°£ÀÌ¿¡¿ä<br>ÅëÈ­ ÇÑ ¹ø ¾î¶°¼¼¿ä?</h1>
+            <h1>ì•„ì´ê°€ í•˜êµí•  ì‹œê°„ì´ì—ìš”<br>í†µí™” í•œ ë²ˆ ì–´ë– ì„¸ìš”?</h1>
             <div class="child-profiles">
                 <div class="child-profile">
-                    <img src="${pageContext.request.contextPath}/image/child1.png" alt="¾ÆÀÌ 1">
+                    <img src="${pageContext.request.contextPath}/image/child1.png" alt="ì•„ì´ 1">
                     <span class="notification">1</span>
                 </div>
                 <div class="child-profile">
-                    <img src="${pageContext.request.contextPath}/image/child2.png" alt="¾ÆÀÌ 2">
+                    <img src="${pageContext.request.contextPath}/image/child2.png" alt="ì•„ì´ 2">
                     <span class="notification">1</span>
                 </div>
                 <div class="child-profile">
-                    <img src="${pageContext.request.contextPath}/image/child3.png" alt="¾ÆÀÌ 3">
+                    <img src="${pageContext.request.contextPath}/image/child3.png" alt="ì•„ì´ 3">
                 </div>
             </div>
             <hr>
@@ -52,15 +52,15 @@
         <hr class="divider">
 
         <section class="content">
-            <!-- ¿ÞÂÊ: ¾ÆÀÌ Á¤º¸ -->
+            <!-- ì™¼ìª½: ì•„ì´ ì •ë³´ -->
             <div class="profile-section">
               <div class="profile-image">
-                <img src="${pageContext.request.contextPath}/image/child1.png" alt="³ªÃ¹Â°">
+                <img src="${pageContext.request.contextPath}/image/child1.png" alt="ë‚˜ì²«ì§¸">
               </div>
               <div class="profile-info">
-                <h2>³ªÃ¹Â°</h2>
-                <p>¸¶Áö¸· ¾Ë¸²</p>
-                <p class="time">2025³â 4¿ù 10ÀÏ</p>
+                <h2>ë‚˜ì²«ì§¸</h2>
+                <p>ë§ˆì§€ë§‰ ì•Œë¦¼</p>
+                <p class="time">2025ë…„ 4ì›” 10ì¼</p>
                 <p class="time">AM:10:42:33</p>
               </div>
             </div>
@@ -69,14 +69,14 @@
     <div class="button-icon">
       <i class="fas fa-map-marker-alt"></i>
     </div>
-    <span>À§Ä¡È®ÀÎ</span>
+    <span>ìœ„ì¹˜í™•ì¸</span>
   </a>
 
-  <a href="#" class="action-button">
+  <a href="tel:010-1234-5678" class="action-button">
     <div class="button-icon">
       <i class="fas fa-phone-alt"></i>
     </div>
-    <span>ÀüÈ­°É±â</span>
+    <span>ì „í™”ê±¸ê¸°</span>
   </a>
 
   <a href="GoAlertHistory.do" class="action-button">
@@ -84,18 +84,18 @@
       <i class="fas fa-bell"></i>
       <span class="badge">1</span>
     </div>
-    <span>¾Ë¸²³»¿ªÈ®ÀÎ</span>
+    <span>ì•Œë¦¼ë‚´ì—­í™•ì¸</span>
   </a>
 </section>
 
           
-            <!-- ¿À¸¥ÂÊ: ³¯¾¾ + ¾Ë¸² -->
+            <!-- ì˜¤ë¥¸ìª½: ë‚ ì”¨ + ì•Œë¦¼ -->
             <div class="right-section">
               <div class="weather-section">
-                <h3>¾ÆÀÌ ³¯¾¾</h3>
+                <h3>ì•„ì´ ë‚ ì”¨</h3>
                 <div class="weather-icon">
-                  <img src="${pageContext.request.contextPath}/image/sunny.png" alt="³¯¾¾">
-                </div>
+                 <img src="${pageContext.request.contextPath}/image/sunny.png" alt="ë‚ ì”¨">
+              </div>
               </div>
               
               
@@ -103,37 +103,38 @@
               <div class="alerts-section">
                 <div class="alerts-container">
   <a href="GoAlertHistory.do" class="alert alert-sos">
-    <span class="alert-icon">!</span>
-    <span class="alert-text">SOS ¾Ë¸²</span>
-    <span class="alert-count">1È¸</span>
-  </a>
-  <a href="GoAlertHistory.do" class="alert alert-warning">
-    <span class="alert-icon">!</span>
-    <span class="alert-text">°æ°í ¾Ë¸²</span>
-    <span class="alert-count">2È¸</span>
-  </a>
-  <a href="GoAlertHistory.do" class="alert alert-caution">
-    <span class="alert-icon">!</span>
-    <span class="alert-text">ÁÖÀÇ ¾Ë¸²</span>
-    <span class="alert-count">4È¸</span>
-  </a>
+  <span class="alert-icon">!</span>
+  <span class="alert-text">SOS ì•Œë¦¼</span>
+  <span id="sos-count" class="alert-count">0íšŒ</span>
+</a>
+<a href="GoAlertHistory.do" class="alert alert-warning">
+  <span class="alert-icon">!</span>
+  <span class="alert-text">ê²½ê³  ì•Œë¦¼</span>
+  <span id="danger-count" class="alert-count">0íšŒ</span>
+</a>
+<a href="GoAlertHistory.do" class="alert alert-caution">
+  <span class="alert-icon">!</span>
+  <span class="alert-text">ì£¼ì˜ ì•Œë¦¼</span>
+  <span id="caution-count" class="alert-count">0íšŒ</span>
+</a>
+
 </div>
 
               </div>
             </div>
           </section>
           
-          <!-- ÇÏ´Ü ¹öÆ° ¿µ¿ª -->
+          <!-- í•˜ë‹¨ ë²„íŠ¼ ì˜ì—­ -->
          
        <footer>
             <div class="bottom-navbar">
-                <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/¾Ë¸²1.png" alt="¾Ë¸²" /><span>¾Ë¸²</span></a>
-                <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/È¨.png" alt="È¨" /><span>È¨</span></a>
-                <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/¸Þ´º.png" alt="¸Þ´º" /><span>¸Þ´º</span></a>
+                <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/ì•Œë¦¼1.png" alt="ì•Œë¦¼" /><span>ì•Œë¦¼</span></a>
+                <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/í™ˆ.png" alt="í™ˆ" /><span>í™ˆ</span></a>
+                <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/ë©”ë‰´.png" alt="ë©”ë‰´" /><span>ë©”ë‰´</span></a>
             </div>
         </footer>
     </div>
 
-<%--     <script src="${pageContext.request.contextPath}/js/MainPageAdult.js"></script>--%>
+<script src="${pageContext.request.contextPath}/js/MainPageAdult.js"></script>
 </body>
 </html>

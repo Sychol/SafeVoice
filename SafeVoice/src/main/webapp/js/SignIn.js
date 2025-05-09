@@ -222,7 +222,7 @@ if (formEl && welcomeModal && welcomeMsg && welcomeOk) {
         }
       })
       .catch(() => alert('서버 오류가 발생했습니다.'));
-  });A
+  });
   welcomeOk.addEventListener('click', function () {
     window.location.href = window.path + '/Login.do';
   });

@@ -1,5 +1,20 @@
+// ─── 다크모드 토글 ───
+	  const toggleButton = document.getElementById("toggleMode");
+	  if (toggleButton) {
+	    if (localStorage.getItem("theme") === "dark") {
+	      document.body.classList.add("dark-mode");
+	      toggleButton.textContent = "☀️";
+	    }
+	    toggleButton.addEventListener("click", () => {
+	      const isDark = document.body.classList.toggle("dark-mode");
+	      toggleButton.textContent = isDark ? "☀️" : "🌙";
+	      localStorage.setItem("theme", isDark ? "dark" : "light");
+	    });
+	  }
+
+
 // ✅ 1. 주소 검색 레이어 팝업 (카카오 API)
-function execDaumPostcode() {
+function execDaumPostcode() { console.log('📮 execDaumPostcode 호출!');
   const layerBg = document.getElementById('postcodeLayer');
   const layerWrp = document.getElementById('postcodeContainer');
   layerBg.style.display = 'block';
@@ -20,8 +35,9 @@ function execDaumPostcode() {
     width: '100%', height: '100%'
   }).embed(layerWrp);
 }
-
+console.log('📮 ModifyMember.js 호출!');
 document.addEventListener('DOMContentLoaded', () => {
+	
   // 섹션 토글
   const radios     = document.querySelectorAll('input[name="memberType"]');
   const parentRows = document.querySelectorAll('.parent-info');

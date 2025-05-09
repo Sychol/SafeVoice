@@ -17,6 +17,7 @@ import com.safevoice.controller.Alert.InputFileService;
 import com.safevoice.controller.Alert.RepeatAlertService;
 import com.safevoice.controller.Alert.SaveSubscriptionService;
 import com.safevoice.controller.Alert.SendPushNotificationService;
+import com.safevoice.controller.Alert.StopNotificationService;
 import com.safevoice.controller.Member.ChangePasswordService;
 import com.safevoice.controller.Member.LoginService;
 import com.safevoice.controller.Member.LogoutService;
@@ -43,16 +44,18 @@ public class FrontController extends HttpServlet {
 		map.put("ModifyMember.do", new ModifyMemberService()); // 회원정보수정
 	    map.put("RequestConnection.do", new RequestConnectionService()); // 자녀 등록 - 자녀 연결 (코드 전송)
 	    map.put("VerifyCode.do", new VerifyCodeService()); // 자녀 등록 - 자녀 연결 (코드 확인)
-	    map.put("test/SendPush.do", new SendPushNotificationService());
+	    map.put("/test/SendPush.do", new SendPushNotificationService());
 	    map.put("SaveSubscription.do", new SaveSubscriptionService());
 	    map.put("InputFile.do", new InputFileService());
 	    map.put("RepeatAlert.do", new RepeatAlertService());
+	    map.put("StopNotification.do", new StopNotificationService());
 	    map.put("GetAlertHistory.do", new GetAlertHistoryService());
 	    
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 
 		String uri = request.getRequestURI();
 

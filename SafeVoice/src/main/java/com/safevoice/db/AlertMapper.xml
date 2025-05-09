@@ -17,5 +17,19 @@
 	 	VALUES (#{memberId}, #{alertType}, #{lat}, #{lon}, #{alertContext})
 	 </insert>
 	 
+	 <select id="getSubscriptionJsonByUserId" parameterType="string" resultType="string">
+   	   SELECT json_subscription FROM members WHERE member_id = #{memberId}
+	 </select>
+	 
+	 <select id="findParentSubscriptions" parameterType="string" resultType="string">
+    	SELECT SUBSCRIPTION_JSON
+ 		FROM MEMBER
+   		WHERE FAMILY_CD = (
+        SELECT FAMILY_CD FROM MEMBER WHERE MEMBER_ID = #{childId}
+    	)
+    	AND MEM_TYPE = 'P'
+</select>
+	 
+	 
 </mapper>
 

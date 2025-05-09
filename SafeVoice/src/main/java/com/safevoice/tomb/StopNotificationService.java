@@ -1,9 +1,11 @@
-package com.safevoice.controller.Alert;
+package com.safevoice.tomb;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.safevoice.controller.Command;
+
+// 알림 반복(타이머) 중단
 
 public class StopNotificationService implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {

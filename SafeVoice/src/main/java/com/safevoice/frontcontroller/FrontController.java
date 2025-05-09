@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.safevoice.controller.Command;
 import com.safevoice.controller.Alert.GetAlertHistoryService;
 import com.safevoice.controller.Alert.InputFileService;
-import com.safevoice.controller.Alert.RepeatAlertService;
 import com.safevoice.controller.Alert.SaveSubscriptionService;
 import com.safevoice.controller.Alert.SendPushNotificationService;
-import com.safevoice.controller.Alert.StopNotificationService;
 import com.safevoice.controller.Member.ChangePasswordService;
 import com.safevoice.controller.Member.LoginService;
 import com.safevoice.controller.Member.LogoutService;
@@ -27,6 +25,8 @@ import com.safevoice.controller.Member.SignInService;
 import com.safevoice.controller.Member.SignOutService;
 import com.safevoice.controller.Member.VerifyCodeService;
 import com.safevoice.controller.Member.VerifyIdentityService;
+import com.safevoice.tomb.RepeatAlertService;
+import com.safevoice.tomb.StopNotificationService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {

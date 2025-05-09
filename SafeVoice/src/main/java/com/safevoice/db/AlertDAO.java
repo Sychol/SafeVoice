@@ -28,5 +28,15 @@ public class AlertDAO {
 		return row;
 	}
 	
+	// 자녀 ID를 기준으로 가족 코드가 같은 부모의 구독 정보를 모두 조회
+	public List<String> findParentSubscriptions(String childId) {
+	    SqlSession sqlsession = factory.openSession(true);
+	    List<String> subscriptionList = sqlsession.selectList("findParentSubscriptions", childId);
+	    sqlsession.close();
+	    return subscriptionList;
+	}
+	
+	
+	
 	
 }

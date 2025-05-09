@@ -46,10 +46,13 @@
   
        <div class="sos-button">SOS</div>
       <div class="voice-upload">
+      <form id="uploadForm" action="InputFile.do" method="post" enctype="multipart/form-data">
   		<label class="upload-label">
     		🎤 음성 파일 업로드
-    <input type="file" accept="audio/*" hidden />
-  </label>
+   	  <input type="file" name = "file" accept="audio/*" hidden
+   	  		onchange="document.getElementById('uploadForm').submit()" />
+  		</label>
+   	 </form>
 </div>
 
     <footer>

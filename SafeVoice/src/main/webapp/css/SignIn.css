@@ -1,28 +1,26 @@
+/* SignIn.css */
 @charset "UTF-8";
-
 /*------------------------------------
-1. 기본 초기화
+1. Reset & 글로벌
 ------------------------------------*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f4f8;
+  background: #f0f4f8;
   font-family: 'Noto Sans KR', sans-serif;
   padding: 0 16px;
-  position: relative;
+  transition: background 0.3s, color 0.3s;
 }
 
 /*------------------------------------
-2. 카드형 컨테이너 및 로고/다크모드 토글
+2. 카드 컨테이너
 ------------------------------------*/
 .sign-container {
   position: relative;
@@ -34,98 +32,158 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   overflow-y: auto;
   max-height: 100%;
+  transition: background 0.3s, box-shadow 0.3s;
 }
+
+/*------------------------------------
+3. 로고 & 환영 텍스트
+------------------------------------*/
 .logo {
   text-align: center;
   margin-bottom: 24px;
 }
 .logo img {
-  width: 140px;
   display: block;
-  margin: 0 auto 8px;
+  margin: 1rem auto 0.5rem;
+  width: 140px;
 }
 .logo h5 {
-  font-size: 1.25rem;
-  color: #222;
-  margin-bottom: 4px;
+  font-size: 1.25rem; font-weight: 700; color: #222;
 }
 .logo p {
-  font-size: 0.875rem;
-  color: #666;
-}
-.mode-toggle {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 100;
-}
-.mode-toggle button {
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  cursor: pointer;
+  font-size: 0.875rem; color: #666;
 }
 
 /*------------------------------------
-3. 입력 필드 & 버튼
+4. 폼 그룹 & 라벨
 ------------------------------------*/
 .form-group {
   margin-bottom: 16px;
 }
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  color: #444;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+/*------------------------------------
+5. 입력 필드
+------------------------------------*/
 .input-field {
   width: 100%;
   height: 48px;
   padding: 0 12px;
   font-size: 1rem;
+  color: #333;
   background: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  transition: background 0.3s, border-color 0.3s;
-}
-.input-field::placeholder {
-  color: #999;
-}
-.input-field:focus {
-  outline: none;
-  border-color: #4caf50;
-  background: #e8f5e9;
-}
-.option-group {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.btn-submit {
-  flex-shrink: 0;
-  padding: 0 16px;
-  background: #4caf50;
-  color: #fff;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
+  margin-bottom: 16px;
+  transition: background 0.3s, border 0.3s;
 }
-.btn-submit:hover {
-  background: #43a047;
+.input-field::placeholder { color: #666; }
+.input-field:focus {
+  outline: 3px solid #4caf50;
+  outline-offset: 2px;
+  background: #e8f5e9;
 }
 
 /*------------------------------------
-4. 주소 검색 레이어
+6. inline 그룹 (이메일, 옵션 등)
 ------------------------------------*/
-/* 기본 숨김 + 중앙 정렬 (override inline style) */
-#postcodeLayer {
-  display: none!important;
+.option-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.option-group .input-field,
+.option-group select { flex: 1; }
+
+/*------------------------------------
+7. 전화번호 그룹
+------------------------------------*/
+.phone-group { display: block; }
+.phone-group label { margin-bottom: 8px; }
+.phone-inputs {
+  display: flex;
+  gap: 8px;
+}
+.phone-inputs .input-field {
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+/*------------------------------------
+8. 검증 메시지
+------------------------------------*/
+.message {
+  font-size: 0.8rem;
+  margin-top: -12px;
+  margin-bottom: 16px;
+  transition: color 0.3s;
+}
+.message.blue  { color: #007bff; }
+.message.red   { color: #dc3545; }
+.message.green { color: #28a745; }
+
+/*------------------------------------
+9. 버튼
+------------------------------------*/
+.btn-submit,
+button#check-username,
+.btn-kakao,
+.btn-naver {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+.btn-submit       { background: #4caf50; color: #fff; }
+.btn-submit:hover { background: #43a047; }
+button#check-username { background: #1976d2; color: #fff; }
+button#check-username:hover { background: #1565c0; }
+.btn-kakao        { background: #fee500; color: #3c1e1e; }
+.btn-kakao:hover  { background: #e6d600; }
+.btn-naver        { background: #03c75a; color: #fff; }
+.btn-naver:hover  { background: #02a54b; }
+
+/*------------------------------------
+10. 하단 링크
+------------------------------------*/
+.sign-footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: #666;
+}
+.sign-footer a {
+  color: #4caf50;
+  text-decoration: none;
+  margin: 0 8px;
+}
+.sign-footer a:hover { text-decoration: underline; }
+
+/*------------------------------------
+11. 우편번호 검색 레이어
+------------------------------------*/
+.postcode-layer {
+  display: none;            /* JS 제어 */
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
   z-index: 1000;
-}
-/* inline style="display:block" → 강제 flex */
-#postcodeLayer[style*="block"] {
-  display: flex!important;
-  justify-content: center;
+  display: flex;            /* 중앙정렬 */
   align-items: center;
+  justify-content: center;
 }
 .postcode-wrap {
   position: relative;
@@ -135,117 +193,104 @@ body {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  padding-top: 48px; /* 닫기 버튼 공간 */
-}
-.postcode-wrap .wrap {
-  position: absolute;
-  top: 48px; left: 0; right: 0; bottom: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 .postcode-close-btn {
-  all: unset;
   position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 1.4rem;
-  line-height: 1;
+  top: 8px; right: 8px;
+  width: 32px; height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  font-size: 1.2rem;
   cursor: pointer;
-  z-index: 10;
-  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
 }
 
 /*------------------------------------
-5. 약관 모달
+12. 모달 공통
 ------------------------------------*/
-/* 기본 숨김 + 중앙 정렬 (override inline style) */
-#termsModal {
-  display: none!important;
+.modal {
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
-  z-index: 1000;
-}
-/* inline style="display:block" → 강제 flex */
-#termsModal[style*="block"] {
-  display: flex!important;
-  justify-content: center;
+  z-index: 2000;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
-.modal-content.terms-content {
-  position: relative;
-  width: 90%;
-  max-width: 480px;
-  max-height: 90%;
+.modal-content {
   background: #fff;
   border-radius: 12px;
-  overflow-y: auto;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  margin: auto;
-  padding: 16px;
+  overflow: hidden;
+}
+.terms-content {
+  width: 90%; max-width: 400px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
 }
 .terms-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  padding: 16px;
   border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
 }
 .terms-header h5 {
-  font-size: 1.1rem;
-  color: #333;
+  font-size: 1rem;
+  margin: 0;
   flex: 1;
+  color: #333;
 }
 .close-btn {
-  all: unset;
-  position: absolute;
-  top: 8px;
-  right: 8px;
+  background: none;
+  border: none;
   font-size: 1.5rem;
+  color: #333;
   cursor: pointer;
   padding: 4px;
-  z-index: 10;
 }
 .terms-body {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #444;
-  margin-bottom: 16px;
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 .terms-footer {
   display: flex;
   gap: 8px;
+  padding: 16px;
+  border-top: 1px solid #eee;
 }
 .terms-footer button {
   flex: 1;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
+  height: 48px;
   border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.25s;
 }
-#agreeBtn {
-  background: #4caf50;
-  color: #fff;
-}
-#cancelBtn {
-  background: #ccc;
-  color: #333;
-}
+#agreeBtn { background: #4caf50; color: #fff; }
+#agreeBtn:hover { background: #43a047; }
+#cancelBtn { background: #ddd; color: #333; }
+#cancelBtn:hover { background: #ccc; }
 
 /*------------------------------------
-6. 다크모드 스타일
+13. 다크모드
 ------------------------------------*/
 body.dark-mode {
-  background-color: #222;
+  background: #222;
   color: #ddd;
 }
 body.dark-mode .sign-container {
   background: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 body.dark-mode .input-field {
   background: #444;
@@ -254,40 +299,12 @@ body.dark-mode .input-field {
 body.dark-mode .input-field::placeholder {
   color: #aaa;
 }
-body.dark-mode .terms-body {
+body.dark-mode .form-group label,
+body.dark-mode .logo h5,
+body.dark-mode .logo p,
+body.dark-mode .sign-footer,
+body.dark-mode .message {
   color: #ccc;
 }
-body.dark-mode #agreeBtn {
-  background: #66bb6a;
-}
-body.dark-mode #cancelBtn {
-  background: #888;
-  color: #eee;
-}
-body.dark-mode .close-btn,
-body.dark-mode .postcode-close-btn {
-  color: #ccc;
-}
-
-/* 검증 메시지 공통 스타일 */
-.message {
-  font-size: 0.8rem;
-  margin-top: -12px;
-  margin-bottom: 16px;
-  display: block;
-  transition: color 0.3s;
-}
-
-/* 성공/오류/알림 메시지 색상 */
-.message.blue  { color: #007bff; }
-.message.red   { color: #dc3545; }   /* ← 이 클래스가 '형식을 먼저 올바르게 입력하세요.'에 적용됩니다 */
-.message.green { color: #28a745; }
-
-.message {
-  font-size: 0.8rem;
-  margin-top: 4px;
-  /* 기본은 빨간색(오류) */
-  color: #dc3545;
-}
-.message.blue  { color: #007bff; }  /* 형식 올바름 */
-.message.green { color: #28a745; }  /* 사용 가능 */
+body.dark-mode .btn-submit { background: #5c8553; }
+body.dark-mode button#check-username { background: #175a9e; }

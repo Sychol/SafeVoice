@@ -152,45 +152,54 @@ if(usernameInput && usernameMsg){
       });
     }
 
-    // 2-6) 약관 모달
-    const openTerms  = document.getElementById('openTerms');
-    const termsModal = document.getElementById('termsModal');
-    const closeTerms = document.getElementById('closeTerms');
-    const agreeBtn   = document.getElementById('agreeBtn');
-    const cancelBtn  = document.getElementById('cancelBtn');
-    const agreeAll   = document.getElementById('agreeAll');
-    const consentMsg = document.getElementById('consent-msg');
-    const form       = document.getElementById('signForm');
+	  // 2-6) 약관 모달
+	const openTerms  = document.getElementById('openTerms');
+	const termsModal = document.getElementById('termsModal');
+	const closeTerms = document.getElementById('closeTerms');
+	const agreeBtn   = document.getElementById('agreeBtn');
+	const cancelBtn  = document.getElementById('cancelBtn');
+	const agreeAll   = document.getElementById('agreeAll');
+	const consentMsg = document.getElementById('consent-msg');
+	const form       = document.getElementById('signForm');
 
-    if(openTerms && termsModal){
-      openTerms.addEventListener('click', e=>{
-        e.preventDefault();
-        termsModal.style.display='flex';
-      });
-    }
-    if(closeTerms) closeTerms.addEventListener('click', ()=>termsModal.style.display='none');
-    if(cancelBtn) cancelBtn.addEventListener('click', ()=>termsModal.style.display='none');
-    if(agreeBtn){
-      agreeBtn.addEventListener('click', ()=>{
-        agreeAll.checked=true;
-        consentMsg.style.display='none';
-        termsModal.style.display='none';
-      });
-    }
-    if(termsModal){
-      termsModal.addEventListener('click', e=>{
-        if(e.target===termsModal) termsModal.style.display='none';
-      });
-    }
-    if(form){
-      form.addEventListener('submit', e=>{
-        if(!agreeAll.checked){
-          e.preventDefault();
-          consentMsg.style.display='block';
-        }
-      });
-    }
-  }
+	// ❗ 모달은 클릭했을 때만 열리도록 제한
+	if (openTerms && termsModal) {
+	  openTerms.addEventListener('click', e => {
+	    e.preventDefault();
+	    termsModal.style.display = 'flex';
+	  });
+	}
+
+	if (closeTerms)
+	  closeTerms.addEventListener('click', () => termsModal.style.display = 'none');
+
+	if (cancelBtn)
+	  cancelBtn.addEventListener('click', () => termsModal.style.display = 'none');
+
+	if (agreeBtn) {
+	  agreeBtn.addEventListener('click', () => {
+	    agreeAll.checked = true;
+	    consentMsg.style.display = 'none';
+	    termsModal.style.display = 'none';
+	  });
+	}
+
+	if (termsModal) {
+	  termsModal.addEventListener('click', e => {
+	    if (e.target === termsModal)
+	      termsModal.style.display = 'none';
+	  });
+	}
+	}
+
+	if (form) {
+	  form.addEventListener('submit', e => {
+	    if (!agreeAll.checked) {
+	      e.preventDefault();
+	      consentMsg.style.display = 'block';
+	    }
+	  });
+	}
 
   /*** 3) 생년월일 오늘까지 제한 ***/
   function restrictBirthToToday(){

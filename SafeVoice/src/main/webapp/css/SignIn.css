@@ -134,7 +134,6 @@ body {
 9. 버튼
 ------------------------------------*/
 .btn-submit,
-button#check-username,
 .btn-kakao,
 .btn-naver {
   width: 100%;
@@ -149,8 +148,6 @@ button#check-username,
 }
 .btn-submit       { background: #4caf50; color: #fff; }
 .btn-submit:hover { background: #43a047; }
-button#check-username { background: #1976d2; color: #fff; }
-button#check-username:hover { background: #1565c0; }
 .btn-kakao        { background: #fee500; color: #3c1e1e; }
 .btn-kakao:hover  { background: #e6d600; }
 .btn-naver        { background: #03c75a; color: #fff; }
@@ -307,4 +304,3 @@ body.dark-mode .message {
   color: #ccc;
 }
 body.dark-mode .btn-submit { background: #5c8553; }
-body.dark-mode button#check-username { background: #175a9e; }

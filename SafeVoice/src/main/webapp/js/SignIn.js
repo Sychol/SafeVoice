@@ -45,50 +45,24 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
   /*** 2) 입력 요소 초기화 함수 ***/
   function initSignInFeatures(){
-    // 2-1) 자동 ID 중복검사
-    const usernameInput = document.getElementById('username');
-    const usernameMsg   = document.getElementById('username-msg');
-    const checkBtn      = document.getElementById('check-username');
-    let debounceTimer;
+// 2-1) 아이디 형식 검사만 유지 (중복확인 제거됨)
+const usernameInput = document.getElementById('username');
+const usernameMsg   = document.getElementById('username-msg');
 
-    async function checkDuplicate(username){
-      const res = await fetch(
-        `${path}/users/duplicated/0?str=${encodeURIComponent(username)}`,
-        { cache:'no-store' }
-      );
-      if(!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      return data.success;
+if(usernameInput && usernameMsg){
+  usernameInput.addEventListener('input', ()=>{
+    const v = usernameInput.value.trim();
+    const valid = /^[0-9A-Za-z]{4,10}$/.test(v);
+    if(!valid){
+      usernameMsg.textContent = '아이디는 영문+숫자 조합, 4~10자이어야 합니다.';
+      usernameMsg.className   = 'message red';
+    } else {
+      usernameMsg.textContent = '사용 가능한 형식입니다.';
+      usernameMsg.className   = 'message green';
     }
+  });
+}
 
-    if(usernameInput && usernameMsg){
-      usernameInput.addEventListener('input', ()=>{
-        const v = usernameInput.value.trim();
-        const valid = /^[0-9A-Za-z]{4,10}$/.test(v);
-
-        clearTimeout(debounceTimer);
-        if(!valid){
-          usernameMsg.textContent = '아이디는 영문+숫자 조합, 4~10자이어야 합니다.';
-          usernameMsg.className   = 'message red';
-          return;
-        }
-        usernameMsg.textContent = '형식이 올바릅니다. 중복 확인 중…';
-        usernameMsg.className   = 'message';
-
-        debounceTimer = setTimeout(async ()=>{
-          try{
-            const ok = await checkDuplicate(v);
-            usernameMsg.textContent = ok
-              ? '사용 가능한 아이디입니다.'
-              : '이미 사용 중인 아이디입니다.';
-            usernameMsg.className   = `message ${ok?'green':'red'}`;
-          }catch{
-            usernameMsg.textContent = '서버 오류가 발생했습니다.';
-            usernameMsg.className   = 'message red';
-          }
-        }, 500);
-      });
-    }
 
     if(checkBtn && usernameInput){
       checkBtn.addEventListener('click', ()=>{

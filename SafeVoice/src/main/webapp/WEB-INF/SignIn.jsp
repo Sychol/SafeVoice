@@ -39,17 +39,15 @@
           method="post">
 
       <!-- 아이디 -->
-      <div class="form-group">
-        <label for="username">아이디</label>
-        <input type="text"
-               id="username"
-               name="id"
-               class="input-field"
-               placeholder="영문+숫자 4~10자"
-               required>
-               <!-- 아이디 형식/중복확인 결과 메시지 자리 -->
-      <div id="username-msg" class="message"></div>
-      </div>
+	<div class="form-group">
+  	<label for="username">아이디</label>
+  	<input type="text"
+    	   id="username"
+       	   name="id"
+           class="input-field"
+           placeholder="영문+숫자 4~10자"
+           required>
+	</div>
 
       <!-- 비밀번호 -->
       <div class="form-group">

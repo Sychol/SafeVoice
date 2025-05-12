@@ -25,7 +25,7 @@
 <!-- 로그인 에러 alert -->
 <c:if test="${not empty sessionScope.error}">
     <script>
-        alert('${sesesionScope.error}');
+        alert('${fn:escapeXml(sessionScope.error)}');
     </script>
 </c:if>
 

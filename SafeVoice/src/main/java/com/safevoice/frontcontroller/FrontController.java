@@ -56,8 +56,9 @@ public class FrontController extends HttpServlet {
 	    map.put("MenuMain.do", new MenuMainService());
 	    map.put("MainPageChild.do", new MainPageChildService());
 	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
-	}
+	    map.put("RequestConnection.do", new RequestConnectionService());
 
+	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -96,5 +97,5 @@ public class FrontController extends HttpServlet {
 			}
 		}
 	}
-
+	
 }

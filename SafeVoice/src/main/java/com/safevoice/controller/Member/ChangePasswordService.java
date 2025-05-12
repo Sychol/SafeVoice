@@ -30,10 +30,10 @@ public class ChangePasswordService implements Command {
 
         if (row > 0) {
             request.getSession().setAttribute("successMsg", "비밀번호가 성공적으로 변경되었습니다!");
-            return "GoLogin.do"; // redirect
+            return "GoLogin.do";
         } else {
             request.setAttribute("errorMsg", "비밀번호 변경에 실패했습니다. 다시 시도해주세요.");
-            return "GoChangePassword.do"; // forward
+            return "GoChangePassword.do";
         }		
 	}
 

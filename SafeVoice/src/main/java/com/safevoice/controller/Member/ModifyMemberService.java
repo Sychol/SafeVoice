@@ -20,8 +20,7 @@ public class ModifyMemberService implements Command {
 
         MemberVO mvo = new MemberVO();
         mvo.setId(id); // WHERE 조건 걸 id
-        
-        // 
+         
         
         if (email != null && !email.isBlank()) {
             mvo.setEmail(email);
@@ -36,7 +35,14 @@ public class ModifyMemberService implements Command {
         if (address != null && !address.isBlank()) { // 주소 변경을 어떻게 하면 좋을지... 에 대한 고민
             mvo.setAddress(address);
         }
-
+        
+        if ((email == null || email.isBlank()) &&
+        	    (phone == null || phone.isBlank()) &&
+        	    (address == null || address.isBlank())) {
+        	    
+        	    request.setAttribute("errorMsg", "수정할 내용이 없습니다.");
+        	    return "GoModifyMember.do";
+        	}
 
         int row = new MemberDAO().updateMember(mvo);
 
@@ -44,17 +50,6 @@ public class ModifyMemberService implements Command {
             request.setAttribute("successMsg", "회원 정보 수정 완료!");
             return "GoMyPage.do"; // 마이페이지로 이동
             
-//            <%
-//            String successMsg = (String) session.getAttribute("successMsg"); // 개인정보 수정 성공 alert
-//            if (successMsg != null) {
-//        %>
-//            <script>
-//                alert('<%= successMsg %>');
-//            </script>
-//        <%
-//                session.removeAttribute("successMsg"); // 한 번만 쓰고 지우기
-//            }
-//        %>
         } else {
             request.setAttribute("FailMsg", "수정 실패");
             return "GoModifyMember.do";

@@ -6,11 +6,7 @@
 <mapper namespace="com.safevoice.db.MemberDAO">
 	
 	 <insert id="signIn" parameterType = "membervo">
-<<<<<<< HEAD
 	 	INSERT INTO MEMBERS (MEMBER_ID, EMAIL, PW, NAME, BIRTHDATE, PHONE, POST_CODE, ADDRESS, DETAIL_ADDRESS, GENDER, MEM_TYPE )
-=======
-	 	INSERT INTO MEMBERS
->>>>>>> branch 'main' of https://github.com/2025-SMHRD-IS-CLOUD-2/SafeVoice.git
 	 	VALUES(#{id},#{email},#{pw},#{name},#{birthDate},#{phone},#{postcode},#{address},#{detailAddress},#{gender},#{memType})
 	 </insert>
 	 

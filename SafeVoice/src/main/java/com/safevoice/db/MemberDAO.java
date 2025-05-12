@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.safevoice.model.AlertVO;
 import com.safevoice.model.MemberVO;
 
 public class MemberDAO {
@@ -97,13 +98,6 @@ public class MemberDAO {
 		return row;
 	}
 	
-	// 자녀 관리 (리스트)
-	public List<MemberVO> selectMyChildren(String id) {
-	    SqlSession sqlsession = factory.openSession(true);
-	    List<MemberVO> children = sqlsession.selectList("selectMyChildren", id);
-	    sqlsession.close();
-	    return children;
-	}
 	
 	// 자녀 관리 - 자녀 삭제 (연결 끊기)
 	public int disconnectChild(String childId) {
@@ -113,5 +107,12 @@ public class MemberDAO {
 	    return row;
 	}
 
+	// 아이 리스트 가져오기
+	public List<MemberVO> getChildList(String id) {
+		SqlSession sqlsession = factory.openSession(true);
+		List<MemberVO> childList = sqlsession.selectList("getChildList", id);
+		sqlsession.close();
+		return childList;
+	}
 
 }

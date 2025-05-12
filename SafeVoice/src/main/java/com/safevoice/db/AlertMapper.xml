@@ -23,7 +23,7 @@
 	 
 	 <select id="findParentSubscriptions" parameterType="string" resultType="string">
     	SELECT SUBSCRIPTION_JSON
- 		FROM MEMBER
+ 		FROM MEMBERS
    		WHERE FAMILY_CD = (
         SELECT FAMILY_CD FROM MEMBER WHERE MEMBER_ID = #{childId}
     	)

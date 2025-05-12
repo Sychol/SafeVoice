@@ -19,6 +19,7 @@ import com.safevoice.controller.Alert.InputFileService;
 import com.safevoice.controller.Alert.SaveSubscriptionService;
 import com.safevoice.controller.Alert.SendPushNotificationService;
 import com.safevoice.controller.Member.ChangePasswordService;
+import com.safevoice.controller.Member.GetChildListService;
 import com.safevoice.controller.Member.IdDuplicateCheckService;
 import com.safevoice.controller.Member.LoginService;
 import com.safevoice.controller.Member.LogoutService;
@@ -28,7 +29,6 @@ import com.safevoice.controller.Member.SignInService;
 import com.safevoice.controller.Member.SignOutService;
 import com.safevoice.controller.Member.VerifyCodeService;
 import com.safevoice.controller.Member.VerifyIdentityService;
-import com.safevoice.controller.Member.ViewChildListService;
 import com.safevoice.tomb.DeleteChildService;
 import com.safevoice.tomb.RepeatAlertService;
 import com.safevoice.tomb.StopNotificationService;
@@ -58,9 +58,9 @@ public class FrontController extends HttpServlet {
 	    map.put("MenuMain.do", new MenuMainService());
 	    map.put("MainPageChild.do", new MainPageChildService());
 	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
-	    map.put("ViewChildList.do", new ViewChildListService()); // 자녀 관리
 //	    map.put("DeleteChild.do", new DeleteChildService()); // 자녀 삭제
-
+	    map.put("GetChildList.do", new GetChildListService());
+	    
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -40,7 +40,7 @@ public class LoginService implements Command {
 			} else {
 		        // 혹시 모를 예외적인 경우 처리
 		        session.setAttribute("error", "회원 유형이 잘못되었습니다.");
-		        return "GoLogin.do";
+		        return "redirect:/GoLogin.do";
 		    }
 		}
 		else {

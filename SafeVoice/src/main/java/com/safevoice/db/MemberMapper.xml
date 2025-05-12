@@ -94,20 +94,21 @@
 		AND PHONE = #{phone}
 	</update>
 	
-	<select id="selectMyChildren" parameterType="string" resultType="membervo">
-    	SELECT MEMBER_ID AS id, NAME, EMAIL, FAMILY_CD, MEM_TYPE
-    	FROM MEMBERS
-    	WHERE FAMILY_CD = (
-        		SELECT FAMILY_CD FROM MEMBERS WHERE MEMBER_ID = #{id}
-    			)
-    			AND MEM_TYPE = 'C'
-	</select>
-	
 	<update id="disconnectChild" parameterType="string">
     	UPDATE MEMBERS
     	SET FAMILY_CD = NULL
     	WHERE MEMBER_ID = #{childId}
 	</update>
 	
+	<select id="getChildList" parameterType = "String" resultType = "membervo">
+		SELECT MEMBER_ID, EMAIL, NAME, IMAGE_PATH
+		FROM MEMBERS
+		WHERE FAMILY_CD = (
+			SELECT FAMILY_CD
+			FROM MEMBERS
+			WHERE MEMBER_ID = #{id}
+			)
+		AND MEM_TYPE ='C'
+	</select>
 	
 </mapper>

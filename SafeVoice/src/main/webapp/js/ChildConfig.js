@@ -7,6 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
     backButton.addEventListener("click", () => history.back());
   }
 
+  let childData = [];
+  
+  fetch('/SafeVoice/GetChildList.do') 
+  	.then(res => res.json())
+	.then(data => {
+		console.log(data);
+		childData = data;
+	})
+	
+	
+	
   if (addBtn && list) {
     addBtn.addEventListener("click", function () {
       const today = new Date().toISOString().slice(0, 10);

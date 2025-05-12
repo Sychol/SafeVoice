@@ -1,128 +1,75 @@
-function confirmAlert() {
-  localStorage.setItem('schoolAlertConfirmed', 'true');
-  document.getElementById('schoolAlertPopup').style.display = 'none';
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const addBtn = document.querySelector(".add-child");
+  const list = document.querySelector(".child-list");
+  const backButton = document.querySelector(".back-button");
 
-document.addEventListener('DOMContentLoaded', function () {
-  const confirmed = localStorage.getItem('schoolAlertConfirmed');
-  const popupOverlay = document.getElementById('schoolAlertPopup');
-  const popupBox = document.querySelector('.popup');
-
-  if (!confirmed) {
-    popupOverlay.style.display = 'flex';
+  if (backButton) {
+    backButton.addEventListener("click", () => history.back());
   }
 
-  // 바깥 영역 클릭 시 팝업 닫기
-  popupOverlay.addEventListener('click', function (e) {
-    if (!popupBox.contains(e.target)) {
-      popupOverlay.style.display = 'none';
-    }
-  });
+  if (addBtn && list) {
+    addBtn.addEventListener("click", function () {
+      const today = new Date().toISOString().slice(0, 10);
+
+      const newChild = document.createElement("div");
+      newChild.className = "child-item";
+
+      newChild.innerHTML = `
+        <img src="${contextPath}/image/프로필.png" class="child-avatar" />
+        <div class="child-info">
+          <div class="child-name">새 자녀</div>
+          <div class="child-date">최근 조회 날짜<br>${today}</div>
+        </div>
+        <div class="child-actions">
+          <img src="${contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
+          <img src="${contextPath}/image/연필.png" alt="수정" class="edit-btn" />
+          <img src="${contextPath}/image/메뉴.png" alt="메뉴" class="drag-handle" />
+        </div>
+      `;
+
+      list.appendChild(newChild);
+    });
+
+    list.addEventListener("click", function (e) {
+      // 삭제 버튼
+      if (e.target && e.target.classList.contains("delete-btn")) {
+        const childItem = e.target.closest(".child-item");
+        if (childItem) {
+          childItem.remove();
+        }
+      }
+
+      // 수정 버튼
+      if (e.target && e.target.classList.contains("edit-btn")) {
+        const childItem = e.target.closest(".child-item");
+        const nameDiv = childItem.querySelector(".child-name");
+        const img = childItem.querySelector(".child-avatar");
+
+        const newName = prompt("자녀 이름을 입력하세요:", nameDiv.textContent);
+        if (newName) nameDiv.textContent = newName;
+
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+
+        fileInput.addEventListener("change", function () {
+          const file = fileInput.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        fileInput.click();
+      }
+    });
+
+    Sortable.create(list, {
+      handle: ".drag-handle",
+      animation: 150,
+    });
+  }
 });
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const navButtons = document.querySelectorAll('.nav-button');
-    
-    navButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
-	// 프로필 이미지 클릭 이벤트
-	const childProfiles = document.querySelectorAll('.child-profile');
-	childProfiles.forEach(profile => {
-	    profile.addEventListener('click', function() {
-	        const img = this.dataset.img;
-	        const name = this.dataset.name;
-	        const alert = this.dataset.alert;
-	        const date = this.dataset.date;
-	        const time = this.dataset.time;
-
-	        document.getElementById('main-profile-img').src = `${contextPath}/image/${img}`;
-	        document.getElementById('main-profile-name').textContent = name;
-	        document.getElementById('main-profile-alert').textContent = alert;
-	        document.getElementById('main-profile-date').textContent = date;
-	        document.getElementById('main-profile-time').textContent = time;
-
-	        console.log(`자녀 "${name}" 선택됨`);
-	    });
-	});
-
-    // 액션 버튼 클릭 이벤트
-    const actionButtons = document.querySelectorAll('.action-button');
-    actionButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const buttonText = this.querySelector('span').textContent;
-            console.log(`${buttonText} 버튼이 클릭되었습니다.`);
-            
-            if(buttonText.includes('위치확인')) {
-                showLocationModal();
-            } else if(buttonText.includes('전화걸기')) {
-                makePhoneCall();
-            } else if(buttonText.includes('알림내역확인')) {
-                showNotifications();
-            }
-        });
-    });
-
-
-	
-    // 알림 클릭 이벤트
-    const alerts = document.querySelectorAll('.alert');
-    alerts.forEach(alert => {
-        alert.addEventListener('click', function() {
-            const alertType = this.querySelector('.alert-text').textContent;
-            console.log(`${alertType}이 클릭되었습니다.`);
-        });
-    });
-
-	// 알림 개수 연동 fetch 포함!
-	fetch('/SafeVoice/GetAlertHistory.do')
-	  .then(res => res.json())
-	  .then(data => {
-	    let sos = 0, danger = 0, caution = 0;
-
-	    data.forEach(item => {
-	      if (item.alertType === 'S') sos++;
-	      else if (item.alertType === 'D') danger++;
-	      else if (item.alertType === 'C') caution++;
-	    });
-		
-	const latest = data[0];  // 제일 최근 알림 하나만 기준
-	if (latest) {
-	  const title = document.getElementById("alert-title");
-	  const desc = document.getElementById("alert-desc");
-	  const level = document.getElementById("alert-level");
-
-	  if (latest.alertType === 'S') {
-	    title.innerHTML = "긴급 위험<br>감지";
-	    desc.textContent = "자녀의 통화에서 긴급 상황이 감지되었습니다";
-	    level.textContent = "SOS";
-	    level.className = "sos";
-	  } else if (latest.alertType === 'D') {
-	    title.innerHTML = "학교폭력<br>위험감지";
-	    desc.textContent = "자녀의 통화에서 위험이 감지되었습니다";
-	    level.textContent = "경고";
-	    level.className = "warning";
-	  } else if (latest.alertType === 'C') {
-	    title.innerHTML = "주의<br>필요";
-	    desc.textContent = "자녀의 통화에서 주의가 필요한 내용이 감지되었습니다";
-	    level.textContent = "주의";
-	    level.className = "caution";
-	  }
-	}
-	    document.getElementById("sos-count").textContent = `${sos}회`;
-	    document.getElementById("danger-count").textContent = `${danger}회`;
-	    document.getElementById("caution-count").textContent = `${caution}회`;
-	  })
-	    .catch(err => {
-	        console.error("❌ 알림 요약 가져오기 실패:", err);
-	      });
-	  });
-	  
-	  
-	  
-	  

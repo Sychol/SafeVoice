@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Safe Voice - �޴�</title>
+  <title>Safe Voice - 메뉴</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/MenuMain.css">
   
@@ -17,39 +17,43 @@
   <div class="menu-container">
     <header>
     
-<img src="${pageContext.request.contextPath}/image/�ڷΰ���.png" alt="�ڷΰ���" class="back-button" />
+<img src="${pageContext.request.contextPath}/image/뒤로가기.png" alt="뒤로가기" class="back-button" />
      
-      <div class="header-title">�޴�</div>
-      <img class="profile-img" src="${pageContext.request.contextPath}/image/Mom.png" alt="������">
+      <div class="header-title">메뉴</div>
+      <img class="profile-img" src="${pageContext.request.contextPath}/image/Mom.png" alt="프로필">
     </header>
 
     <div class="user-info">
-    <img src="${pageContext.request.contextPath}/image/Mom.png" alt="������">
-      <div class="email">userEmail@example.com</div>
-      <div class="name">���̸�</div>
-    </div>
+  <img id="user-photo" src="${pageContext.request.contextPath}/image/Mom.png" alt="프로필">
+  <input type="file" id="file-input" style="display:none;" accept="image/*">
+
+  <div class="email" id="user-email">userEmail@example.com</div>
+  <div class="name" id="user-name">성이름</div>
+
+    <button id="edit-user" class="edit-button">수정</button>
+</div>
 
     <ul class="menu-list">
         <li class="menu-item">
-          <a href="#"><i class="fas fa-user"></i> ���� ����</a>
+          <a href="#"><i class="fas fa-user"></i> 계정 정보</a>
         </li>
         <li class="menu-item">
-          <a href="#"><i class="fas fa-bell"></i> �˸� ����</a>
+          <a href="GoAlertConfig.do"><i class="fas fa-bell"></i> 알림 설정</a>
         </li>
         <li class="menu-item">
-          <a href="#"><i class="fas fa-bullhorn"></i> ��������</a>
+          <a href="#"><i class="fas fa-bullhorn"></i> 공지사항</a>
         </li>
         <li class="menu-item">
-          <a href="GoAlertConfig.do"><i class="fas fa-child"></i> �ڳ� ����</a>
+          <a href="GoChildConfig.do"><i class="fas fa-child"></i> 자녀 관리</a>
         </li>
         <li class="menu-item">
-          <a href="#"><i class="fas fa-file-alt"></i> �̿���</a>
+          <a href="#"><i class="fas fa-file-alt"></i> 이용약관</a>
         </li>
         <li class="menu-item">
-          <a href="#"><i class="fas fa-shield-alt"></i> �������� ó����ħ</a>
+          <a href="#"><i class="fas fa-shield-alt"></i> 개인정보 처리방침</a>
         </li>
         <li class="menu-item">
-          <a href="#"><i class="fas fa-info-circle"></i> ���α׷� ����</a>
+          <a href="#"><i class="fas fa-info-circle"></i> 프로그램 정보</a>
         </li>
       </ul>
       
@@ -58,9 +62,9 @@
        
       <footer>
         <div class="bottom-navbar">
-            <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/�˸�1.png" alt="�˸�" /><span>�˸�</span></a>
-            <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/Ȩ.png" alt="Ȩ" /><span>Ȩ</span></a>
-            <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/�޴�.png" alt="�޴�" /><span>�޴�</span></a>
+            <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/알림1.png" alt="알림" /><span>알림</span></a>
+            <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/홈.png" alt="홈" /><span>홈</span></a>
+            <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" /><span>메뉴</span></a>
         </div>
     </footer>
 </div>

@@ -12,8 +12,35 @@
     
 </head>
 <body>
+<div class="popup-overlay" id="schoolAlertPopup">
+  <div class="popup">
+    <div class="profile-circle" id="popup-profile">
+  	<img src="${pageContext.request.contextPath}/image/child2.png" alt="자녀 프로필">
+	</div>
 
-    <div class="container">
+    <!-- ✅ 여기가 고쳐진 부분 -->
+    <h2 id="alert-title">학교폭력<br>위험감지</h2>
+    <p id="alert-desc">자녀의 통화에서 위험이 감지되었습니다</p>
+    <p class="level">위험 수준 : <span id="alert-level" class="warning">경고</span></p>
+
+    <div class="alert-actions"><br>
+      <button onclick="location.href='#'" class="icon-button">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>위치확인</span>
+      </button>
+      <button onclick="location.href='#'" class="icon-button">
+        <i class="fas fa-phone-alt"></i>
+        <span>전화걸기</span>
+      </button>
+      <button  id="confirm-alert-btn" onclick="location.href='GoAlertHistory.do'" class="icon-button">
+        <i class="fas fa-bell"></i>
+        <span>알림확인</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+      </div>    <div class="container">
         <header>
         	<a href="GoMainPageAdult.do">
             <div class="logo">
@@ -25,9 +52,9 @@
             <div class="profile-icon">
                 <img src="${pageContext.request.contextPath}/image/Mom.png" alt="프로필">
             </div>
-            <div class="menu-icon">
+           <%--  <div class="menu-icon">
                 <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴">
-            </div>
+            </div> --%>
         </div>
         </header>
 
@@ -82,7 +109,7 @@
   <a href="GoAlertHistory.do" class="action-button">
     <div class="button-icon">
       <i class="fas fa-bell"></i>
-      <span class="badge">1</span>
+      <span class="badge"></span>
     </div>
     <span>알림내역확인</span>
   </a>

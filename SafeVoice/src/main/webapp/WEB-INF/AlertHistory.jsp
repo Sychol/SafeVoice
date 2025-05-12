@@ -24,9 +24,9 @@
             </div>
             <div class="ellipse"></div>
           </div>
-          <div class="menu-icon">
+        <%--   <div class="menu-icon">
             <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴">
-        </div>
+        </div> --%>
         </section>
       
         <section class="alert-list">

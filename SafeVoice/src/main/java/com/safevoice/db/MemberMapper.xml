@@ -53,28 +53,27 @@
 	</select>
 
 
-	<update id="updateFamilyCd" parameterType = "membervo">
-		UPDATE MEMBERS AS M1
-		JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{childId}
-			SET M1.FAMILY_CD = CASE
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL
-					THEN UUID()
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL
-					THEN M2.FAMILY_CD
-				ELSE M1.FAMILY_CD
-				END
-		WHERE M1.MEMBER_ID = #{id}
-		UPDATE MEMBERS AS M1
-		JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{id}
-			SET M1.FAMILY_CD = CASE
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL
-					THEN UUID()
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL
-					THEN M2.FAMILY_CD
-				ELSE M1.FAMILY_CD
-				END
-		WHERE M1.MEMBER_ID = #{childId}
-	</update>
+	<update id="updateFamilyCdForParent" parameterType="membervo">
+   		UPDATE MEMBERS AS M1
+    	JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{childId}
+    	SET M1.FAMILY_CD = CASE
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL THEN UUID()
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL THEN M2.FAMILY_CD
+        	ELSE M1.FAMILY_CD
+    	END
+   		WHERE M1.MEMBER_ID = #{id}
+		</update>
+
+		<update id="updateFamilyCdForChild" parameterType="membervo">
+    	UPDATE MEMBERS AS M1
+    	JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{id}
+    	SET M1.FAMILY_CD = CASE
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL THEN UUID()
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL THEN M2.FAMILY_CD
+        	ELSE M1.FAMILY_CD
+    	END
+    	WHERE M1.MEMBER_ID = #{childId}
+		</update>
 	
 	<delete id="signOut" parameterType = "membervo">
 		DELETE FROM MEMBERS
@@ -94,4 +93,21 @@
 		WHERE MEMBER_ID = #{id}
 		AND PHONE = #{phone}
 	</update>
+	
+	<select id="selectMyChildren" parameterType="string" resultType="membervo">
+    	SELECT MEMBER_ID AS id, NAME, EMAIL, FAMILY_CD, MEM_TYPE
+    	FROM MEMBERS
+    	WHERE FAMILY_CD = (
+        		SELECT FAMILY_CD FROM MEMBERS WHERE MEMBER_ID = #{id}
+    			)
+    			AND MEM_TYPE = 'C'
+	</select>
+	
+	<update id="disconnectChild" parameterType="string">
+    	UPDATE MEMBERS
+    	SET FAMILY_CD = NULL
+    	WHERE MEMBER_ID = #{childId}
+	</update>
+	
+	
 </mapper>

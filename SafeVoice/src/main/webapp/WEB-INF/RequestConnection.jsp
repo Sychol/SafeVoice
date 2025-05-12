@@ -29,17 +29,20 @@
     <!-- ✅ 1단계: 자녀 아이디 + 이메일 입력 -->
     <form action="RequestConnection.do" method="post">
       <label for="targetId">자녀 아이디</label>
-      <input type="text" id="targetId" name="targetId" required />
+      <input type="text" id="targetId" name="targetId" value="${sessionScope.receiverId}" 
+      <c:if test="${not empty sessionScope.realCode}">readonly</c:if>
+      required />
 
       <label for="targetEmail">자녀 이메일</label>
-      <input type="email" id="targetEmail" name="targetEmail" required />
+      <input type="email" id="targetEmail" name="targetEmail"  value="${sessionScope.targetEmail}"
+      <c:if test="${not empty sessionScope.realCode}">readonly</c:if>
+       required />
 
       <input type="submit" value="이메일로 인증번호 보내기" />
     </form>
 
     <!-- ✅ 2단계: 인증번호 입력창 (세션에 realCode가 있을 때만 노출) -->
     <c:if test="${not empty sessionScope.realCode}">
-  <c:remove var="realCode" scope="session" />
 
   <div class="info-message">📩 인증번호가 이메일로 전송되었습니다.</div>
 

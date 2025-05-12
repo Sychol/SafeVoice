@@ -28,6 +28,8 @@ import com.safevoice.controller.Member.SignInService;
 import com.safevoice.controller.Member.SignOutService;
 import com.safevoice.controller.Member.VerifyCodeService;
 import com.safevoice.controller.Member.VerifyIdentityService;
+import com.safevoice.controller.Member.ViewChildListService;
+import com.safevoice.tomb.DeleteChildService;
 import com.safevoice.tomb.RepeatAlertService;
 import com.safevoice.tomb.StopNotificationService;
 
@@ -56,6 +58,8 @@ public class FrontController extends HttpServlet {
 	    map.put("MenuMain.do", new MenuMainService());
 	    map.put("MainPageChild.do", new MainPageChildService());
 	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
+	    map.put("ViewChildList.do", new ViewChildListService()); // 자녀 관리
+//	    map.put("DeleteChild.do", new DeleteChildService()); // 자녀 삭제
 
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -22,17 +22,33 @@ public class InputFileService implements Command {
         String fileName = mtr.getFilesystemName("file");
         String filePath = uploadDir + "/" + fileName;
         String childId = mtr.getParameter("memberId");
+        System.out.println("📁 filePath: " + filePath);
 
         // 3. Python 분석 실행
         String result = "";
         try {
-            ProcessBuilder pb = new ProcessBuilder("python", "C:/Users/smhrd/PythonLibrary/analyze_file.py", filePath);
+            ProcessBuilder pb = new ProcessBuilder("python", "C:/Users/smhrd/Desktop/ML_part/MLtest.py", filePath);
             Process process = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
             result = reader.readLine();
+            System.out.println("🐾 [DEBUG] Python 출력: " + result);
+            
+         // stderr 출력 파일 저장 시도 (임시 디버깅용)
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream(), "UTF-8"));
+            BufferedWriter errOut = new BufferedWriter(new FileWriter("C:/Users/smhrd/Desktop/python_error_log.txt"));
+            String errorLine;
+            while ((errorLine = errorReader.readLine()) != null) {
+                errOut.write(errorLine + "\n");
+            }
+            errOut.close();
+            
             process.waitFor();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        
+        if (result == null || result.trim().isEmpty()) {
+            throw new IOException("Python 실행 결과가 없습니다. MLtest.py에서 print(...)로 결과를 출력했는지 확인하세요.");
         }
 
         // 4. 결과 숫자 파싱

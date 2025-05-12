@@ -13,17 +13,22 @@
   <link rel="stylesheet"
         href="${pageContext.request.contextPath}/css/Login.css">
   <script src="${pageContext.request.contextPath}/js/Login.js" defer></script>
-<%
-    String successMsg = (String) session.getAttribute("successMsg"); // 비밀번호 변경 성공 alert
-    if (successMsg != null) {
-%>
+  
+<!-- 비밀번호 변경 성공 alert -->
+<c:if test="${not empty sessionScope.successMsg}"> 
     <script>
-        alert('<%= successMsg %>');
+        alert('${sessionScope.successMsg}');
     </script>
-<%
-        session.removeAttribute("successMsg"); // successMsg 한 번만 쓰고 지우기
-    }
-%>
+    <c:remove var="successMsg" scope="session" />
+</c:if>
+
+<!-- 로그인 에러 alert -->
+<c:if test="${not empty error}">
+    <script>
+        alert('${error}');
+    </script>
+</c:if>
+
 </head>
 <body>
   <div class="container">

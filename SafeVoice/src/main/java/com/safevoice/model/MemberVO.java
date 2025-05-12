@@ -15,7 +15,8 @@ public class MemberVO {
 	String familyCode;
 	String memType;
 	String childId;
-	
+	String imagePath;
+
 	public MemberVO(String email, String id, String pw, String name, String birthDate, String phone, String postcode,
 			String address, String detailAddress, String gender, String familyCode, String memType) {
 		super();
@@ -141,6 +142,12 @@ public class MemberVO {
 		this.childId = childId;
 	}
 	
-	
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	
 }

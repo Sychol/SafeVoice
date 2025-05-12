@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /*** 5) 가입 제출 & 환영 모달 ***/
+  /*
   function bindSubmit() {
 	const formEl      = document.getElementById('signForm');
 	const welcomeModal= document.getElementById('welcomeModal');
@@ -295,9 +296,10 @@ document.addEventListener('DOMContentLoaded', () => {
       location.href = `${path}/GoLogin.do`;
     });
   }
+  */
 
   // **초기화 호출**
   initSignInFeatures();
   restrictBirthToToday();
-  bindSubmit();
+  /*bindSubmit();*/
 });

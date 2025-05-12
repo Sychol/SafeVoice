@@ -32,7 +32,7 @@ public class VerifyIdentityService implements Command {
         if (row != 0) {
         	// 동일
             request.setAttribute("id", id);
-            return "ChangePassword.do"; //?id=" + id);
+            return "GoChangePassword.do";
         } else {
             // 틀렸어!
             return "VerifyIdentity.jsp?error=true"; 

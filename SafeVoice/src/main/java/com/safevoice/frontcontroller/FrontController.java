@@ -56,7 +56,6 @@ public class FrontController extends HttpServlet {
 	    map.put("MenuMain.do", new MenuMainService());
 	    map.put("MainPageChild.do", new MainPageChildService());
 	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
-	    map.put("RequestConnection.do", new RequestConnectionService());
 
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -86,12 +85,16 @@ public class FrontController extends HttpServlet {
 
 		if (moveUrl == null) {
 
-		} else if (moveUrl.contains("redirect:/")) {
-			response.sendRedirect(moveUrl.substring(10));
+		} else if (moveUrl.startsWith("redirect:/")) { // redirect:/ 로 시작하는 경우 sendRedirect 처리
+			response.sendRedirect(request.getContextPath() + moveUrl.substring(9)); // contextPath 포함
 		} else {
 
-			if (finalPath.contains("Go")) {
+			if (finalPath.startsWith("Go")) {
 				moveUrl = finalPath.replace("Go", "").replace(".do", ".jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
+				rd.forward(request, response);
+			} else if (moveUrl != null && !moveUrl.isEmpty()) {
+				// "Go" 접두사가 없지만 moveUrl이 설정된 경우 forward
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
 				rd.forward(request, response);
 			}

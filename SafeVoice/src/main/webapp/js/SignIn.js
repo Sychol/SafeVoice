@@ -228,10 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /*** 5) 가입 제출 & 환영 모달 ***/
   function bindSubmit() {
-    const formEl      = document.getElementById('signForm');
-    const welcomeModal= document.getElementById('welcomeModal');
-    const welcomeMsg  = document.getElementById('welcomeMessage');
-    const welcomeOk   = document.getElementById('welcomeOk');
+	const formEl      = document.getElementById('signForm');
+	const welcomeModal= document.getElementById('welcomeModal');
+	const welcomeMsg  = document.getElementById('welcomeMessage');
+	const welcomeOk   = document.getElementById('welcomeBtnOk'); // 변경된 ID 사용
     if (!formEl||!welcomeModal||!welcomeMsg||!welcomeOk) return;
 
     formEl.addEventListener('submit', e=>{
@@ -257,9 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(r=>r.json())
         .then(res=>{
           if (res.success) {
-            const typ = document.querySelector('input[name="div"]:checked')?.value;
+            const typ = document.querySelector('input[name="memType"]:checked')?.value;
             const nm  = document.getElementById('name').value.trim();
-            welcomeMsg.textContent = typ==='parent'
+            welcomeMsg.textContent = typ==='P'
               ? `${nm}님, 부모님 회원가입을 환영합니다!`
               : `${nm}님, 자녀 회원가입을 축하합니다!`;
             welcomeModal.style.display='flex';
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     welcomeOk.addEventListener('click', ()=>{
-      location.href = `${path}/Login.do`;
+      location.href = `${path}/GoLogin.do`;
     });
   }
 

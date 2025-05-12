@@ -260,14 +260,14 @@
         </button>
       </div>
     </form>
- <!-- 회원가입 환영메세지 출력 코드 -->
+ <!-- 회원가입 환영메세지 출력 코드-->
 <div id="welcomeModal" class="modal" style="display:none;">
   <div class="modal-content" style="max-width:300px; margin:20% auto; padding:1rem;">
     <p id="welcomeMessage" style="margin-bottom:1rem; text-align:center; font-weight:600;"></p>
-    <button id="welcomeOk" class="btn-submit">확인</button>
+    <button id="welcomeBtnOk" class="btn-submit">확인</button>
   </div>
 </div>
-    <!-- 모달 팝업: 약관 전문 -->
+    <!-- 모달 팝업: 약관 전문-->
     <div id="termsModal" class="modal">
       <div class="modal-content terms-content">
         <div class="terms-header">

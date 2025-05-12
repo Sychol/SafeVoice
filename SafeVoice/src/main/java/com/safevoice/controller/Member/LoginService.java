@@ -16,18 +16,17 @@ public class LoginService implements Command {
 
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String memType = request.getParameter("memType");
 
 		MemberVO mvo = new MemberVO();
 		mvo.setId(id);
 		mvo.setPw(pw);
-		mvo.setMemType(memType);
 
 		MemberDAO mdao = new MemberDAO();
 
 		MemberVO resultVo = mdao.login(mvo);
+		String memType = resultVo.getMemType();
 
-		if (resultVo != null) {
+		if (resultVo.getId() != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", resultVo); // 로그인한 회원 정보
 			session.setAttribute("loginId", resultVo.getId()); // 로그인한 회원의 아이디
@@ -43,7 +42,7 @@ public class LoginService implements Command {
 		}
 		else {
 		    request.setAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다.");
-		    return "GoLogin.do";
+		    return "redirect:/GoLogin.do";
 		}
 	}
 }

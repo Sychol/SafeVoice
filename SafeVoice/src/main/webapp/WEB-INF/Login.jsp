@@ -23,9 +23,9 @@
 </c:if>
 
 <!-- 로그인 에러 alert -->
-<c:if test="${not empty error}">
+<c:if test="${not empty sessionScope.error}">
     <script>
-        alert('${error}');
+        alert('${sesesionScope.error}');
     </script>
 </c:if>
 
@@ -46,7 +46,7 @@
     </p>
 <!-- 로그인 폼 -->
      <form id="loginForm"
-        action="MenuMain.do"
+        action="Login.do"
         method="post">
 
     <input class="input-field"

@@ -16,34 +16,36 @@ public class LoginService implements Command {
 
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String memType = request.getParameter("memType");
 
 		MemberVO mvo = new MemberVO();
 		mvo.setId(id);
 		mvo.setPw(pw);
-		mvo.setMemType(memType);
 
 		MemberDAO mdao = new MemberDAO();
 
 		MemberVO resultVo = mdao.login(mvo);
-
-		if (resultVo != null) {
-			HttpSession session = request.getSession();
+		String memType = resultVo.getMemType();
+		System.out.println("로그인 시도 결과 ID: " + resultVo.getId());
+		System.out.println("로그인 시도 결과 memType: " + resultVo.getMemType());
+		System.out.println("✅ 로그인 성공! memType: " + memType);
+		System.out.println("✅ 리턴 주소: GoMainPageChild.do");
+		HttpSession session = request.getSession();
+		if (resultVo.getId() != null) {
 			session.setAttribute("loginMember", resultVo); // 로그인한 회원 정보
 			session.setAttribute("loginId", resultVo.getId()); // 로그인한 회원의 아이디
-			if (memType.equals("P")) {
+			if (memType.trim().equals("P")) {
 				return "GoMainPageAdult.do";
-			} else if (memType.equals("C")) {
+			} else if (memType.trim().equals("C")) {
 				return "GoMainPageChild.do";
 			} else {
 		        // 혹시 모를 예외적인 경우 처리
-		        request.setAttribute("error", "회원 유형이 잘못되었습니다.");
+		        session.setAttribute("error", "회원 유형이 잘못되었습니다.");
 		        return "GoLogin.do";
 		    }
 		}
 		else {
-		    request.setAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다.");
-		    return "GoLogin.do";
+		    session.setAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다.");
+		    return "redirect:/GoLogin.do";
 		}
 	}
 }

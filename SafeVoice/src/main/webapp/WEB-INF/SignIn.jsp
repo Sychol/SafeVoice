@@ -120,7 +120,7 @@
         <label for="birth">생년월일</label>
         <input type="date"
                id="birth"
-               name="birth"
+               name="birthDate"
                class="input-field"
                required>
       </div>
@@ -197,7 +197,7 @@
         <!-- 결합된 전화번호 전송용 -->
         <input type="hidden"
                id="tel"
-               name="tel"
+               name="phone"
                value="">
       </div>
       <div id="MyNum" class="message"></div>
@@ -210,8 +210,8 @@
                 class="input-field"
                 required>
           <option value="">선택하세요</option>
-          <option value="woman">여성</option>
-          <option value="man">남성</option>
+          <option value="W">여성</option>
+          <option value="M">남성</option>
         </select>
       </div>
 
@@ -220,14 +220,14 @@
         <label>구분</label>
         <label>
           <input type="radio"
-                 name="div"
-                 value="parent">
+                 name="memType"
+                 value="P">
           부모님
         </label>
         <label>
           <input type="radio"
-                 name="div"
-                 value="child">
+                 name="memType"
+                 value="C">
           자녀
         </label>
       </div>
@@ -260,14 +260,14 @@
         </button>
       </div>
     </form>
- <!-- 회원가입 환영메세지 출력 코드 -->
+ <!-- 회원가입 환영메세지 출력 코드-->
 <div id="welcomeModal" class="modal" style="display:none;">
   <div class="modal-content" style="max-width:300px; margin:20% auto; padding:1rem;">
     <p id="welcomeMessage" style="margin-bottom:1rem; text-align:center; font-weight:600;"></p>
-    <button id="welcomeOk" class="btn-submit">확인</button>
+    <button id="welcomeBtnOk" class="btn-submit">확인</button>
   </div>
 </div>
-    <!-- 모달 팝업: 약관 전문 -->
+    <!-- 모달 팝업: 약관 전문-->
     <div id="termsModal" class="modal">
       <div class="modal-content terms-content">
         <div class="terms-header">

@@ -12,7 +12,7 @@
 <body>
 
   <header>
-    <i class="fas fa-arrow-left"></i>
+<img src="${pageContext.request.contextPath}/image/뒤로가기.png" alt="뒤로가기" class="back-button" />
     <div class="title">알림 설정</div>
 <img src="${pageContext.request.contextPath}/image/Mom.png" alt="부모 프로필" class="parent-icon" />  
 </header>
@@ -34,55 +34,59 @@
       </div>
     </div>
 
-    <div class="sub-toggle">
-      <span>소리</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
+<!-- SOS 알림 -->
+<div class="sub-toggle">
+  <span>소리</span>
+  <label class="toggle-switch">
+    <input type="checkbox" id="sos-sound" class="setting-toggle" checked />
+    <span class="slider"></span>
+  </label>
+</div>
 
-    <div class="sub-toggle">
-      <span>진동</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
+<div class="sub-toggle">
+  <span>진동</span>
+  <label class="toggle-switch">
+    <input type="checkbox" id="sos-vibration" class="setting-toggle" checked />
+    <span class="slider"></span>
+  </label>
+</div>
 
-    <!-- 경고 알림 -->
-    <hr>
-    <div class="sub-toggle">
-      <span>경고 알림 설정</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div class="sub-toggle">
-      <span>소리</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div class="sub-toggle">
-      <span>진동</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
+<!-- 경고 알림 -->
+<hr>
+<div class="sub-toggle">
+  <span>경고 알림 설정</span>
+  <label class="toggle-switch">
+    <input type="checkbox" id="warn-enable" class="setting-toggle" checked />
+    <span class="slider"></span>
+  </label>
+</div>
 
-    <!-- 주의 알림 -->
-    <hr>
-    <div class="sub-toggle">
-      <span>주의 알림 설정</span>
-      <label class="toggle-switch">
-        <input type="checkbox">
-        <span class="slider"></span>
-      </label>
-    </div>
+<div class="sub-toggle">
+  <span>소리</span>
+  <label class="toggle-switch">
+    <input type="checkbox" id="warn-sound" class="setting-toggle" checked />
+    <span class="slider"></span>
+  </label>
+</div>
+
+<div class="sub-toggle">
+  <span>진동</span>
+  <label class="toggle-switch">
+    <input type="checkbox" id="warn-vibration" class="setting-toggle" checked />
+    <span class="slider"></span>
+  </label>
+</div>
+
+<!-- 주의 알림 -->
+<hr>
+<div class="sub-toggle">
+  <span>주의 알림 설정</span>
+  <label class="toggle-switch">
+    <input type="checkbox" id="caution-enable" class="setting-toggle" />
+    <span class="slider"></span>
+  </label>
+</div>
+
 
   </div>
 

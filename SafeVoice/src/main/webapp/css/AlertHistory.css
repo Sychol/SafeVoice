@@ -136,30 +136,30 @@ footer {
 }
 
 .alert-icon {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  font-weight: bold;
   color: white;
 }
 
-/* 알림 색상 */
 .icon-red {
-  background-color: #f44336;
+  background-color: #e74c3c;
 }
 
 .icon-orange {
-  background-color: #ff9800;
+  background-color: #e67e22;
 }
 
 .icon-yellow {
-  background-color: #ffeb3b;
-  color: #333; /* 노랑 배경일 땐 검정 느낌표가 더 잘 보여 */
+  background-color: #f1c40f;  /* 오렌지 느낌 */
+  color: white;
 }
+
 
 
 

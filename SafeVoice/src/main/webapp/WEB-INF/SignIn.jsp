@@ -350,7 +350,7 @@
     <!-- 하단 링크 -->
     <div class="sign-footer">
       이미 계정이 있으신가요?
-      <a href="/GoLogin.do">로그인</a>
+      <a href="GoLogin.do">로그인</a>
     </div>
     <!-- SignIn.js 연결 -->
 <script type="module" defer src="${pageContext.request.contextPath}/js/SignIn.js"></script>

@@ -37,6 +37,7 @@ public class VerifyCodeService implements Command {
 
             if (row > 0) {
                 request.setAttribute("successMsg", "인증 성공! 가족으로 연결되었습니다.");
+                session.removeAttribute("realCode");
                 return "GoMenuMain.do";
             } else {
                 request.setAttribute("errorMsg", "가족 등록에 실패했습니다. 다시 시도해주세요.");

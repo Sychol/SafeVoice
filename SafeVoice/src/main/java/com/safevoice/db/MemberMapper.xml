@@ -38,8 +38,9 @@
             ADDRESS = #{address},
         </if>
         <if test="pw != null and pw != ''">
-            PW = #{pw},
+            PW = #{pw}
         </if>
+        
     </set>
     WHERE MEMBER_ID = #{id}
 </update>

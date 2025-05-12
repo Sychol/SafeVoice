@@ -35,7 +35,14 @@ public class ModifyMemberService implements Command {
         if (address != null && !address.isBlank()) { // 주소 변경을 어떻게 하면 좋을지... 에 대한 고민
             mvo.setAddress(address);
         }
-
+        
+        if ((email == null || email.isBlank()) &&
+        	    (phone == null || phone.isBlank()) &&
+        	    (address == null || address.isBlank())) {
+        	    
+        	    request.setAttribute("errorMsg", "수정할 내용이 없습니다.");
+        	    return "GoModifyMember.do";
+        	}
 
         int row = new MemberDAO().updateMember(mvo);
 

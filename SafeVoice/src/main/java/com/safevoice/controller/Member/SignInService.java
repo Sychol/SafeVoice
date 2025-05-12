@@ -25,8 +25,6 @@ public class SignInService implements Command {
 		String detailAddress = request.getParameter("detailAddress"); // 상세주소
 		String gender = request.getParameter("gender");
 		
-		System.out.println(id+ memType+ pw+ email+ name+ birthDate+ phone+ postcode+ address+ detailAddress+ gender);
-		
 		MemberVO member = new MemberVO();
 		member.setId(id);
 		member.setMemType(memType);
@@ -42,14 +40,22 @@ public class SignInService implements Command {
 
 		MemberDAO mdao = new MemberDAO();
 
-		int row = mdao.signIn(member);
-		System.out.println(row);
 
-		if (row > 0) {
-			return "GoLogin.do";
-		} else {
-			return "GoSignIn.do";
+		try {
+		    int row = mdao.signIn(member);
+		    System.out.println("row : " + row);
+		    if (row > 0) {
+		    	System.out.println("GoLogin.do 가고 싶다고");
+		        return "redirect:/GoLogin.do";
+		    } else {
+		    	System.out.println("GoSign.do 말고");
+		        return "redirect:/GoSignIn.do";
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();  // 예외를 로그로 출력
+		    return "redirect:/GoSignIn.do";  // 실패 시 돌아갈 페이지
 		}
+
 	}
 
 }

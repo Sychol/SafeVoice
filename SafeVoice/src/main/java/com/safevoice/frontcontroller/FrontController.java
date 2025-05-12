@@ -63,10 +63,13 @@ public class FrontController extends HttpServlet {
 		
 
 		String uri = request.getRequestURI();
+//		System.out.println("uri : " + uri);
 
 		String cp = request.getContextPath();
+//		System.out.println("cp : " + cp);
 
 		String finalPath = uri.substring(cp.length() + 1);
+//		System.out.println("finalPath : " + finalPath);
 
 		request.setCharacterEncoding("UTF-8");
 		
@@ -81,25 +84,28 @@ public class FrontController extends HttpServlet {
 
 		if (com != null) {
 			moveUrl = com.execute(request, response);
-			System.out.println("🌐 요청 URI: " + uri);
-			System.out.println("➡️ 실행 후 이동 주소: " + moveUrl);
+//			System.out.println("🌐 요청 URI: " + uri);
+//			System.out.println("➡️ 실행 후 이동 주소: " + moveUrl);
+//			System.out.println("➡️ finalPath: " + finalPath);
 		}
 
 		if (moveUrl == null) {
 
-		} else if (moveUrl.startsWith("redirect:/")) { // redirect:/ 로 시작하는 경우 sendRedirect 처리
+		} else if (moveUrl.contains("redirect:/")) { // redirect:/ 로 시작하는 경우 sendRedirect 처리
 			response.sendRedirect(request.getContextPath() + moveUrl.substring(9)); // contextPath 포함
 		} else {
-
-			if (finalPath.startsWith("Go")) {
-				moveUrl = finalPath.replace("Go", "").replace(".do", ".jsp");
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
-				rd.forward(request, response);
-			} else if (moveUrl != null && !moveUrl.isEmpty()) {
-				// "Go" 접두사가 없지만 moveUrl이 설정된 경우 forward
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
-				rd.forward(request, response);
+			if (moveUrl.contains("Go")) {
+				moveUrl = moveUrl.replace("Go", "").replace(".do", ".jsp");
+//				System.out.println("moveURL 1번 : " + moveUrl);
 			}
+			if (finalPath.contains("Go")) {
+				moveUrl = finalPath.replace("Go", "").replace(".do", ".jsp");
+//				System.out.println("moveURL 2번 : " + moveUrl);
+			}
+//			System.out.println("여기는 가니? : "+ moveUrl);
+//			System.out.println("final Path? : "+ finalPath);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
+			rd.forward(request, response);
 		}
 	}
 	

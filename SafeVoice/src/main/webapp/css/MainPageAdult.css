@@ -226,7 +226,7 @@ header {
     color: #555;
 }
 
-.badge {
+/* .badge {
     position: absolute;
     top: -8px;
     right: -8px;
@@ -241,7 +241,7 @@ header {
     align-items: center;
     font-size: 10px;
     z-index: 1;
-}
+} */
 
 /* 알림 섹션 */
 .alerts-section {
@@ -540,8 +540,8 @@ footer {
   padding: 3px 7px;
   border-radius: 12px;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: -17px;
+  right: -6px;
 }
 
 /* alert-level 색상 */

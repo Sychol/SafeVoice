@@ -24,7 +24,11 @@
 
   <!-- ─── 의존성 선언 ─── -->
   <dependencies>
-
+<dependency>
+  <groupId>jakarta.activation</groupId>
+  <artifactId>jakarta.activation-api</artifactId>
+  <version>1.2.2</version>
+</dependency>
     <!-- Spring Web (필수) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -37,12 +41,6 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
-    <!-- Mail (MimeMessage) -->
-    <dependency>
-      <groupId>com.sun.mail</groupId>
-      <artifactId>javax.mail</artifactId>
-      <version>1.6.2</version>
-    </dependency>
 
     <!-- MyBatis -->
     <dependency>
@@ -119,11 +117,6 @@
 </dependency>
   
   <!-- javamail 라이브러리 (메일 전송) -->
-  <dependency>
-    <groupId>com.sun.mail</groupId>
-    <artifactId>jakarta.mail</artifactId>
-    <version>2.0.1</version>
-</dependency>
   <dependency>
   <groupId>javax.servlet</groupId>
   <artifactId>jstl</artifactId>

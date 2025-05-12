@@ -12,7 +12,7 @@
 <body>
 
   <header>
-    <i class="fas fa-arrow-left"></i>
+<img src="${pageContext.request.contextPath}/image/뒤로가기.png" alt="뒤로가기" class="back-button" />
     <div class="title">알림 설정</div>
 <img src="${pageContext.request.contextPath}/image/Mom.png" alt="부모 프로필" class="parent-icon" />  
 </header>

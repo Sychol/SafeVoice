@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import jakarta.mail.*;
-import jakarta.mail.internet.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 import com.safevoice.controller.Command;
 import com.safevoice.db.MemberDAO;

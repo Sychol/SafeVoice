@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const settingBtn = document.querySelector('.setting-btn');
   const settingMenu = document.querySelector('.setting-menu');
   const settingLabel = document.querySelector('.sos-setting-label');
+  const backButton = document.querySelector(".back-button");
 
+  
   // ✅ 저장된 값 불러오기
   const savedSetting = localStorage.getItem('sosRepeatSetting');
   if (savedSetting) {
@@ -33,4 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
       settingMenu.style.display = 'none';
     }
   });
+  
+  if (backButton) {
+      backButton.addEventListener("click", () => history.back());
+    }
 });

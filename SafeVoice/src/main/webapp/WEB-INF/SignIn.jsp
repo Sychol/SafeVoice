@@ -37,7 +37,7 @@
 
     <!-- 회원가입 폼 -->
     <form id="signForm"
-          action="${pageContext.request.contextPath}/signin"
+          action="${pageContext.request.contextPath}/SignIn.do"
           method="post">
 
       <!-- 아이디 -->

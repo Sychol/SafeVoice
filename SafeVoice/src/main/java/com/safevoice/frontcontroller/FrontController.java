@@ -19,6 +19,7 @@ import com.safevoice.controller.Alert.InputFileService;
 import com.safevoice.controller.Alert.SaveSubscriptionService;
 import com.safevoice.controller.Alert.SendPushNotificationService;
 import com.safevoice.controller.Member.ChangePasswordService;
+import com.safevoice.controller.Member.IdDuplicateCheckService;
 import com.safevoice.controller.Member.LoginService;
 import com.safevoice.controller.Member.LogoutService;
 import com.safevoice.controller.Member.ModifyMemberService;
@@ -54,7 +55,7 @@ public class FrontController extends HttpServlet {
 	    map.put("GetAlertHistory.do", new GetAlertHistoryService());
 	    map.put("MenuMain.do", new MenuMainService());
 	    map.put("MainPageChild.do", new MainPageChildService());
-	    
+	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

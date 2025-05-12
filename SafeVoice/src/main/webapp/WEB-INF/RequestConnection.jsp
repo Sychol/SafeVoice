@@ -39,15 +39,17 @@
 
     <!-- ✅ 2단계: 인증번호 입력창 (세션에 realCode가 있을 때만 노출) -->
     <c:if test="${not empty sessionScope.realCode}">
-      <div class="info-message">📩 인증번호가 이메일로 전송되었습니다.</div>
+  <c:remove var="realCode" scope="session" />
 
-      <form action="VerifyCode.do" method="post">
-        <label for="inputCode">인증번호 입력</label>
-        <input type="text" id="inputCode" name="inputCode" required />
+  <div class="info-message">📩 인증번호가 이메일로 전송되었습니다.</div>
 
-        <input type="submit" value="확인" />
-      </form>
-    </c:if>
+  <form action="VerifyCode.do" method="post">
+    <label for="inputCode">인증번호 입력</label>
+    <input type="text" id="inputCode" name="inputCode" required />
+    <input type="submit" value="확인" />
+  </form>
+</c:if>
+
   </div>
 
 </body>

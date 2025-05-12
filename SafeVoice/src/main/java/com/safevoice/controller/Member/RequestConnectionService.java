@@ -35,7 +35,7 @@ public class RequestConnectionService implements Command {
 		if (row > 0) {
 			String code = String.valueOf((int)((Math.random() * 900000) + 100000)); // 랜덤 6자리 수 생성
 			
-            String fromEmail = "j200chi@gmail.com"; // 메일 보내는 사람 (나) 이메일
+            String fromEmail = "jungm02719@gmail.com"; // 메일 보내는 사람 (나) 이메일
             String appPassword = "jmrtsbrncmqeikjj"; // 2단계 인증 앱 비밀번호 (일회용)
 			
 			Properties props = new Properties(); // 이거 걍 SMTP 서버 설정 코드

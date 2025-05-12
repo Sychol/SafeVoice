@@ -16,8 +16,10 @@
   <!-- 3. 카카오 우편번호 API 로드 -->
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-  <!-- 4. SignIn.js 모듈 로드 (init 자동 실행, execDaumPostcode 노출) -->
-  <script type="module" defer src="${pageContext.request.contextPath}/js/SignIn.js"></script>
+<link rel="shortcut icon" href="">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
 </head>
 <body>
   <div class="sign-container">
@@ -47,6 +49,7 @@
            class="input-field"
            placeholder="영문+숫자 4~10자"
            required>
+    <div id="username-msg" class="message"></div>
 	</div>
 
       <!-- 비밀번호 -->
@@ -157,7 +160,7 @@
 <!-- (embed 방식) 레이어 팝업용 HTML -->
 <div id="postcodeLayer" class="postcode-layer">
   <div id="postcodeContainer" class="postcode-wrap">
-    <!-- 닫기 버튼을 wrap 내부로 이동하여 상단 우측 고정 -->
+    <!-- 닫기 버튼 구현 -->
     <button type="button"
             id="closePostcodeLayer"
             class="postcode-close-btn">
@@ -347,7 +350,10 @@
     <!-- 하단 링크 -->
     <div class="sign-footer">
       이미 계정이 있으신가요?
-      <a href="${pageContext.request.contextPath}/Login.do">로그인</a>
+      <a href="/GoLogin.do">로그인</a>
     </div>
+    <!-- SignIn.js 연결 -->
+<script type="module" defer src="${pageContext.request.contextPath}/js/SignIn.js"></script>
+    
 </body>
 </html>

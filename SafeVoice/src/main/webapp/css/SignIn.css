@@ -173,15 +173,17 @@ body {
 11. 우편번호 검색 레이어
 ------------------------------------*/
 .postcode-layer {
-  display: none;            /* JS 제어 */
+  display: none;              /* 기본 숨김 */
   position: fixed;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(0,0,0,0.5);
   z-index: 1000;
-  display: flex;            /* 중앙정렬 */
+  display: none;              
   align-items: center;
   justify-content: center;
 }
+
+/*———— 우편번호 컨테이너 ————*/
 .postcode-wrap {
   position: relative;
   width: 90%;
@@ -190,21 +192,32 @@ body {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
+  box-sizing: border-box;  /* padding을 내부에 포함시키기 위해 */
+  padding-top: 48px;       /* X 버튼(32px) + 여유 공간(16px) */
 }
-.postcode-close-btn {
+
+
+
+/*———— 닫기 버튼 ————*/
+#closePostcodeLayer {
   position: absolute;
-  top: 8px; right: 8px;
-  width: 32px; height: 32px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  font-size: 1.2rem;
+  top: 8px;
+  right: 8px;
+
+  /* 버튼 외형 리셋 */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  
+  /* 아이콘(✕) 크기/색상 */
+  font-size: 1.5rem;
+  color: #333;
+  line-height: 1;
+  padding: 4px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1001;
 }
+
 
 /*------------------------------------
 12. 모달 공통
@@ -303,3 +316,46 @@ body.dark-mode .message {
   color: #ccc;
 }
 body.dark-mode .btn-submit { background: #5c8553; }
+
+.mode-toggle {
+  position: absolute;
+  top: 16px;   /* 카드 안쪽 위쪽 여백 */
+  right: 16px; /* 카드 안쪽 오른쪽 여백 */
+  z-index: 10; /* 다른 요소 위로 올라오도록 */
+}
+
+.mode-toggle button {
+  background: transparent;  /* 기본 회색 배경 제거 */
+  border: none;             /* 테두리 제거 */
+  padding: 0;               /* 불필요한 여백 제거 */
+  margin: 0;
+  font-size: 1.5rem;        /* 아이콘 크기 조절 */
+  line-height: 1;
+  cursor: pointer;
+  outline: none;            /* 클릭 시 기본 아웃라인 제거 (원하신다면) */
+}
+/*------------------------------------
+14. 개인정보 동의 텍스트와 체크박스 부분 css
+------------------------------------*/
+/* 약관 동의 한 줄 정렬 */
+.consent-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 체크박스랑 링크 사이 간격 */
+.consent-label {
+  margin-right: 4px;
+}
+
+/* 링크와 텍스트 사이 간격 */
+.terms-link {
+  margin: 0 0px 0 0;
+}
+
+/* 텍스트는 margin 없애고 inline 처리 */
+.consent-text {
+  margin: 0;
+  display: inline-block;
+}
+

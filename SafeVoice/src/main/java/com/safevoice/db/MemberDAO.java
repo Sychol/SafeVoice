@@ -3,10 +3,12 @@ package com.safevoice.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.safevoice.model.AlertVO;
 import com.safevoice.model.MemberVO;
 
 public class MemberDAO {
@@ -94,6 +96,14 @@ public class MemberDAO {
 		int row = sqlsession.update("updatePw", member);
 		sqlsession.close();
 		return row;
+	}
+	
+	// 아이 리스트 가져오기
+	public List<MemberVO> getChildList(String id) {
+		SqlSession sqlsession = factory.openSession(true);
+		List<MemberVO> childList = sqlsession.selectList("getChildList", id);
+		sqlsession.close();
+		return childList;
 	}
 
 }

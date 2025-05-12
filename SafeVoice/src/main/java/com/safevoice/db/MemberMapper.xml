@@ -94,4 +94,16 @@
 		WHERE MEMBER_ID = #{id}
 		AND PHONE = #{phone}
 	</update>
+	
+	<select id="getChildList" parameterType = "String" resultType = "membervo">
+		SELECT MEMBER_ID, EMAIL, NAME, IMAGE_PATH
+		FROM MEMBERS
+		WHERE FAMILY_CD = (
+			SELECT FAMILY_CD
+			FROM MEMBERS
+			WHERE MEMBER_ID = #{id}
+			)
+		AND MEM_TYPE ='C'
+	</select>
+	
 </mapper>

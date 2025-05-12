@@ -54,7 +54,7 @@ public class FrontController extends HttpServlet {
 	    map.put("GetAlertHistory.do", new GetAlertHistoryService());
 	    map.put("MenuMain.do", new MenuMainService());
 	    map.put("MainPageChild.do", new MainPageChildService());
-	    map.put("ModifyMember.do", new ModifyMemberService());
+	    map.put("RequestConnection.do", new RequestConnectionService());
 	    
 	}
 

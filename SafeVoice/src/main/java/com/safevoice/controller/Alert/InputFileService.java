@@ -49,11 +49,11 @@ public class InputFileService implements Command {
         dao.setAlertInfo(alert);
 
         // 6. 푸시 알림 전송 (level 1 이상만 전송)
-        if (level != null && (level.equals("1") || level.equals("2"))) {
+        if (level != null && (level.equals("주의") || level.equals("경고"))) {
             String message;
             switch (level) {
-                case "1" -> message = "자녀의 활동에서 주의가 필요한 징후가 발견되었어요.";
-                case "2" -> message = "⚠️ 자녀의 활동에서 위험 징후가 감지되었습니다.";
+                case "주의" -> message = "자녀의 활동에서 주의가 필요한 징후가 발견되었어요.";
+                case "경고" -> message = "⚠️ 자녀의 활동에서 위험 징후가 감지되었습니다.";
                 default -> message = "분석 결과를 해석할 수 없습니다.";
             }
             PushNotificationService pushService = new PushNotificationService();

@@ -50,30 +50,30 @@ public class RequestConnectionService implements Command {
                 }
             });
             
-            try {
-            	
-                Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(fromEmail)); // 발신자
-                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(targetEmail)); // 수신자
-                message.setSubject("인증번호 안내"); // 제목
-                message.setText("인증번호는 " + code + " 입니다."); // 내용
-                Transport.send(message); // 보내기!
-                
-                HttpSession codeSession = request.getSession();
-                codeSession.setAttribute("realCode", code); // code Session에 저장
-                codeSession.setAttribute("receiverId", targetId); // 이메일 전송 성공시 EnterCode로 이동하면서 수신자 id 넘겨주기
+                try {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(fromEmail));
+                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(targetEmail));
+                    message.setSubject("인증번호 안내");
+                    message.setText("인증번호는 " + code + " 입니다.");
+                    Transport.send(message);
 
-                return "GoEnterCode.do";
-                
-            } catch (MessagingException e) {
-                e.printStackTrace();
-                request.setAttribute("errorMsg", "이메일 전송에 실패했습니다. 이메일 주소나 네트워크 상태를 확인해주세요.");
-                return "GoRequestConnection.do"; // 다시 입력 페이지로
+                    HttpSession codeSession = request.getSession();
+                    codeSession.setAttribute("realCode", code);
+                    codeSession.setAttribute("receiverId", targetId);
+
+                    return "GoEnterCode.do";
+
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                    request.setAttribute("errorMsg", "이메일 전송에 실패했습니다. 이메일 주소나 네트워크 상태를 확인해주세요.");
+                    return "GoRequestConnection.do";
+                }
+
+            } else {
+                request.setAttribute("errorMsg", "입력하신 ID와 이메일이 일치하지 않습니다!");
+                return "GoRequestConnection.do";
             }
 
-        } else {
-            request.setAttribute("errorMsg", "입력하신 ID와 이메일이 일치하는 사용자가 없어요! 다시 확인해주세요!");
-            return "GoRequestConnection.do";
-        }
-    }
-}
+		}
+	}

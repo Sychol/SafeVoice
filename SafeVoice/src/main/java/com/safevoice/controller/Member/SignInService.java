@@ -45,9 +45,9 @@ public class SignInService implements Command {
 		int row = mdao.signIn(member);
 
 		if (row > 0) {
-			return "SignIn.do";
+			return "GoLogin.do";
 		} else {
-			return "GoMenuMain.do";
+			return "SignIn.do";
 		}
 	}
 

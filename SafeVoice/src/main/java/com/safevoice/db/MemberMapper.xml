@@ -45,15 +45,15 @@
     WHERE MEMBER_ID = #{id}
 </update>
 
-	<select id="checkMemberByIdAndEmail" parameterType="membervo" resultType="int">
-   		SELECT *
-    	FROM   member
-    	WHERE  member_id = #{member_id}
-      		   AND email = #{email}
+	<select id="checkMemberByIdAndEmail" parameterType="membervo" resultType="java.lang.Integer">
+   		SELECT COUNT(*)
+    	FROM   MEMBERS
+    	WHERE  MEMBER_ID = #{id}
+      		   AND EMAIL = #{email}
 	</select>
 
 
-	<update id="updatdFamilyCd" parameterType = "membervo">
+	<update id="updateFamilyCd" parameterType = "membervo">
 		UPDATE MEMBERS AS M1
 		JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{childId}
 			SET M1.FAMILY_CD = CASE
@@ -77,8 +77,7 @@
 	</update>
 	
 	<delete id="signOut" parameterType = "membervo">
-		DELETE *
-		FROM MEMBERS
+		DELETE FROM MEMBERS
 		WHERE MEMBER_ID = #{id} 
 		AND PW = #{pw}
 	</delete>

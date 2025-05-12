@@ -54,9 +54,9 @@ public class MemberDAO {
 	
 	public int sendCode(MemberVO member) {
 	    SqlSession sqlsession = factory.openSession(true);
-	    int result = sqlsession.selectOne("checkMemberByIdAndEmail", member);
+	    Integer result = sqlsession.selectOne("checkMemberByIdAndEmail", member);
 	    sqlsession.close();
-	    return result;
+	    return (result != null) ? result : 0;
 	}
 	
 	// 패밀리 코드 갱신

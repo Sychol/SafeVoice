@@ -24,7 +24,6 @@ public class SignInService implements Command {
 		String address = request.getParameter("address"); // 주소
 		String detailAddress = request.getParameter("detailAddress"); // 상세주소
 		String gender = request.getParameter("gender");
-		String familyCode = request.getParameter("familyCode"); // 가족 번호
 		
 		MemberVO member = new MemberVO();
 		member.setId(id);
@@ -38,7 +37,6 @@ public class SignInService implements Command {
 		member.setAddress(address);
 		member.setDetailAddress(detailAddress);
 		member.setGender(gender);
-		member.setFamilyCode(familyCode);
 
 		MemberDAO mdao = new MemberDAO();
 

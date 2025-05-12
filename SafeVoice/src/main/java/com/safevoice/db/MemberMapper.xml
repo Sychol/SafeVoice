@@ -6,8 +6,8 @@
 <mapper namespace="com.safevoice.db.MemberDAO">
 	
 	 <insert id="signIn" parameterType = "membervo">
-	 	INSERT INTO MEMBERS
-	 	VALUES(#{id},#{email},#{pw},#{name},#{birthdate},#{phone},#{postcode},#{address},#{detailAddress},#{gender},#{memType})
+	 	INSERT INTO MEMBERS (MEMBER_ID, EMAIL, PW, NAME, BIRTHDATE, PHONE, POST_CODE, ADDRESS, DETAIL_ADDRESS, GENDER, MEM_TYPE )
+	 	VALUES(#{id},#{email},#{pw},#{name},#{birthDate},#{phone},#{postcode},#{address},#{detailAddress},#{gender},#{memType})
 	 </insert>
 	 
 	 <!-- 로그인 할 때 입력하는 정보 중 세션에 집어넣어야 할 정보가 있다.

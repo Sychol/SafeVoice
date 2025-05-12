@@ -249,6 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return alert('생년월일을 잘못 입력하셨습니다.');
 
       const fd = new FormData(formEl);
+	  	console.log(formEl.method)
+	  for (const key of fd.keys()){
+		console.log(key, fd.get(key));
+	  }
       fetch(formEl.action, { method: formEl.method, body: fd })
         .then(r=>r.json())
         .then(res=>{

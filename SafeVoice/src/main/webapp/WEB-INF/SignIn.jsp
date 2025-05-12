@@ -120,7 +120,7 @@
         <label for="birth">생년월일</label>
         <input type="date"
                id="birth"
-               name="birth"
+               name="birthDate"
                class="input-field"
                required>
       </div>
@@ -197,7 +197,7 @@
         <!-- 결합된 전화번호 전송용 -->
         <input type="hidden"
                id="tel"
-               name="tel"
+               name="phone"
                value="">
       </div>
       <div id="MyNum" class="message"></div>
@@ -210,8 +210,8 @@
                 class="input-field"
                 required>
           <option value="">선택하세요</option>
-          <option value="woman">여성</option>
-          <option value="man">남성</option>
+          <option value="W">여성</option>
+          <option value="M">남성</option>
         </select>
       </div>
 
@@ -220,14 +220,14 @@
         <label>구분</label>
         <label>
           <input type="radio"
-                 name="div"
-                 value="parent">
+                 name="memType"
+                 value="P">
           부모님
         </label>
         <label>
           <input type="radio"
-                 name="div"
-                 value="child">
+                 name="memType"
+                 value="C">
           자녀
         </label>
       </div>

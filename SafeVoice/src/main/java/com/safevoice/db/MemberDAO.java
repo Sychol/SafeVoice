@@ -50,6 +50,15 @@ public class MemberDAO {
 
 	}
 	
+	// 자녀 연결 인증번호 전송
+	
+	public int sendCode(MemberVO member) {
+	    SqlSession sqlsession = factory.openSession(true);
+	    int result = sqlsession.selectOne("checkMemberByIdAndEmail", member);
+	    sqlsession.close();
+	    return result;
+	}
+	
 	// 패밀리 코드 갱신
 	public int updateFamilyCd(MemberVO member) {
 		

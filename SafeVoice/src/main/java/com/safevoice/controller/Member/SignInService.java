@@ -27,22 +27,19 @@ public class SignInService implements Command {
 		String familyCode = request.getParameter("familyCode"); // 가족 번호
 		
 		MemberVO member = new MemberVO();
+		member.setId(id);
+		member.setMemType(memType);
+		member.setPw(pw);
+		member.setEmail(email);
+		member.setName(name);
+		member.setBirthDate(birthDate);
+		member.setPhone(phone);
+		member.setPostcode(postcode);
+		member.setAddress(address);
+		member.setDetailAddress(detailAddress);
+		member.setGender(gender);
+		member.setFamilyCode(familyCode);
 
-		System.out.println(email);
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(name);
-		System.out.println(birthDate);
-		System.out.println(phone);
-		System.out.println(postcode);
-		System.out.println(address);
-		System.out.println(detailAddress);
-		System.out.println(gender);
-		System.out.println(familyCode);
-		System.out.println(memType);
-		
-		System.out.println(member);
-		
 		MemberDAO mdao = new MemberDAO();
 
 		int row = mdao.signIn(member);
@@ -50,7 +47,7 @@ public class SignInService implements Command {
 		if (row > 0) {
 			return "SignIn.do";
 		} else {
-			return "redirect:/MenuMain.do";
+			return "GoMenuMain.do";
 		}
 	}
 

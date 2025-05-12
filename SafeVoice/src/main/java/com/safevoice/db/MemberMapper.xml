@@ -43,6 +43,15 @@
     </set>
     WHERE MEMBER_ID = #{id}
 </update>
+
+	<select id="checkMemberByIdAndEmail" parameterType="membervo" resultType="int">
+   		SELECT *
+    	FROM   member
+    	WHERE  member_id = #{member_id}
+      		   AND email = #{email}
+	</select>
+
+
 	<update id="updatdFamilyCd" parameterType = "membervo">
 		UPDATE MEMBERS AS M1
 		JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{childId}

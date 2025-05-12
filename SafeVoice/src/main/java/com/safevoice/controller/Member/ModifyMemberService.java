@@ -20,8 +20,7 @@ public class ModifyMemberService implements Command {
 
         MemberVO mvo = new MemberVO();
         mvo.setId(id); // WHERE 조건 걸 id
-        
-        // 
+         
         
         if (email != null && !email.isBlank()) {
             mvo.setEmail(email);
@@ -44,17 +43,6 @@ public class ModifyMemberService implements Command {
             request.setAttribute("successMsg", "회원 정보 수정 완료!");
             return "GoMyPage.do"; // 마이페이지로 이동
             
-//            <%
-//            String successMsg = (String) session.getAttribute("successMsg"); // 개인정보 수정 성공 alert
-//            if (successMsg != null) {
-//        %>
-//            <script>
-//                alert('<%= successMsg %>');
-//            </script>
-//        <%
-//                session.removeAttribute("successMsg"); // 한 번만 쓰고 지우기
-//            }
-//        %>
         } else {
             request.setAttribute("FailMsg", "수정 실패");
             return "GoModifyMember.do";

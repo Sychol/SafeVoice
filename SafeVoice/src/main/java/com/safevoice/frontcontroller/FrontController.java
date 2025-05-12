@@ -81,6 +81,8 @@ public class FrontController extends HttpServlet {
 
 		if (com != null) {
 			moveUrl = com.execute(request, response);
+			System.out.println("🌐 요청 URI: " + uri);
+			System.out.println("➡️ 실행 후 이동 주소: " + moveUrl);
 		}
 
 		if (moveUrl == null) {

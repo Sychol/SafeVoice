@@ -127,27 +127,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3-3) 이메일 결합
-    const emailId  = document.getElementById('email-id');
-    const domainTxt= document.getElementById('domain-txt');
-    const domainSel= document.getElementById('domain-list');
-    const emailFull= document.getElementById('email-full');
-    function updateEmail() {
-      if (domainSel.value === 'type') {
-        domainTxt.disabled = false;
-        domainTxt.value    = '';
-        domainTxt.focus();
-      } else {
-        domainTxt.disabled = true;
-        domainTxt.value    = domainSel.value;
-      }
-      emailFull.value = `${emailId.value}@${domainTxt.value}`;
-    }
-    if (emailId && domainTxt && domainSel && emailFull) {
-      emailId.addEventListener('input', updateEmail);
-      domainSel.addEventListener('change', updateEmail);
-      domainTxt.addEventListener('input', updateEmail);
-      updateEmail();
-    }
+	  const emailId   = document.getElementById("email-id");
+	  const domainTxt = document.getElementById("domain-txt");
+	  const domainSel = document.getElementById("domain-list");
+	  const emailFull = document.getElementById("email-full");
+
+	  if (emailId && domainTxt && domainSel && emailFull) {
+	    function updateEmail() {
+	      console.log(
+	        "[updateEmail] select value =", `"${domainSel.value}"`,
+	        "disabled before =", domainTxt.disabled
+	      );
+
+	      if (domainSel.value.trim() === "type") {
+	        // 직접입력일 때: 이전에 disabled 상태였을 경우에만 value 초기화
+	        if (domainTxt.disabled) {
+	          domainTxt.value = "";
+	        }
+	        domainTxt.removeAttribute("disabled");
+	        domainTxt.disabled = false;
+	        domainTxt.focus();
+	        console.log("→ 직접입력: disabled 해제");
+	      } else {
+	        domainTxt.setAttribute("disabled", "disabled");
+	        domainTxt.disabled = true;
+	        domainTxt.value = domainSel.value.trim();
+	        console.log(`→ ${domainSel.value}: disabled 설정`);
+	      }
+
+	      emailFull.value = `${emailId.value}@${domainTxt.value}`;
+	      console.log(
+	        "disabled after =", domainTxt.disabled,
+	        "domainTxt.value =", `"${domainTxt.value}"`
+	      );
+	    }
+
+	    domainSel.addEventListener("change", updateEmail);
+	    emailId.addEventListener("input", updateEmail);
+	    domainTxt.addEventListener("input", updateEmail);
+	    updateEmail();
+	  }
 
     // 3-4) 전화번호 자동 포커스
     [['phone1','phone2','phone3','MyNum']].forEach(([p1,p2,p3,out]) => {

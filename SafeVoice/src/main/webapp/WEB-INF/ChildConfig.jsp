@@ -1,165 +1,60 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safe Voice - 아이 안전 서비스</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ChildConfig.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>자녀 관리</title>
+
+  <script>
+    const contextPath = '<%= request.getContextPath() %>';
+  </script>
+
+  <!-- ✅ 외부 JS는 그 아래에서 불러와야 함 -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ChildConfig.css">
+  <script src="${pageContext.request.contextPath}/js/ChildConfig.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  
 </head>
+
 <body>
-<!--좀 이따가 넣기  -->
-     <!-- 피드와 포푸트 -->
-     <div class="popup-overlay" id="schoolAlertPopup">
-        <div class="popup">
-          <div class="profile-circle">
-            <img src="${pageContext.request.contextPath}/image/child2.png" alt="자녀 프로필">
-          </div>
-          <h2>학교폭력<br>위험감지</h2>
-          <p>자녀의 통화에서 위험이 감지되었습니다</p>
-          <p class="level">위험 수준 : <span id="alert-level" class="warning">경고</span></p>
-          <div class="alert-actions"><br>
-            <button onclick="location.href='#'" class="icon-button">
-  			<i class="fas fa-map-marker-alt"></i>
-  			<span>위치확인</span>
-			</button>
-            <button onclick="location.href='#'" class="icon-button">
-  			<i class="fas fa-phone-alt"></i>
-  			<span>전화걸기</span>
-			</button>
-            <button onclick="location.href='GoAlertHistory.do'" class="icon-button">
-  			<i class="fas fa-bell"></i>
-  			<span>알림확인</span>
-			</button>
-          </div>
-        </div>
+  <div class="container">
+    <!-- 헤더 -->
+    <header>
+      <img src="${pageContext.request.contextPath}/image/뒤로가기.png" alt="뒤로가기" class="back-button" />
+      <h1>자녀 관리</h1>
+      <img src="${pageContext.request.contextPath}/image/Mom.png" alt="부모 프로필" class="parent-icon" />
+    </header>
+ 
+    <!-- 자녀 리스트 -->
+    <%-- <section class="child-list">
+      <div class="child-item">
+        <img src="${pageContext.request.contextPath}/image/child1.png" class="child-avatar" />
+        <div class="child-info">
+          <div class="child-name">나첫째</div>
+          <div class="child-date">최근 조회 날짜<br>2025/04/22</div>
+        </div> --%>
+        
+      <section class="child-list" id="childList">
+      
+		</section> 
+        
+    <div class="add-child">
+      <img src="${pageContext.request.contextPath}/image/추가.png" alt="추가" />
+      <span>자녀 추가하기</span>
+    </div>
+
+    <!-- 하단 메뉴 -->
+    <footer>
+      <div class="bottom-navbar">
+          <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/알림1.png" alt="알림" /><span>알림</span></a>
+          <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/홈.png" alt="홈" /><span>홈</span></a>
+          <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" /><span>메뉴</span></a>
       </div>
-    <div class="container">
-        <header>
-        	<a href="GoMainPageAdult.do">
-            <div class="logo">
-                <img src="${pageContext.request.contextPath}/image/Safe_Voice.png" alt="Safe Voice 로고">
-                <div class="logo-text">Safe Voice</div>
-            </div>
-          	</a>       
-          	
-            <div class="header-right">
-            <div class="profile-icon">
-                <img src="${pageContext.request.contextPath}/image/Mom.png" alt="프로필">
-            </div>
-            <div class="menu-icon">
-                <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴">
-            </div>
-        </div>
-        </header>
-
-        <section class="main-title">
-            <h1>아이가 하교할 시간이에요<br>통화 한 번 어떠세요?</h1>
-            <div class="child-profiles">
-                <div class="child-profile">
-                    <img src="${pageContext.request.contextPath}/image/child1.png" alt="아이 1">
-                    <span class="notification">1</span>
-                </div>
-                <div class="child-profile">
-                    <img src="${pageContext.request.contextPath}/image/child2.png" alt="아이 2">
-                    <span class="notification">1</span>
-                </div>
-                <div class="child-profile">
-                    <img src="${pageContext.request.contextPath}/image/child3.png" alt="아이 3">
-                </div>
-            </div>
-            <hr>
-        </section>
-
-        <hr class="divider">
-
-        <section class="content">
-            <!-- 왼쪽: 아이 정보 -->
-            <div class="profile-section">
-              <div class="profile-image">
-                <img src="${pageContext.request.contextPath}/image/child1.png" alt="나첫째">
-              </div>
-              <div class="profile-info">
-                <h2>나첫째</h2>
-                <p>마지막 알림</p>
-                <p class="time">2025년 4월 10일</p>
-                <p class="time">AM:10:42:33</p>
-              </div>
-            </div>
-           <section class="action-buttons">
-  <a href="#" class="action-button">
-    <div class="button-icon">
-      <i class="fas fa-map-marker-alt"></i>
-    </div>
-    <span>위치확인</span>
-  </a>
-
-  <a href="tel:010-1234-5678" class="action-button">
-    <div class="button-icon">
-      <i class="fas fa-phone-alt"></i>
-    </div>
-    <span>전화걸기</span>
-  </a>
-
-  <a href="GoAlertHistory.do" class="action-button">
-    <div class="button-icon">
-      <i class="fas fa-bell"></i>
-      <span class="badge">1</span>
-    </div>
-    <span>알림내역확인</span>
-  </a>
-</section>
-
-          
-            <!-- 오른쪽: 날씨 + 알림 -->
-            <div class="right-section">
-              <div class="weather-section">
-                <h3>아이 날씨</h3>
-                <div class="weather-icon">
-                  <img src="${pageContext.request.contextPath}/image/sunny.png" alt="날씨">
-                </div>
-              </div>
-              
-              
-          	<a href="#">
-              <div class="alerts-section">
-                <div class="alerts-container">
-  <a href="GoAlertHistory.do" class="alert alert-sos">
-  <span class="alert-icon">!</span>
-  <span class="alert-text">SOS 알림</span>
-  <span id="sos-count" class="alert-count">0회</span>
-</a>
-<a href="GoAlertHistory.do" class="alert alert-warning">
-  <span class="alert-icon">!</span>
-  <span class="alert-text">경고 알림</span>
-  <span id="danger-count" class="alert-count">0회</span>
-</a>
-<a href="GoAlertHistory.do" class="alert alert-caution">
-  <span class="alert-icon">!</span>
-  <span class="alert-text">주의 알림</span>
-  <span id="caution-count" class="alert-count">0회</span>
-</a>
-
+  </footer>
 </div>
 
-              </div>
-            </div>
-          </section>
-          
-          <!-- 하단 버튼 영역 -->
-         
-       <footer>
-            <div class="bottom-navbar">
-                <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/알림1.png" alt="알림" /><span>알림</span></a>
-                <a href = "GoMainPageAdult.do"><img src="${pageContext.request.contextPath}/image/홈.png" alt="홈" /><span>홈</span></a>
-                <a href = "GoMenuMain.do"><img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" /><span>메뉴</span></a>
-            </div>
-        </footer>
-    </div>
-
-<script src="${pageContext.request.contextPath}/js/MainPageAdult.js"></script>
 </body>
 </html>

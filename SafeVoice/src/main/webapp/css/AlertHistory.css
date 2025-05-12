@@ -87,9 +87,10 @@ footer {
 /* 상단 헤더 */
 .alert-header {
   display: flex;
-  align-items: center;
-  padding: 20px;
-  background-color: #def8de;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #c2f3aa;
+	padding: 16px;
 }
 
 .back-button img {
@@ -103,8 +104,8 @@ footer {
 }
 
 .profile-icon img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 
 }
@@ -164,11 +165,9 @@ footer {
 
 
 .page-title {
-  font-family: var(--header-2-font-family);
-  font-size: var(--header-2-font-size);
-  font-weight: var(--header-2-font-weight);
-  color: var(--system-colors-labels-primary);
-  margin: 0 auto;
+ font-size: 18px;
+	font-weight: bold;
+	color: #333;
 }
 
 /* 알림 리스트 */
@@ -244,7 +243,7 @@ footer {
     object-fit: contain; /* 필요 시 */
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .menu-icon {
       display: flex;
       align-items: center;
@@ -263,4 +262,4 @@ footer {
     .alerts-container {
         margin-top: 20px;
     }
-}
+} */

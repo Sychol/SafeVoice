@@ -8,6 +8,7 @@ public class AlertVO {
 	String lat; // 위도 = latitude
 	String lon; // 경도 = longitude
 	String alertContext; // 알림 내용
+	int viewOrNot; // 조회 여부
 	
 	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, String alertContext) {
 		super();
@@ -70,5 +71,12 @@ public class AlertVO {
 	public void setAlertContext(String alertContext) {
 		this.alertContext = alertContext;
 	}
-	
+
+	public int getViewOrNot() {
+		return viewOrNot;
+	}
+
+	public void setViewOrNot(int viewOrNot) {
+		this.viewOrNot = viewOrNot;
+	}
 }

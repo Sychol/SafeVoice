@@ -22,7 +22,7 @@
 	<select id="idDuplicateCheck" parameterType = "String">
 		SELECT COUNT(*)
 		FROM MEMBERS
-		WHERE MEMBER_ID = #{id}
+		WHERE MEMBER_ID = #{_parameter}
 	</select>
 
 	<update id="updateMember" parameterType="membervo">

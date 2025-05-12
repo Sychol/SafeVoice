@@ -73,9 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         clearTimeout(checkTimer);
         checkTimer = setTimeout(() => {
-          fetch(`${path}/api/checkUsername?username=${encodeURIComponent(v)}`)
+          fetch(`/SafeVoice/IdDuplicateCheck.do?username=${encodeURIComponent(v)}`)
             .then(res => res.json())
             .then(data => {
+			  if(data.error){
+				usernameMsg.textContent = data.error;
+				usernameMsg.className = 'message red';
+				return;
+			  }
               if (data.available) {
                 usernameMsg.textContent = '사용 가능한 아이디입니다.';
                 usernameMsg.className = 'message green';

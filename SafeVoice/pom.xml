@@ -144,6 +144,12 @@
     	<version>8.0.33</version>
 	</dependency>
 
+<dependency>
+  <groupId>org.json</groupId>
+  <artifactId>json</artifactId>
+  <version>20240303</version>
+</dependency>
+
   </dependencies>
 
   <!-- ─── 빌드 플러그인 ─── -->

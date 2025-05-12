@@ -1,4 +1,4 @@
-package com.safevoice.controller.Alert;
+package com.safevoice.tomb;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

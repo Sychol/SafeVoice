@@ -1,7 +1,9 @@
-package com.safevoice.controller.Alert;
+package com.safevoice.tomb;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import com.safevoice.controller.Alert.SendPushNotificationService;
 
 public class NotificationScheduler {
 

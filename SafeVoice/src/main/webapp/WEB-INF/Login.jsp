@@ -66,7 +66,7 @@ type="password"
         자동 로그인
       </label>
     </div>
-    <button type="submit" class="submit-button">로그인</button>
+    <button id="loginBtn" type="submit" class="submit-button">로그인</button>
   </form>
 <!-- 소셜 로그인 구분선 + 안내 텍스트 -->
 <div class="social-divider">

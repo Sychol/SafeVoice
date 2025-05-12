@@ -3,13 +3,13 @@ package com.safevoice.model;
 public class AlertVO {
 
 	String memberId; // 참조한 멤버 아이디
-	String alertType; // 알림 타입 -> SOS, 경고, 위험, 심각 등
+	int alertType; // 알림 타입 -> SOS, 경고, 위험, 심각 등
 	String alertTime; // 알림 시간
 	String lat; // 위도 = latitude
 	String lon; // 경도 = longitude
 	String alertContext; // 알림 내용
 	
-	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, String alertContext) {
+	public AlertVO(String memberId, int alertType, String alertTime, String lat, String lon, String alertContext) {
 		super();
 		this.memberId = memberId;
 		this.alertType = alertType;
@@ -31,11 +31,11 @@ public class AlertVO {
 		this.memberId = memberId;
 	}
 
-	public String getAlertType() {
+	public int getAlertType() {
 		return alertType;
 	}
 
-	public void setAlertType(String alertType) {
+	public void setAlertType(int alertType) {
 		this.alertType = alertType;
 	}
 

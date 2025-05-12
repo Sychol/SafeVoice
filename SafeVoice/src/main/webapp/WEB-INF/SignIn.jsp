@@ -39,21 +39,15 @@
           method="post">
 
       <!-- 아이디 -->
-      <div class="form-group">
-        <label for="username">아이디</label>
-        <input type="text"
-               id="username"
-               name="id"
-               class="input-field"
-               placeholder="영문+숫자 4~10자"
-               required>
-        <div id="username-msg" class="message"></div>
-        <button type="button"
-                id="check-username"
-                class="btn-submit">
-          중복 확인
-        </button>
-      </div>
+	<div class="form-group">
+  	<label for="username">아이디</label>
+  	<input type="text"
+    	   id="username"
+       	   name="id"
+           class="input-field"
+           placeholder="영문+숫자 4~10자"
+           required>
+	</div>
 
       <!-- 비밀번호 -->
       <div class="form-group">
@@ -131,7 +125,7 @@
 <!-- 주소 입력 폼 그룹 -->
 <div class="form-group">
   <label for="postcode">우편번호 & 주소</label>
-  <div class="option-group">
+  <div class="option-group" style="display:flex; gap:8px; align-items:center;">
     <input type="text"
            id="postcode"
            name="postcode"
@@ -160,25 +154,19 @@
          required>
 </div>
 
-<!-- (embed 방식 사용할 때) 레이어 팝업용 HTML -->
-<div id="postcodeLayer"
-     style="display:none;
-            position:fixed;
-            top:0; left:0; right:0; bottom:0;
-            background:rgba(0,0,0,0.5);
-            z-index:1000;">
-  <div id="postcodeContainer"
-       style="width:90%; max-width:400px; height:80%;
-              margin:10% auto; background:#fff;
-              border-radius:8px; overflow:hidden;">
-    <!-- 우편번호 검색 UI가 embed -->
+<!-- (embed 방식) 레이어 팝업용 HTML -->
+<div id="postcodeLayer" class="postcode-layer">
+  <div id="postcodeContainer" class="postcode-wrap">
+    <!-- 닫기 버튼을 wrap 내부로 이동하여 상단 우측 고정 -->
+    <button type="button"
+            id="closePostcodeLayer"
+            class="postcode-close-btn">
+      ✕
+    </button>
+    <!-- 우편번호 검색 UI가 embed 됩니다 -->
   </div>
-  <button type="button"
-          onclick="document.getElementById('postcodeLayer').style.display='none'"
-          style="position:absolute; top:10px; right:10px;">
-    ✕ 닫기
-  </button>
 </div>
+
 
       <!-- 전화번호 -->
       <div class="form-group phone-group">

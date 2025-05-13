@@ -107,12 +107,12 @@ public class MemberDAO {
 	    return row;
 	}
 
-	// 아이 리스트 가져오기
-	public List<MemberVO> getChildList(String id) {
-		SqlSession sqlsession = factory.openSession(true);
-		List<MemberVO> childList = sqlsession.selectList("getChildList", id);
-		sqlsession.close();
-		return childList;
+	// 자녀 관리 (리스트)
+		public List<MemberVO> selectMyChildren(String id) {
+		    SqlSession sqlsession = factory.openSession(true);
+		    List<MemberVO> children = sqlsession.selectList("selectMyChildren", id);
+		    sqlsession.close();
+		    return children;
 	}
 
 }

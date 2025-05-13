@@ -27,7 +27,7 @@ public class InputFileService implements Command {
         // 3. Python 분석 실행
         String result = "";
         try {
-            ProcessBuilder pb = new ProcessBuilder("python", "C:/Users/smhrd/Desktop/ML_part/MLtest.py", filePath);
+            ProcessBuilder pb = new ProcessBuilder("python", "C:/Users/smhrd/Desktop/ML_part/test.py", filePath);
             Process process = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
             result = reader.readLine();

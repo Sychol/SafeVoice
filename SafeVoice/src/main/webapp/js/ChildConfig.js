@@ -6,15 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (backButton) {
     backButton.addEventListener("click", () => history.back());
   }
-
-  let childData = [];
-  
-  fetch('/SafeVoice/GetChildList.do') 
-  	.then(res => res.json())
-	.then(data => {
-		console.log(data);
-		childData = data;
-	})
 	
 	
 	

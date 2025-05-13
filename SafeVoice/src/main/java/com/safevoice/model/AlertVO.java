@@ -7,17 +7,15 @@ public class AlertVO {
 	String alertTime; // 알림 시간
 	String lat; // 위도 = latitude
 	String lon; // 경도 = longitude
-	String alertContext; // 알림 내용
 	int viewOrNot; // 조회 여부
 	
-	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, String alertContext) {
+	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon) {
 		super();
 		this.memberId = memberId;
 		this.alertType = alertType;
 		this.alertTime = alertTime;
 		this.lat = lat;
 		this.lon = lon;
-		this.alertContext = alertContext;
 	}
 	
 	public AlertVO() {
@@ -62,14 +60,6 @@ public class AlertVO {
 
 	public void setLon(String lon) {
 		this.lon = lon;
-	}
-
-	public String getAlertContext() {
-		return alertContext;
-	}
-
-	public void setAlertContext(String alertContext) {
-		this.alertContext = alertContext;
 	}
 
 	public int getViewOrNot() {

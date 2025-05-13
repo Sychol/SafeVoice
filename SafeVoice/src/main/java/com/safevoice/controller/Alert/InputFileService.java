@@ -14,7 +14,7 @@ public class InputFileService implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // 1. 파일 업로드 처리
-        String uploadDir = "C:/Users/smhrd/Desktop/uploaded";
+        String uploadDir = "C:/Users/smhrd/Desktop/ML_part/recoding";
         int sizeLimit = 100 * 1024 * 1024; // 100MB
         MultipartRequest mtr = new MultipartRequest(request, uploadDir, sizeLimit, "UTF-8", new DefaultFileRenamePolicy());
 
@@ -22,12 +22,33 @@ public class InputFileService implements Command {
         String fileName = mtr.getFilesystemName("file");
         String filePath = uploadDir + "/" + fileName;
         String childId = mtr.getParameter("memberId");
+     // 🛡️ 파일 존재 및 유효성 확인
+        File uploadedFile = new File(filePath);
+        if (!uploadedFile.exists()) {
+            System.out.println("🚫 파일이 존재하지 않습니다: " + filePath);
+            throw new IOException("파일이 존재하지 않습니다!");
+        }
+        if (uploadedFile.length() == 0) {
+            System.out.println("🚫 파일이 비어 있습니다: " + filePath);
+            throw new IOException("업로드된 파일 크기가 0입니다!");
+        }
+
+        // 💤 혹시 파일 저장 직후 바로 실행되는 걸 막기 위한 잠깐의 대기
+        try {
+            Thread.sleep(300); // 300ms 대기
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("📁 file: " + fileName);
         System.out.println("📁 filePath: " + filePath);
+        System.out.println("🧸 memberId = " + childId);
 
         // 3. Python 분석 실행
         String result = "";
         try {
-            ProcessBuilder pb = new ProcessBuilder("python", "C:/Users/smhrd/Desktop/ML_part/test.py", filePath);
+            ProcessBuilder pb = new ProcessBuilder("C:/Users/smhrd/AppData/Local/Programs/Python/Python310/python.exe", "C:/Users/smhrd/Desktop/ML_part/MLtest.py", fileName);
+            Thread.sleep(300);
             Process process = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
             result = reader.readLine();
@@ -52,14 +73,22 @@ public class InputFileService implements Command {
         }
 
         // 4. 결과 숫자 파싱
+        
         String level = result.trim();
 
         // 5. 알림 DB 저장 (메시지 없이 유형만 저장)
         AlertVO alert = new AlertVO();
-        alert.setMemberId(childId);
-        alert.setAlertType(level);
-        alert.setLat("0.0");
-        alert.setLon("0.0");
+	    alert.setMemberId(childId);
+	    alert.setAlertType(level);
+	    alert.setLat("0.0");
+	    alert.setLon("0.0");
+	    
+        if (alert.getAlertType() != null) {
+            System.out.println("🔍 ALERT_TYPE 길이: " + alert.getAlertType().length());
+            System.out.println("🧾 ALERT_TYPE 내용: " + alert.getAlertType());
+        } else {
+            System.out.println("🚨 ALERT_TYPE이 null이에요!!");
+        }
 
         AlertDAO dao = new AlertDAO();
         dao.setAlertInfo(alert);

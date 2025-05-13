@@ -47,6 +47,7 @@
        <div class="sos-button">SOS</div>
       <div class="voice-upload">
       <form id="uploadForm" action="InputFile.do" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="memberId" value="${loginMember.id}" />
   		<label class="upload-label">
     		🎤 음성 파일 업로드
    	  <input type="file" name = "file" accept="audio/*" hidden

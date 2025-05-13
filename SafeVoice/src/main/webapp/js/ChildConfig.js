@@ -1,6 +1,10 @@
-if (backButton) {
-  backButton.addEventListener("click", () => history.back());
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const backButton = document.querySelector(".back-button");
+
+  if (backButton) {
+    backButton.addEventListener("click", () => history.back());
+  }
+});
 
 if (list) {
   list.addEventListener("click", function (e) {

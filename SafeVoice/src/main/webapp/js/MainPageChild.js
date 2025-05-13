@@ -3,6 +3,10 @@ const sosBtn = document.querySelector('.sos-button');
 sosBtn.addEventListener('click', () => {
   sosBtn.classList.toggle('sos-flashing');
 
+  setTimeout(() => {
+    sosBtn.classList.remove('sos-flashing');
+  }, 5000); // 5000ms = 5초
+  
   // 로그인한 자녀 ID 가져오기
   const memberId = window.loginMemberId;
 

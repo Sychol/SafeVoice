@@ -8,6 +8,8 @@
   <title>비밀번호 수정</title>
   <!-- CSS 파일 연결 -->
   <link rel="stylesheet" href="<c:url value='/css/FindingPassword.css'/>"/>
+  <!-- favicon.ico 404 방지 -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
   <!-- JSP 컨텍스트패스를 JS에서 사용하기 위해 전역 변수 선언 -->
@@ -20,53 +22,43 @@
     <!-- 로고 & 타이틀 -->
     <img src="${pageContext.request.contextPath}/image/Safe_Voice.png"
          alt="Safe Voice 로고" class="logo">
-    <h3 class="title">비밀번호 수정</h3>
+    <h3 class="title">비밀번호 찾기</h3>
     <form id="findForm">
-      <!-- 아이디 입력 필드 -->
-      <input type="text"
-             id="idInput"
-             placeholder="아이디를 입력하세요"
-             required/>
-      <!-- 제출 버튼 -->
+      <input type="text" id="username" placeholder="아이디를 입력하세요" required/>
       <button type="submit">아이디 확인</button>
-      <!-- 결과 메시지 표시 영역 -->
       <p id="findMsg" class="message"></p>
     </form>
+    <!-- 로그인 · 회원가입 -->
+    <div class="small-text">
+      <a href="GoLogin.do">로그인</a>
+      <a href="GoSignIn.do">회원가입</a> 
+    </div>
   </div>
 
-  <!-- 2) 비밀번호 수정 폼 영역 -->
+  <!-- 2) 비밀번호 수정 폼 영역 (아이디는 hidden으로 전달) -->
   <div id="resetContainer" class="mobile-container hidden">
-    <!-- 로고 & 타이틀 -->
-    <img src="${pageContext.request.contextPath}/image/Safe_Voice.png"
-         alt="Safe Voice 로고" class="logo">
+    <img src="${pageContext.request.contextPath}/image/Safe_Voice.png" alt="Safe Voice 로고" class="logo">
     <h3 class="title">비밀번호 수정</h3>
-    <form id="resetForm">
-      <!-- 새 비밀번호 입력 -->
-      <input type="password"
-             id="pw1"
-             placeholder="새 비밀번호 (영문+숫자 포함, 8자 이상)"
-             required/>
-      <!-- 비밀번호 형식 검사 메시지 -->
+    <form id="resetForm" action="${contextPath}/ChangePassword.do" method="GET">
+      <input type="hidden" id="id" name="id"/> <!-- 여기서 id 값이 넘어갑니다 -->
+      <input type="password" id="pw1" name="updatePw" placeholder="새 비밀번호 (영문+숫자 포함, 8자 이상)" required/>
       <p id="pw1-msg" class="message"></p>
 
-      <!-- 비밀번호 확인 입력 -->
-      <input type="password"
-             id="pw2"
-             placeholder="비밀번호 확인"
-             required/>
-      <!-- 비밀번호 일치 여부 메시지 -->
+      <input type="password" id="pw2" name="confirmPassword" placeholder="비밀번호 확인" required/>
       <p id="pw2-msg" class="message"></p>
 
-      <!-- 제출 버튼 -->
       <button type="submit">비밀번호 변경</button>
-      <!-- 최종 처리 결과 메시지 -->
       <p id="resetMsg" class="message"></p>
     </form>
+    <!-- 로그인 · 회원가입 -->
+    <div class="small-text">
+      <a href="GoLogin.do">로그인</a>
+      <a href="GoSignIn.do">회원가입</a>
+    </div>
   </div>
 
   <!-- JS 파일 로드 -->
   <script src="<c:url value='/js/FindingPassword.js'/>"></script>
 </body>
 </html>
-
 

@@ -28,7 +28,7 @@
   <input type="file" id="file-input" style="display:none;" accept="image/*">
 
   <div class="email" id="user-email">userEmail@example.com</div>
-  <div class="name" id="user-name">성이름</div>
+  <div class="name" id="user-name">나엄마</div>
 
  
 </div>

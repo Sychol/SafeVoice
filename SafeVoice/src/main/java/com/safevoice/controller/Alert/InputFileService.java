@@ -106,6 +106,6 @@ public class InputFileService implements Command {
             PushNotificationService pushService = new PushNotificationService();
             pushService.sendNotification(childId, "AI 분석 결과", message);
         }
-        return null;
+        return "redirect:/GoMainPageChild.do";
     }
 }

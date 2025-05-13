@@ -15,6 +15,10 @@
   });
 })();
 
+if (backButton) {
+   backButton.addEventListener('click', () => history.back());
+ }
+ 
 // 우편번호 검색 레이어 제어
 (function() {
   const btnPost   = document.getElementById("btnPostcode");

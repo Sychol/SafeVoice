@@ -35,7 +35,12 @@
         <div class="child-date">최근 조회 날짜<br>정보 없음</div>
       </div>
       <div class="child-actions">
-        <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
+        <form action="DeleteChild.do" method="post" class="delete-form">
+            <input type="hidden" name="childId" value="${child.id}" />
+            <button type="submit" class="delete-btn" style="background:none; border:none; padding:0; cursor:pointer;">
+              <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
+            	  </button>
+              </form>
         <img src="${pageContext.request.contextPath}/image/연필.png" alt="수정" class="edit-btn" />
         <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" class="drag-handle" />
       </div>
@@ -70,18 +75,23 @@
         if (list && addedChildId) {
           const newChild = document.createElement("div");
           newChild.className = "child-item";
-          newChild.innerHTML = `
+          newChild.innerHTML = 
             <img src="${pageContext.request.contextPath}/image/프로필.png" class="child-avatar" />
             <div class="child-info">
               <div class="child-name">${addedChildId}</div>
               <div class="child-date">최근 조회 날짜<br>${today}</div>
             </div>
             <div class="child-actions">
+            <form action="DeleteChild.do" method="post" class="delete-form">
+            <input type="hidden" name="childId" value="${addedChildId}" />
+            <button type="submit" class="delete-btn" style="background:none; border:none; padding:0; cursor:pointer;">
               <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
+            	  </button>
+              </form>
               <img src="${pageContext.request.contextPath}/image/연필.png" alt="수정" class="edit-btn" />
               <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" class="drag-handle" />
             </div>
-          `;
+          ;
           list.appendChild(newChild);
         }
       });

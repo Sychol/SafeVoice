@@ -49,7 +49,7 @@ public class InputFileService implements Command {
         // 3. Python 분석 실행
         String result = "";
         try {
-            ProcessBuilder pb = new ProcessBuilder("C:/Users/smhrd/AppData/Local/Programs/Python/Python310/python.exe", "C:/Users/smhrd/Desktop/ML_part/MLtest.py", fileName);
+            ProcessBuilder pb = new ProcessBuilder("C:/Users/smhrd/AppData/Local/Programs/Python/Python310/python.exe", "C:/Users/smhrd/Desktop/ML_part/safevoice.py", fileName);
             Thread.sleep(300);
             Process process = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));

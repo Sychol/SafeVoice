@@ -11,6 +11,11 @@
 
 </head>
 <body>
+
+<script>
+  window.loginMemberId = '${loginMember.id}';
+</script>
+
     <div class="container">
     <header class="top-header">
         <div class="logo">

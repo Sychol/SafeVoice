@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // ✅ 이메일 관련 요소들
   const emailId = document.getElementById('email-id');
   const domainSel = document.getElementById('domain-list');
   const domainTxt = document.getElementById('domain-txt');
   const emailFull = document.getElementById('email-full');
 
+  // ✅ 이메일 업데이트 함수 (안전하게)
   function updateEmail() {
+    if (!emailId || !domainSel || !domainTxt || !emailFull) return;
+
     if (domainSel.value === 'type') {
       domainTxt.disabled = false;
       domainTxt.style.display = 'block';
@@ -24,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateEmail();
 
+  // ✅ 비밀번호 관련
   const pw1 = document.getElementById('pw1');
   const pw2 = document.getElementById('pw2');
   const msg1 = document.getElementById('pw1-msg');
@@ -43,12 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ✅ 우편번호 팝업 관련
   const btnPost = document.getElementById("btnPostcode");
   const layerBg = document.getElementById("postcodeLayer");
   const layerWrp = document.getElementById("postcodeContainer");
   const btnClose = document.getElementById("closePostcodeLayer");
 
   function execDaumPostcode() {
+    console.log("👉 우편번호 검색 실행됨");
+    if (!layerBg || !layerWrp) return;
+
     layerBg.style.display = 'flex';
     const old = layerWrp.querySelector(".wrap");
     if (old) old.remove();
@@ -58,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
         let extra = '';
         if (data.userSelectedType === 'R') {
-          if (data.bname && /[\uB3D9|\uB85C|\uAC00]$/.test(data.bname)) extra += data.bname;
+          if (data.bname && /[동|로|가]$/.test(data.bname)) extra += data.bname;
           if (data.buildingName && data.apartment === 'Y') {
             extra += extra ? `, ${data.buildingName}` : data.buildingName;
           }
@@ -74,8 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }).embed(layerWrp);
   }
 
-  if (btnPost)  btnPost.addEventListener('click', execDaumPostcode);
-  if (btnClose) btnClose.addEventListener('click', () => {
-    layerBg.style.display = 'none';
-  });
+  // ✅ 이벤트 연결
+  if (btnPost) {
+    console.log("✅ 우편번호 버튼 연결됨");
+    btnPost.addEventListener('click', execDaumPostcode);
+  } else {
+    console.warn("❌ btnPostcode 버튼 못 찾음");
+  }
+
+  if (btnClose) {
+    btnClose.addEventListener('click', () => {
+      layerBg.style.display = 'none';
+    });
+  }
 });

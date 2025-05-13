@@ -37,7 +37,7 @@
       <div class="child-actions">
         <form action="DeleteChild.do" method="post" class="delete-form">
             <input type="hidden" name="childId" value="${child.id}" />
-            <button type="submit" class="delete-btn" style="background:none; border:none; padding:0; cursor:pointer;">
+            <button type="submit" class="delete-btn"> 
               <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
             	  </button>
               </form>

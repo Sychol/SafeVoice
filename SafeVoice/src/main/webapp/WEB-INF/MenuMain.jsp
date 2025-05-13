@@ -35,7 +35,7 @@
 
     <ul class="menu-list">
         <li class="menu-item">
-          <a href="#"><i class="fas fa-user"></i> 계정 정보</a>
+          <a href="GoModifyMember.do"><i class="fas fa-user"></i> 계정 정보</a>
         </li>
         <li class="menu-item">
           <a href="GoAlertConfig.do"><i class="fas fa-bell"></i> 알림 설정</a>

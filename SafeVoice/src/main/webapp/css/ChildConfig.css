@@ -73,6 +73,43 @@ header h1 {
 	display: none;
 }
 
+.action-buttons {
+  display: flex;
+  flex-direction: row; /* 기본값이지만 명시적으로 */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* 버튼 사이 여백 */
+}
+
+
+.child-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.child-actions img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.delete-btn, .edit-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.delete-btn img, .edit-btn img {
+  width: 20px;
+  height: 20px;
+}
 .child-avatar {
 	width: 60px;
 	height: 60px;
@@ -96,6 +133,7 @@ header h1 {
 }
 
 .child-actions img {
+	display:column;
 	width: 20px;
 	height: 20px;
 	margin-left: 12px;

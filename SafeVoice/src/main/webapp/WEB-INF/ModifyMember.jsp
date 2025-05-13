@@ -29,6 +29,11 @@
   <script defer src="${pageContext.request.contextPath}/js/ModifyMember.js"></script>
 </head>
 <body>
+<div style="padding:10px; background:#f9f9f9; border:1px solid #ccc; margin-bottom:10px;">
+  <strong>form 데이터 확인:</strong><br>
+  아이디: ${form.member_id} <br>
+  이메일: ${form.email} <br>
+</div>
 <div class="wrapper">
   <div class="sign-container">
     <div class="form-header-bar">
@@ -45,30 +50,42 @@
         <div class="info-row">
           <div class="label">아이디</div>
           <div class="value">
-            <input type="text" name="id" value="${form.member_id}"/>
+			<input type="text" name="id" placeholder="${form.member_id}" readonly autocomplete="username"/>
           </div>
         </div>
 
         <div class="info-row">
           <div class="label">이메일</div>
           <div class="value">
-            <input type="text" id="email-id" placeholder="이메일 아이디" value="${fn:substringBefore(form.email,'@')}">
-            <span>@</span>
+          	<div>
+			<input type="text" id="email-id" placeholder="${form.email}" />
+            </div>
+            <!-- <span>@</span>
             <select id="domain-list">
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com" selected>naver.com</option>
               <option value="hanmail.net">hanmail.net</option>
               <option value="type">직접입력</option>
-            </select>
-            <input type="text" id="domain-txt" value="${fn:substringAfter(form.email,'@')}">
+            </select> -->
+            <%-- <input type="text" id="domain-txt" value="${fn:substringAfter(form.email,'@')}">
             <input type="hidden" id="email-full" name="email" value="${form.email}">
           </div>
-        </div>
+        </div> --%>
 
+
+        <br>
+		<div class="info-row">
+          <div class="label">기존 비밀번호</div>
+          <div class="value">
+           <input type="password" id="current-pw" name="currentPw" placeholder="기존 비밀번호" >
+            <div id="pw1-msg" class="message"></div>
+          </div>
+        </div>
+        
         <div class="info-row">
           <div class="label">비밀번호 변경</div>
           <div class="value">
-            <input type="password" id="pw1" name="pw" placeholder="새 비밀번호" />
+         <input type="password" id="pw1" name="pw" placeholder="새 비밀번호"  placeholder="새 비밀번호">
             <div id="pw1-msg" class="message"></div>
           </div>
         </div>
@@ -76,7 +93,7 @@
         <div class="info-row">
           <div class="label">비밀번호 확인</div>
           <div class="value">
-            <input type="password" id="pw2" placeholder="비밀번호 확인" />
+		  <input type="password" id="pw2" placeholder="비밀번호 확인" >
             <div id="pw2-msg" class="message"></div>
           </div>
         </div>
@@ -90,6 +107,14 @@
             <input type="text" id="detailAddress" name="address_detail" placeholder="상세 주소" />
           </div>
         </div>
+      </div>
+
+      <!-- 카카오 우편번호 검색 embed 레이어 -->
+      <div id="postcodeLayer">
+        <div id="postcodeContainer">
+        </div>
+        <button type="button" id="closePostcodeLayer">✕</button>
+      </div>
       </div>
 
       <div class="btnArea type2">
@@ -116,5 +141,6 @@
     </footer>
   </div>
 </div>
+
 </body>
 </html>

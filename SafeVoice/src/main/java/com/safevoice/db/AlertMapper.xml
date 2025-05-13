@@ -7,9 +7,10 @@
 <mapper namespace="com.safevoice.db.AlertDAO">
 	
 	 <select id="getAlertHistory" parameterType = "String" resultType = "alertvo">
-	 	SELECT MEMBER_ID, ALERT_TYPE, ALERT_TIME, LAT, LON, VIEW_OR_NOT
-	 	FROM ALERTS
-	 	WHERE MEMBER_ID = #{id}
+	 	SELECT A.MEMBER_ID, A.ALERT_TYPE, A.ALERT_TIME, A.LAT, A.LON, A.VIEW_OR_NOT, M.NAME
+		FROM ALERTS A LEFT JOIN MEMBERS M
+		ON A.MEMBER_ID = M.MEMBER_ID
+		WHERE A.MEMBER_ID = #{id}
 	 </select>
 	 
 	 <insert id="setAlertInfo" parameterType = "alertvo">
@@ -25,7 +26,7 @@
     	SELECT SUBSCRIPTION_JSON
  		FROM MEMBERS
    		WHERE FAMILY_CD = (
-        SELECT FAMILY_CD FROM MEMBER WHERE MEMBER_ID = #{childId}
+        SELECT FAMILY_CD FROM MEMBERS WHERE MEMBER_ID = #{childId}
     	)
     	AND MEM_TYPE = 'P'
     	

@@ -1,10 +1,11 @@
 package com.safevoice.controller.Alert;
 
-import com.google.gson.Gson;
 import com.safevoice.db.AlertDAO;
 
 import java.util.List;
-
+	
+	// 알림 전송을 위한 구독 정보 (알림 송신 허용 여부) 확인
+	
 public class PushNotificationService {
 
     public void sendNotification(String childId, String title, String body) {

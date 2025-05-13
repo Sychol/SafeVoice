@@ -3,7 +3,7 @@ package com.safevoice.tomb;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.safevoice.controller.Alert.SendPushNotificationService;
+//import com.safevoice.controller.Alert.SendPushNotificationService;
 
 public class NotificationScheduler {
 
@@ -19,7 +19,7 @@ public class NotificationScheduler {
             public void run() {
                 try {
                     System.out.println("🔁 반복 알림 전송 중...");
-                    new SendPushNotificationService().send();  // 알림 전송 (execute 대신 send 메서드로 분리 권장)
+//                    new SendPushNotificationService().send();  // 알림 전송 (execute 대신 send 메서드로 분리 권장)
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

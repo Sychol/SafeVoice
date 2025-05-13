@@ -8,8 +8,10 @@ public class AlertVO {
 	String lat; // 위도 = latitude
 	String lon; // 경도 = longitude
 	int viewOrNot; // 조회 여부
+	String name;
 	
-	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, int viewOrNot) {
+	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, int viewOrNot,
+			String name) {
 		super();
 		this.memberId = memberId;
 		this.alertType = alertType;
@@ -17,6 +19,7 @@ public class AlertVO {
 		this.lat = lat;
 		this.lon = lon;
 		this.viewOrNot = viewOrNot;
+		this.name = name;
 	}
 	
 	public AlertVO() {
@@ -70,4 +73,13 @@ public class AlertVO {
 	public void setViewOrNot(int viewOrNot) {
 		this.viewOrNot = viewOrNot;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

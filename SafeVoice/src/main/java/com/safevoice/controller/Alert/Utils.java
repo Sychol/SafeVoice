@@ -14,6 +14,8 @@ import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
 
+//	PushService Key 세팅
+
 public class Utils {
 
     static {

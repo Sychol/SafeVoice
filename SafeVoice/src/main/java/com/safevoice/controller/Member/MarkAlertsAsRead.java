@@ -19,6 +19,7 @@ import com.safevoice.db.AlertDAO;
 import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
+//	VIEW_OR_NOT (확인 여부) 설정
 
 public class MarkAlertsAsRead implements Command {
 

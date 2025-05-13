@@ -1,5 +1,7 @@
 package com.safevoice.controller.Alert;
 
+	// 구독 정보 저장용
+
 public class MySubscription {
     private String endpoint;
     private String expirationTime;

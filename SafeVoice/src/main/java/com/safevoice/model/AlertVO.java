@@ -9,13 +9,14 @@ public class AlertVO {
 	String lon; // 경도 = longitude
 	int viewOrNot; // 조회 여부
 	
-	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon) {
+	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, int viewOrNot) {
 		super();
 		this.memberId = memberId;
 		this.alertType = alertType;
 		this.alertTime = alertTime;
 		this.lat = lat;
 		this.lon = lon;
+		this.viewOrNot = viewOrNot;
 	}
 	
 	public AlertVO() {

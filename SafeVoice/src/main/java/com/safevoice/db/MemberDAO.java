@@ -1,16 +1,11 @@
 package com.safevoice.db;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.safevoice.model.AlertVO;
 import com.safevoice.model.MemberVO;
 
 public class MemberDAO {
@@ -94,10 +89,15 @@ public class MemberDAO {
 
 	// 비밀번호 수정 - 비밀번호 갱신
 	public int updatePw(MemberVO member) {
+		// auto-commit true 로 세션 열기
 		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.update("updatePw", member);
-		sqlsession.close();
-		return row;
+		try {
+			// 여기에 SQL 매퍼의 id(updatePw)와 파라미터(member)를 넘겨줍니다
+			int row = sqlsession.update("updatePw", member);
+			return row;
+		} finally {
+			sqlsession.close();
+		}
 	}
 
 	// 자녀 관리 - 자녀 삭제 (연결 끊기)

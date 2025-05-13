@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			data.forEach(item => {
 				const type = item.alertType;
-				if (type === '위험') sos++;
+				if (type === 'SOS') sos++;
 				else if (type === '주의') danger++;
 				else if (type === '경고') caution++;
 			});
@@ -55,21 +55,21 @@ document.addEventListener('DOMContentLoaded', function () {
 				const desc = document.getElementById("alert-desc");
 				const level = document.getElementById("alert-level");
 
-					if (latest.alertType === '위험') {
+					if (latest.alertType === 'SOS') {
 					title.innerHTML = "긴급 위험 감지";
 					desc.textContent = "자녀의 통화에서 긴급 상황이 감지되었습니다";
-					level.textContent = "위험";
+					level.textContent = "SOS";
 					level.className = "sos";
 					if (popupBox) popupBox.classList.add("sos");
 					if (profileCircle) profileCircle.classList.add("sos");
-				} else if (latest.alertType === '위험') {
+				} else if (latest.alertType === '경고') {
 					title.innerHTML = "학교폭력 위험감지";
 					desc.textContent = "자녀의 통화에서 위험이 감지되었습니다";
 					level.textContent = "경고";
 					level.className = "warning";
 					if (popupBox) popupBox.classList.add("warning");
 					if (profileCircle) profileCircle.classList.add("warning");
-				} else if (latest.alertType === '경고') {
+				} else if (latest.alertType === '주의') {
 					title.innerHTML = "주의 필요";
 					desc.textContent = "자녀의 통화에서 주의가 필요한 내용이 감지되었습니다";
 					level.textContent = "주의";

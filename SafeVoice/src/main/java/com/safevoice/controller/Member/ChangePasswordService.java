@@ -1,5 +1,7 @@
 package com.safevoice.controller.Member;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,33 +10,33 @@ import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
 public class ChangePasswordService implements Command {
-	
-	// 비밀번호 변경
 
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 1) 항상 plain text 응답
+		response.setContentType("text/plain; charset=UTF-8");
+
+		// 2) 파라미터 수신
 		String id = request.getParameter("id");
-        String updatePw = request.getParameter("updatePw");
-        String confirmPw = request.getParameter("confirmPassword");
+		String updatePw = request.getParameter("updatePw");
+		String confirmPw = request.getParameter("confirmPassword");
 
-        if (!updatePw.equals(confirmPw)) {
-            request.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다!");
-            return "GoChangePassword.do";
-        } 
-        
-        MemberVO vo = new MemberVO();
-        vo.setId(id);
-        vo.setPw(updatePw);
+		// 3) 비밀번호 일치 여부 및 파라미터 누락 검사
+		if (id == null || id.isEmpty() || updatePw == null || confirmPw == null || !updatePw.equals(confirmPw)) {
+			response.getWriter().write("error");
+			return null;
+		}
 
-        MemberDAO dao = new MemberDAO();
-        int row = dao.updatePw(vo);
+		// 4) DB 업데이트
+		MemberVO vo = new MemberVO();
+		vo.setId(id);
+		vo.setPw(updatePw);
 
-        if (row > 0) {
-            request.getSession().setAttribute("successMsg", "비밀번호가 성공적으로 변경되었습니다!");
-            return "GoLogin.do";
-        } else {
-            request.setAttribute("errorMsg", "비밀번호 변경에 실패했습니다. 다시 시도해주세요.");
-            return "GoChangePassword.do";
-        }		
+		MemberDAO dao = new MemberDAO();
+		int row = dao.updatePw(vo);
+
+		// 5) 결과에 따라 "success" 또는 "error"만 응답
+		response.getWriter().write(row > 0 ? "success" : "error");
+		return null;
 	}
-
 }

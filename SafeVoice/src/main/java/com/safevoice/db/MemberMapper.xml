@@ -87,12 +87,12 @@
 	 	WHERE MEMBER_ID = #{id}
 	</select>
 	
-	<update id="updatePw" parameterType = "membervo">
-		UPDATE MEMBERS
-		SET PW = #{pw}
-		WHERE MEMBER_ID = #{id}
-		AND PHONE = #{phone}
-	</update>
+	<update id="updatePw" parameterType="com.safevoice.model.MemberVO">
+  UPDATE MEMBERS
+    SET PW = #{pw}
+  WHERE MEMBER_ID = #{id}
+</update>
+
 	
 	<update id="disconnectChild" parameterType="string">
     	UPDATE MEMBERS

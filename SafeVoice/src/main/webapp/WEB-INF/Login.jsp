@@ -22,6 +22,14 @@
     <c:remove var="successMsg" scope="session" />
 </c:if>
 
+<!-- 로그아웃 후 alert -->
+<c:if test="${not empty sessionScope.logoutMsg}">
+    <script>
+        alert('${sessionScope.logoutMsg}');
+    </script>
+    <c:remove var="logoutMsg" scope="session" />
+</c:if>
+
 <!-- 로그인 에러 alert -->
 <c:if test="${not empty sessionScope.error}">
     <script>

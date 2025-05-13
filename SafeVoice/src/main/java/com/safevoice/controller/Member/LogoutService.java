@@ -11,14 +11,19 @@ public class LogoutService implements Command {
 		
 		// 로그아웃
 
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+            // 🚨 메시지 따로 저장!
+            String logoutMsg = "👋 로그아웃이 완료되었습니다!";
+            session.invalidate();
 
-		session.invalidate();
+            // 👉 새 세션 만들어 메시지 저장!
+            session = request.getSession(true);
+            session.setAttribute("logoutMsg", logoutMsg);
+        }
 
-		return "redirect:/GoLogin.do";
-
-	
-	}
+        return "redirect:/GoLogin.do";
+    }
 
 }
 

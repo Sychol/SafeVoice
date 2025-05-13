@@ -3,10 +3,12 @@ package com.safevoice.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.safevoice.model.AlertVO;
 import com.safevoice.model.MemberVO;
 
 public class MemberDAO {
@@ -61,11 +63,11 @@ public class MemberDAO {
 	
 	// 패밀리 코드 갱신
 	public int updateFamilyCd(MemberVO member) {
-		
-		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.update("updateFamilyCd", member);
-		sqlsession.close();
-		return row;
+	    SqlSession sqlsession = factory.openSession(true);
+	    int row1 = sqlsession.update("updateFamilyCdForParent", member);
+	    int row2 = sqlsession.update("updateFamilyCdForChild", member);
+	    sqlsession.close();
+	    return row1 + row2;
 	}
 	
 	// 회원 탈퇴
@@ -94,6 +96,23 @@ public class MemberDAO {
 		int row = sqlsession.update("updatePw", member);
 		sqlsession.close();
 		return row;
+	}
+	
+	
+	// 자녀 관리 - 자녀 삭제 (연결 끊기)
+	public int disconnectChild(String childId) {
+	    SqlSession sqlsession = factory.openSession(true);
+	    int row = sqlsession.update("disconnectChild", childId);
+	    sqlsession.close();
+	    return row;
+	}
+
+	// 자녀 관리 (리스트)
+		public List<MemberVO> selectMyChildren(String id) {
+		    SqlSession sqlsession = factory.openSession(true);
+		    List<MemberVO> children = sqlsession.selectList("selectMyChildren", id);
+		    sqlsession.close();
+		    return children;
 	}
 
 }

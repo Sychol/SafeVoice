@@ -26,7 +26,22 @@
     </header>
 
     <!-- 자녀 리스트 -->
-    <section class="child-list" id="childList"></section>
+    <section class="child-list" id="childList">
+  <c:forEach var="child" items="${childrenList}">
+    <div class="child-item">
+      <img src="${pageContext.request.contextPath}/image/프로필.png" class="child-avatar" />
+      <div class="child-info">
+        <div class="child-name">${child.name}</div>
+        <div class="child-date">최근 조회 날짜<br>정보 없음</div>
+      </div>
+      <div class="child-actions">
+        <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
+        <img src="${pageContext.request.contextPath}/image/연필.png" alt="수정" class="edit-btn" />
+        <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" class="drag-handle" />
+      </div>
+    </div>
+  </c:forEach>
+</section>
 
     <!-- 자녀 추가 버튼 -->
     <a href="GoRequestConnection.do" class="add-child">

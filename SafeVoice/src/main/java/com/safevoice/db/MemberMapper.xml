@@ -6,14 +6,14 @@
 <mapper namespace="com.safevoice.db.MemberDAO">
 	
 	 <insert id="signIn" parameterType = "membervo">
-	 	INSERT INTO MEMBERS
-	 	VALUES(#{id},#{email},#{pw},#{name},#{birthdate},#{phone},#{postcode},#{address},#{detailAddress},#{gender},#{memType})
+	 	INSERT INTO MEMBERS (MEMBER_ID, EMAIL, PW, NAME, BIRTHDATE, PHONE, POST_CODE, ADDRESS, DETAIL_ADDRESS, GENDER, MEM_TYPE )
+	 	VALUES(#{id},#{email},#{pw},#{name},#{birthDate},#{phone},#{postcode},#{address},#{detailAddress},#{gender},#{memType})
 	 </insert>
 	 
 	 <!-- 로그인 할 때 입력하는 정보 중 세션에 집어넣어야 할 정보가 있다.
 	 로그인 SQL 에서는 그렇게 세션에 입력해야 할 정보를 입력해야 한다. -->
 	 <select id="login" parameterType = "membervo" resultType = "membervo">
-	 	SELECT MEMBER_ID, EMAIL, NAME, PHONE
+	 	SELECT MEMBER_ID AS id, EMAIL, NAME, PHONE, MEM_TYPE AS memType
 	 	FROM MEMBERS
 	 	WHERE MEMBER_ID = #{id}
 	 	AND PW = #{pw}
@@ -53,28 +53,27 @@
 	</select>
 
 
-	<update id="updateFamilyCd" parameterType = "membervo">
-		UPDATE MEMBERS AS M1
-		JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{childId}
-			SET M1.FAMILY_CD = CASE
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL
-					THEN UUID()
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL
-					THEN M2.FAMILY_CD
-				ELSE M1.FAMILY_CD
-				END
-		WHERE M1.MEMBER_ID = #{id}
-		UPDATE MEMBERS AS M1
-		JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{id}
-			SET M1.FAMILY_CD = CASE
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL
-					THEN UUID()
-				WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL
-					THEN M2.FAMILY_CD
-				ELSE M1.FAMILY_CD
-				END
-		WHERE M1.MEMBER_ID = #{childId}
-	</update>
+	<update id="updateFamilyCdForParent" parameterType="membervo">
+   		UPDATE MEMBERS AS M1
+    	JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{childId}
+    	SET M1.FAMILY_CD = CASE
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL THEN UUID()
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL THEN M2.FAMILY_CD
+        	ELSE M1.FAMILY_CD
+    	END
+   		WHERE M1.MEMBER_ID = #{id}
+		</update>
+
+		<update id="updateFamilyCdForChild" parameterType="membervo">
+    	UPDATE MEMBERS AS M1
+    	JOIN MEMBERS AS M2 ON M2.MEMBER_ID = #{id}
+    	SET M1.FAMILY_CD = CASE
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NULL THEN UUID()
+        	WHEN M1.FAMILY_CD IS NULL AND M2.FAMILY_CD IS NOT NULL THEN M2.FAMILY_CD
+        	ELSE M1.FAMILY_CD
+    	END
+    	WHERE M1.MEMBER_ID = #{childId}
+		</update>
 	
 	<delete id="signOut" parameterType = "membervo">
 		DELETE FROM MEMBERS
@@ -94,4 +93,20 @@
 		WHERE MEMBER_ID = #{id}
 		AND PHONE = #{phone}
 	</update>
+	
+	<update id="disconnectChild" parameterType="string">
+    	UPDATE MEMBERS
+    	SET FAMILY_CD = NULL
+    	WHERE MEMBER_ID = #{childId}
+	</update>
+	
+	<select id="selectMyChildren" parameterType="string" resultType="membervo">
+    	SELECT MEMBER_ID AS id, NAME, EMAIL, FAMILY_CD, MEM_TYPE
+    	FROM MEMBERS
+    	WHERE FAMILY_CD = (
+        		SELECT FAMILY_CD FROM MEMBERS WHERE MEMBER_ID = #{id}
+    			)
+    			AND MEM_TYPE = 'C'
+	</select>
+	
 </mapper>

@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (backButton) {
     backButton.addEventListener("click", () => history.back());
   }
-
+	
+	
+	
   if (addBtn && list) {
     addBtn.addEventListener("click", function () {
       const today = new Date().toISOString().slice(0, 10);

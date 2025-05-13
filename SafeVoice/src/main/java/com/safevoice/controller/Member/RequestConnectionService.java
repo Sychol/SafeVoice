@@ -61,8 +61,9 @@ public class RequestConnectionService implements Command {
                     HttpSession codeSession = request.getSession();
                     codeSession.setAttribute("realCode", code);
                     codeSession.setAttribute("receiverId", targetId);
+                    codeSession.setAttribute("targetEmail", targetEmail);
 
-                    return "GoEnterCode.do";
+                    return "GoRequestConnection.do";
 
                 } catch (MessagingException e) {
                     e.printStackTrace();

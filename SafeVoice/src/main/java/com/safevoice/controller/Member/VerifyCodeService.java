@@ -41,11 +41,11 @@ public class VerifyCodeService implements Command {
                 return "GoMenuMain.do";
             } else {
                 request.setAttribute("errorMsg", "가족 등록에 실패했습니다. 다시 시도해주세요.");
-                return "GoEnterCode.do";
+                return "GoRequestConnection.do";
             }
         } else {
             request.setAttribute("errorMsg", "인증 코드가 일치하지 않습니다.");
-            return "GoEnterCode.do";
+            return "GoRequestConnection.do";
         }
     }
 }

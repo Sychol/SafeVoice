@@ -28,6 +28,8 @@ import com.safevoice.controller.Member.SignInService;
 import com.safevoice.controller.Member.SignOutService;
 import com.safevoice.controller.Member.VerifyCodeService;
 import com.safevoice.controller.Member.VerifyIdentityService;
+import com.safevoice.controller.Member.ViewChildListService;
+import com.safevoice.tomb.DeleteChildService;
 import com.safevoice.tomb.RepeatAlertService;
 import com.safevoice.tomb.StopNotificationService;
 
@@ -56,18 +58,22 @@ public class FrontController extends HttpServlet {
 	    map.put("MenuMain.do", new MenuMainService());
 	    map.put("MainPageChild.do", new MainPageChildService());
 	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
-	    map.put("RequestConnection.do", new RequestConnectionService());
-
+	    map.put("ViewChildList.do", new ViewChildListService()); // 자녀 관리
+//	    map.put("DeleteChild.do", new DeleteChildService()); // 자녀 삭제
+	    
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 
 		String uri = request.getRequestURI();
+//		System.out.println("uri : " + uri);
 
 		String cp = request.getContextPath();
+//		System.out.println("cp : " + cp);
 
 		String finalPath = uri.substring(cp.length() + 1);
+//		System.out.println("finalPath : " + finalPath);
 
 		request.setCharacterEncoding("UTF-8");
 		
@@ -82,19 +88,28 @@ public class FrontController extends HttpServlet {
 
 		if (com != null) {
 			moveUrl = com.execute(request, response);
+//			System.out.println("🌐 요청 URI: " + uri);
+//			System.out.println("➡️ 실행 후 이동 주소: " + moveUrl);
+//			System.out.println("➡️ finalPath: " + finalPath);
 		}
 
 		if (moveUrl == null) {
 
-		} else if (moveUrl.contains("redirect:/")) {
-			response.sendRedirect(moveUrl.substring(10));
+		} else if (moveUrl.contains("redirect:/")) { // redirect:/ 로 시작하는 경우 sendRedirect 처리
+			response.sendRedirect(request.getContextPath() + moveUrl.substring(9)); // contextPath 포함
 		} else {
-
+			if (moveUrl.contains("Go")) {
+				moveUrl = moveUrl.replace("Go", "").replace(".do", ".jsp");
+//				System.out.println("moveURL 1번 : " + moveUrl);
+			}
 			if (finalPath.contains("Go")) {
 				moveUrl = finalPath.replace("Go", "").replace(".do", ".jsp");
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
-				rd.forward(request, response);
+//				System.out.println("moveURL 2번 : " + moveUrl);
 			}
+//			System.out.println("여기는 가니? : "+ moveUrl);
+//			System.out.println("final Path? : "+ finalPath);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + moveUrl);
+			rd.forward(request, response);
 		}
 	}
 	

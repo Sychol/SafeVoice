@@ -44,7 +44,7 @@
           <a href="#"><i class="fas fa-bullhorn"></i> 공지사항</a>
         </li>
         <li class="menu-item">
-          <a href="GoChildConfig.do"><i class="fas fa-child"></i> 자녀 관리</a>
+          <a href="ViewChildList.do"><i class="fas fa-child"></i> 자녀 관리</a>
         </li>
         <li class="menu-item">
           <a href="#"><i class="fas fa-file-alt"></i> 이용약관</a>

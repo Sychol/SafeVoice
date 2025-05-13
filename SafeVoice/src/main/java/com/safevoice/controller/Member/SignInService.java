@@ -12,7 +12,7 @@ public class SignInService implements Command {
 	// 회원가입
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-				
+			
 		String id = request.getParameter("id"); // 아이디
 		String memType = request.getParameter("memType"); // 부모자녀선택
 		String pw = request.getParameter("pw"); // 비밀번호
@@ -24,7 +24,6 @@ public class SignInService implements Command {
 		String address = request.getParameter("address"); // 주소
 		String detailAddress = request.getParameter("detailAddress"); // 상세주소
 		String gender = request.getParameter("gender");
-		String familyCode = request.getParameter("familyCode"); // 가족 번호
 		
 		MemberVO member = new MemberVO();
 		member.setId(id);
@@ -38,17 +37,25 @@ public class SignInService implements Command {
 		member.setAddress(address);
 		member.setDetailAddress(detailAddress);
 		member.setGender(gender);
-		member.setFamilyCode(familyCode);
 
 		MemberDAO mdao = new MemberDAO();
 
-		int row = mdao.signIn(member);
 
-		if (row > 0) {
-			return "GoLogin.do";
-		} else {
-			return "SignIn.do";
+		try {
+		    int row = mdao.signIn(member);
+		    System.out.println("row : " + row);
+		    if (row > 0) {
+		    	System.out.println("GoLogin.do 가고 싶다고");
+		        return "redirect:/GoLogin.do";
+		    } else {
+		    	System.out.println("GoSign.do 말고");
+		        return "redirect:/GoSignIn.do";
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();  // 예외를 로그로 출력
+		    return "redirect:/GoSignIn.do";  // 실패 시 돌아갈 페이지
 		}
+
 	}
 
 }

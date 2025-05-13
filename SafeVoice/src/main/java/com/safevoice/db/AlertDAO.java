@@ -36,7 +36,12 @@ public class AlertDAO {
 	    return subscriptionList;
 	}
 	
-	
-	
+	// 안읽은 알람 읽음으로 수정
+		public int MarkAlertsAsRead(String id) {
+			SqlSession sqlsession = factory.openSession(true);
+			int row = sqlsession.update("markAlertsAsRead", id);
+			sqlsession.close();
+			return row;
+		}
 	
 }

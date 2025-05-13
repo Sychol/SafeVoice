@@ -15,6 +15,8 @@ import com.safevoice.model.AlertVO;
 import com.safevoice.model.MemberVO;
 
 public class GetAlertHistoryService implements Command {
+	
+	// 알림 내역
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 아이디 전역 변수 처리

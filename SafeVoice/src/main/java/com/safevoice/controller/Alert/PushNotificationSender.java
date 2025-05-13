@@ -10,6 +10,8 @@ import com.google.gson.Gson;
 import nl.martijndwars.webpush.Notification;
 import nl.martijndwars.webpush.PushService;
 
+	// PushService Key 세팅 / 알림 전송 준비
+
 public class PushNotificationSender {
 	
 	 private static final String VAPID_PUBLIC_KEY = "BK47ejYRaSe6EDUclmUHMrqznzElZBnfY7CasYcaTQKWpZQe4BBUNNdqmBo2lR4sVd4m2aLuBHvYo44gwxbjogw"; // 추후에 환경변수에서 로드

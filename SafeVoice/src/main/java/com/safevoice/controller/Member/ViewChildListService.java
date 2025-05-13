@@ -10,6 +10,8 @@ import com.safevoice.controller.Command;
 import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
+//	자녀 관리 - 리스트 보이기
+
 public class ViewChildListService implements Command {
 
     public String execute(HttpServletRequest request, HttpServletResponse response) {

@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import com.safevoice.controller.Command;
 import com.safevoice.db.MemberDAO;
 
+	// 회원가입 시 ID 중복 체크
 
 public class IdDuplicateCheckService implements Command {
 

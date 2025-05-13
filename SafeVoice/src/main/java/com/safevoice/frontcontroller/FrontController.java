@@ -22,6 +22,7 @@ import com.safevoice.controller.Member.ChangePasswordService;
 import com.safevoice.controller.Member.IdDuplicateCheckService;
 import com.safevoice.controller.Member.LoginService;
 import com.safevoice.controller.Member.LogoutService;
+import com.safevoice.controller.Member.MarkAlertsAsRead;
 import com.safevoice.controller.Member.ModifyMemberService;
 import com.safevoice.controller.Member.RequestConnectionService;
 import com.safevoice.controller.Member.SignInService;
@@ -60,6 +61,7 @@ public class FrontController extends HttpServlet {
 	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
 	    map.put("ViewChildList.do", new ViewChildListService()); // 자녀 관리
 	    map.put("DeleteChild.do", new DeleteChildService()); // 자녀 삭제
+	    map.put("MarkAlertsAsRead.do", new MarkAlertsAsRead());
 	    
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)

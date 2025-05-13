@@ -1,23 +1,29 @@
-package com.safevoice.controller.Alert;
+package com.safevoice.controller.Member;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-import com.mysql.cj.Session;
+import org.json.JSONObject;
+
 import com.safevoice.controller.Command;
 import com.safevoice.db.AlertDAO;
-import com.safevoice.model.AlertVO;
+import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
-public class GetAlertHistoryService implements Command {
 
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 아이디 전역 변수 처리
+public class MarkAlertsAsRead implements Command {
+
+	public String execute (HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
 		String id = "";
 		// 조회하려는 아이디를 session 에서 가져오기. 
 		HttpSession session = request.getSession();
@@ -29,21 +35,17 @@ public class GetAlertHistoryService implements Command {
 			// 자녀 리스트 비어 있음
 		}
 		
-		// AlertDAO 생성
 		AlertDAO adao = new AlertDAO();
+		int row = adao.MarkAlertsAsRead(id);
 		
-		// adao의 getAlertHistory 메서드를 실행시키고 결과값을 list에 저장
-		List<AlertVO> alertList = adao.getAlertHistory(id);
+		if(row >0) {
+			response.setStatus(200);
+		} else {
+			response.setStatus(401);
+		}
 		
-		// List 형태로 온 데이터를 json 형식으로 변경
-		Gson gson = new Gson();
-		String alertJson = gson.toJson(alertList);
-		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(alertJson);
-		
+	
 		return null;
 	}
-
+	
 }

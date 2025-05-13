@@ -10,7 +10,7 @@ public class AlertVO {
 	String alertContext; // 알림 내용
 	int viewOrNot; // 조회 여부
 	
-	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, String alertContext) {
+	public AlertVO(String memberId, String alertType, String alertTime, String lat, String lon, String alertContext, int viewOrNot) {
 		super();
 		this.memberId = memberId;
 		this.alertType = alertType;
@@ -18,6 +18,7 @@ public class AlertVO {
 		this.lat = lat;
 		this.lon = lon;
 		this.alertContext = alertContext;
+		this.viewOrNot = viewOrNot;
 	}
 	
 	public AlertVO() {

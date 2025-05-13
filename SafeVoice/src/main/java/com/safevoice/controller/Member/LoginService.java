@@ -1,5 +1,7 @@
 package com.safevoice.controller.Member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,8 +24,9 @@ public class LoginService implements Command {
 		mvo.setPw(pw);
 
 		MemberDAO mdao = new MemberDAO();
-
+		
 		MemberVO resultVo = mdao.login(mvo);
+		
 		String memType = resultVo.getMemType();
 		System.out.println("로그인 시도 결과 ID: " + resultVo.getId());
 		System.out.println("로그인 시도 결과 memType: " + resultVo.getMemType());
@@ -31,8 +34,10 @@ public class LoginService implements Command {
 		System.out.println("✅ 리턴 주소: GoMainPageChild.do");
 		HttpSession session = request.getSession();
 		if (resultVo.getId() != null) {
+			List<MemberVO> childList = mdao.selectMyChildren(resultVo.getId()); // 로그인한 회원의 아이리스트
 			session.setAttribute("loginMember", resultVo); // 로그인한 회원 정보
 			session.setAttribute("loginId", resultVo.getId()); // 로그인한 회원의 아이디
+			session.setAttribute("childList", childList);
 			if (memType.trim().equals("P")) {
 				return "GoMainPageAdult.do";
 			} else if (memType.trim().equals("C")) {

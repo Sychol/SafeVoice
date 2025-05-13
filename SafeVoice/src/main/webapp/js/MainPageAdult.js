@@ -34,11 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			data.forEach(item => {
 				const type = item.alertType;
-				if (type === 'SOS') sos++;
-				else if (type === '위험') danger++;
+				if (type === '위험') sos++;
+				else if (type === '주의') danger++;
 				else if (type === '경고') caution++;
 			});
-			console.log("sos 개수 확인: ", sos)
 
 			// 확인하지 않은 아이 알람 중 가장 최근 데이터만 팝업
 			const latest = uncheckedAlerts[0];
@@ -56,10 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
 				const desc = document.getElementById("alert-desc");
 				const level = document.getElementById("alert-level");
 
-					if (latest.alertType === 'SOS') {
+					if (latest.alertType === '위험') {
 					title.innerHTML = "긴급 위험 감지";
 					desc.textContent = "자녀의 통화에서 긴급 상황이 감지되었습니다";
-					level.textContent = "SOS";
+					level.textContent = "위험";
 					level.className = "sos";
 					if (popupBox) popupBox.classList.add("sos");
 					if (profileCircle) profileCircle.classList.add("sos");

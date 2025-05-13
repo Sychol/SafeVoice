@@ -65,39 +65,42 @@
   </div>
 
   <!-- ✅ 자녀 추가 후 화면에 표시 -->
-  <c:if test="${not empty sessionScope.addedChildId}">
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const list = document.querySelector(".child-list");
-        const today = new Date().toISOString().slice(0, 10);
-        const addedChildId = "${sessionScope.addedChildId}";
+<c:if test="${not empty sessionScope.addedChildId}">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const list = document.querySelector(".child-list");
+      const today = new Date().toISOString().slice(0, 10);
+      const addedChildId = "${sessionScope.addedChildId}";
 
-        if (list && addedChildId) {
-          const newChild = document.createElement("div");
-          newChild.className = "child-item";
-          newChild.innerHTML = 
-            <img src="${pageContext.request.contextPath}/image/프로필.png" class="child-avatar" />
-            <div class="child-info">
-              <div class="child-name">${addedChildId}</div>
-              <div class="child-date">최근 조회 날짜<br>${today}</div>
-            </div>
-            <div class="child-actions">
+      if (list && addedChildId) {
+        const newChild = document.createElement("div");
+        newChild.className = "child-item";
+
+        newChild.innerHTML = `
+          <img src="${pageContext.request.contextPath}/image/프로필.png" class="child-avatar" />
+          <div class="child-info">
+            <div class="child-name">${addedChildId}</div>
+            <div class="child-date">최근 조회 날짜<br>${today}</div>
+          </div>
+          <div class="child-actions">
             <form action="DeleteChild.do" method="post" class="delete-form">
-            <input type="hidden" name="childId" value="${addedChildId}" />
-            <button type="submit" class="delete-btn" style="background:none; border:none; padding:0; cursor:pointer;">
-              <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
-            	  </button>
-              </form>
-              <img src="${pageContext.request.contextPath}/image/연필.png" alt="수정" class="edit-btn" />
-              <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" class="drag-handle" />
-            </div>
-          ;
-          list.appendChild(newChild);
-        }
-      });
-    </script>
-    <!-- ✅ 중복 방지: 세션 제거 -->
-    <c:remove var="addedChildId" scope="session" />
-  </c:if>
+              <input type="hidden" name="childId" value="${addedChildId}" />
+              <button type="submit" class="delete-btn" style="background:none; border:none; padding:0; cursor:pointer;">
+                <img src="${pageContext.request.contextPath}/image/휴지통.png" alt="삭제" class="delete-btn" />
+              </button>
+            </form>
+            <img src="${pageContext.request.contextPath}/image/연필.png" alt="수정" class="edit-btn" />
+            <img src="${pageContext.request.contextPath}/image/메뉴.png" alt="메뉴" class="drag-handle" />
+          </div>
+        `;
+
+        list.appendChild(newChild);
+      }
+    });
+  </script>
+
+  <c:remove var="addedChildId" scope="session" />
+</c:if>
+
 </body>
 </html>

@@ -59,7 +59,7 @@ public class FrontController extends HttpServlet {
 	    map.put("MainPageChild.do", new MainPageChildService());
 	    map.put("IdDuplicateCheck.do", new IdDuplicateCheckService());
 	    map.put("ViewChildList.do", new ViewChildListService()); // 자녀 관리
-//	    map.put("DeleteChild.do", new DeleteChildService()); // 자녀 삭제
+	    map.put("DeleteChild.do", new DeleteChildService()); // 자녀 삭제
 	    
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)

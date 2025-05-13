@@ -16,6 +16,7 @@ public class MemberVO {
 	String memType;
 	String childId;
 	String imagePath;
+	String jsonSubscription;
 
 	public MemberVO(String email, String id, String pw, String name, String birthDate, String phone, String postcode,
 			String address, String detailAddress, String gender, String familyCode, String memType) {
@@ -150,4 +151,12 @@ public class MemberVO {
 		this.imagePath = imagePath;
 	}
 	
+	public String getJsonSubscription() {
+	    return jsonSubscription;
+	}
+
+	public void setJsonSubscription(String jsonSubscription) {
+	    this.jsonSubscription = jsonSubscription;
+	}
+
 }

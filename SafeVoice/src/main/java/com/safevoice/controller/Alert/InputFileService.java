@@ -10,6 +10,8 @@ import com.safevoice.db.AlertDAO;
 import com.safevoice.model.AlertVO;
 
 public class InputFileService implements Command {
+	
+	// 파일 업로드 -> python으로 음성파일 분석 -> PushService message 담기
 
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

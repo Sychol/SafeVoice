@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (Array.isArray(alertData)) {
         alertData.forEach(alert => {
           addAlert(
-            `${alert.memberId}`,
+            `${alert.name}`,
             `${alert.date}<br>${alert.time || ''}`,
             `${alert.alertType} - ${alert.alertContext || ''}`
           );

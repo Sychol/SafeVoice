@@ -17,6 +17,11 @@
 <img src="${pageContext.request.contextPath}/image/Mom.png" alt="부모 프로필" class="parent-icon" />  
 </header>
 
+<script>
+  const contextPath = "${pageContext.request.contextPath}";
+  window.memberId = "${sessionScope.loginMember.id}";
+</script>
+
   <div class="section">
 
     <!-- SOS 알림 -->
@@ -99,6 +104,6 @@
   </footer>
 </div>
 
-  <script src="${pageContext.request.contextPath}/js/AlertConfig.js"></script>
+   <script src="/SafeVoice/js/AlertConfig.js" defer></script>
 </body>
 </html>

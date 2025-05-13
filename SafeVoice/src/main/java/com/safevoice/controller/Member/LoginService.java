@@ -39,9 +39,9 @@ public class LoginService implements Command {
 			session.setAttribute("loginId", resultVo.getId()); // 로그인한 회원의 아이디
 			session.setAttribute("childList", childList);
 			if (memType.trim().equals("P")) {
-				return "GoMainPageAdult.do";
+				return "redirect:/MainPageAdult.do";
 			} else if (memType.trim().equals("C")) {
-				return "GoMainPageChild.do";
+				return "redirect:/MainPageChild.do";
 			} else {
 		        // 혹시 모를 예외적인 경우 처리
 		        session.setAttribute("error", "회원 유형이 잘못되었습니다.");

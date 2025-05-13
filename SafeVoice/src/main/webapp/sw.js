@@ -16,13 +16,19 @@ self.addEventListener('push', function(event) {
 */ 
 
 self.addEventListener('push', function(event) {
-  const data = event.data.json();
-  event.waitUntil(
-    self.registration.showNotification(data.title, {
-      body: data.body
-    })
-  );
-});
+	  console.log("📥 푸시 이벤트 도착!", event);
+
+	  try {
+	    const data = event.data ? event.data.json() : { title: "⚠️ 알림 오류", body: "event.data가 null입니다." };
+	    event.waitUntil(
+	      self.registration.showNotification(data.title, {
+	        body: data.body
+	      })
+	    );
+	  } catch (err) {
+	    console.error("❌ 알림 표시 중 오류:", err);
+	  }
+	});
 
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();

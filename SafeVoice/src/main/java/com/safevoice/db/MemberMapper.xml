@@ -109,9 +109,17 @@
     			AND MEM_TYPE = 'C'
 	</select>
 	
+
 	<select id="getChildNameById" parameterType="string">
 		SELECT NAME
 		FROM MEMBERS
 		WHERE MEMBER_ID = #{id}
 	</select>
+	
+	<update id="saveSubscription" parameterType="membervo">
+    	UPDATE MEMBERS
+    	SET SUBSCRIPTION_JSON = #{jsonSubscription}
+    	WHERE MEMBER_ID = #{id}
+	</update>
+	
 </mapper>

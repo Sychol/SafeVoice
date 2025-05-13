@@ -87,7 +87,7 @@ public class MemberDAO {
 
 	}
 
-	// 비밀번호 변경 메서드
+	// 비밀번호 수정 - 비밀번호 갱신
 	public int updatePw(MemberVO member) {
 		// auto-commit true 로 세션 열기
 		SqlSession sqlsession = factory.openSession(true);
@@ -121,6 +121,13 @@ public class MemberDAO {
 		String name = sqlsession.selectOne("getChildNameById", id);
 		sqlsession.close();
 		return name;
+	}
+	// 회원 구독 정보 저장 (SubscriptionJson)
+	public int saveSubscription(MemberVO member) {
+		SqlSession sqlsession = factory.openSession(true);
+		int row = sqlsession.update("saveSubscription", member); // UPDATE 쿼리 사용!
+		sqlsession.close();
+		return row;
 	}
 
 }

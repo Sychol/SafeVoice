@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				const desc = document.getElementById("alert-desc");
 				const level = document.getElementById("alert-level");
 
-
-				if (latest.alertType === 'SOS') {
+					if (latest.alertType === 'SOS') {
 					title.innerHTML = "긴급 위험 감지";
 					desc.textContent = "자녀의 통화에서 긴급 상황이 감지되었습니다";
 					level.textContent = "SOS";

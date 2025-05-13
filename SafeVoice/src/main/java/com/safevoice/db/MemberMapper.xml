@@ -109,4 +109,9 @@
     			AND MEM_TYPE = 'C'
 	</select>
 	
+	<select id="getChildNameById" parameterType="string">
+		SELECT NAME
+		FROM MEMBERS
+		WHERE MEMBER_ID = #{id}
+	</select>
 </mapper>

@@ -115,5 +115,12 @@ public class MemberDAO {
 		sqlsession.close();
 		return children != null ? children : Collections.emptyList();
 	}
+	
+	public String getChildNameById(String id) {
+		SqlSession sqlsession = factory.openSession(true);
+		String name = sqlsession.selectOne("getChildNameById", id);
+		sqlsession.close();
+		return name;
+	}
 
 }

@@ -1,7 +1,9 @@
 package com.safevoice.controller.Alert;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,11 +40,16 @@ public class GetAlertHistoryService implements Command {
 		
 		// MemberDAO 생성
 		MemberDAO dao = new MemberDAO();
+		String childName = dao.getChildNameById(id);
 		
+		// 결과 맵 구성
+		Map<String, Object> resultMap = new HashMap<>();
+		resultMap.put("childName", childName);
+		resultMap.put("alerts", alertList);
 		
 		// List 형태로 온 데이터를 json 형식으로 변경
 		Gson gson = new Gson();
-		String alertJson = gson.toJson(alertList);
+		String alertJson = gson.toJson(resultMap);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

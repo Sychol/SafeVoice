@@ -27,6 +27,7 @@ import com.safevoice.controller.Member.ModifyMemberService;
 import com.safevoice.controller.Member.RequestConnectionService;
 import com.safevoice.controller.Member.SignInService;
 import com.safevoice.controller.Member.SignOutService;
+import com.safevoice.controller.Member.UpdateMemberService;
 import com.safevoice.controller.Member.VerifyCodeService;
 import com.safevoice.controller.Member.VerifyIdentityService;
 import com.safevoice.controller.Member.ViewChildListService;
@@ -62,6 +63,7 @@ public class FrontController extends HttpServlet {
 	    map.put("ViewChildList.do", new ViewChildListService()); // 자녀 관리
 	    map.put("DeleteChild.do", new DeleteChildService()); // 자녀 삭제
 	    map.put("MarkAlertsAsRead.do", new MarkAlertsAsRead());
+	    map.put("UpdateMember.do", new UpdateMemberService());
 	    
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)

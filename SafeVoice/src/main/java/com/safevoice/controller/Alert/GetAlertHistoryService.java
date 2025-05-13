@@ -17,8 +17,8 @@ public class GetAlertHistoryService implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		// 조회하려는 아이디를 session 에서 가져오기. 현재는 그냥 ID 1로 설정
-		// String id = (String) request.getSession().getAttribute("id");
-		String id = "ID 1";
+		String id = (String) request.getSession().getAttribute("id");
+		//String id = "ID 1";
 		
 		// AlertDAO 생성
 		AlertDAO adao = new AlertDAO();

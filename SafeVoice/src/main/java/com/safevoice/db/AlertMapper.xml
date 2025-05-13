@@ -7,7 +7,7 @@
 <mapper namespace="com.safevoice.db.AlertDAO">
 	
 	 <select id="getAlertHistory" parameterType = "String" resultType = "alertvo">
-	 	SELECT MEMBER_ID, ALERT_TYPE, ALERT_TIME, LAT, LON, ALERT_CONTEXT
+	 	SELECT MEMBER_ID, ALERT_TYPE, ALERT_TIME, LAT, LON, ALERT_CONTEXT, VIEW_OR_NOT
 	 	FROM ALERTS
 	 	WHERE MEMBER_ID = #{id}
 	 </select>

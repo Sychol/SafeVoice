@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	console.log("✅ AlertConfig.js loaded");
 
-	document.querySelectorAll('.setting-toggle').forEach(toggle => {
-	  console.log("📦 Found toggle:", toggle.id); // ← 각 토글 ID 출력됨
 
-	  toggle.addEventListener('change', () => {
-	    console.log("🎯 TOGGLE CHANGED:", toggle.id, "→", toggle.checked);
-	  });
-	});
+		document.querySelectorAll('.setting-toggle').forEach(toggle => {
+		  console.log("📦 Found toggle:", toggle.id); // ← 각 토글 ID 출력됨
 
+		  toggle.addEventListener('change', () => {
+		    console.log("🎯 TOGGLE CHANGED:", toggle.id, "→", toggle.checked);
+		  });
+		});
   }
 
   // 반복주기 설정 클릭 시 저장 및 닫기
@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.checked = saved === 'true';
     }
 
-	  toggle.addEventListener('change', async () => {
+
+	toggle.addEventListener('change', async () => {
 	    localStorage.setItem(toggle.id, toggle.checked);
 
 	    // 🔔 알림 설정 토글 시 푸시 구독 실행 또는 해제

@@ -123,11 +123,11 @@ public class MemberDAO {
 		return name;
 	}
 	// 회원 구독 정보 저장 (SubscriptionJson)
-	public int saveSubscription(MemberVO member) {
-		SqlSession sqlsession = factory.openSession(true);
-		int row = sqlsession.update("saveSubscription", member); // UPDATE 쿼리 사용!
-		sqlsession.close();
-		return row;
+		public int saveSubscription(MemberVO member) {
+			SqlSession sqlsession = factory.openSession(true);
+			int row = sqlsession.update("saveSubscription", member); // UPDATE 쿼리 사용!
+			sqlsession.close();
+			return row;
 	}
 
 }

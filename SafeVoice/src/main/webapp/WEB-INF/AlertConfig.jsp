@@ -104,6 +104,6 @@
   </footer>
 </div>
 
-  <script src="/SafeVoice/js/AlertConfig.js" defer></script>
+   <script src="/SafeVoice/js/AlertConfig.js" defer></script>
 </body>
 </html>

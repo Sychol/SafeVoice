@@ -11,6 +11,7 @@ import com.safevoice.controller.Command;
 import com.safevoice.db.MemberDAO;
 import com.safevoice.model.MemberVO;
 
+
 //	구독 정보 DB에 저장
 
 public class SaveSubscriptionService implements Command {

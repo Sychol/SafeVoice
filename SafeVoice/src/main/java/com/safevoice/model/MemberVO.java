@@ -158,5 +158,5 @@ public class MemberVO {
 	public void setJsonSubscription(String jsonSubscription) {
 	    this.jsonSubscription = jsonSubscription;
 	}
-	
+
 }

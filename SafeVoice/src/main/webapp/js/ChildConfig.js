@@ -36,10 +36,28 @@ document.addEventListener("DOMContentLoaded", function () {
       // 삭제 버튼
       if (e.target && e.target.classList.contains("delete-btn")) {
         const childItem = e.target.closest(".child-item");
-        if (childItem) {
-          childItem.remove();
-        }
-      }
+		const childId = childItem?.querySelector(".child-name")?.textContent?.trim();
+
+		  if (childId && confirm(`${childId} 자녀를 삭제하시겠습니까?`)) {
+		    fetch("DeleteChild.do", {
+		      method: "POST",
+		      headers: {
+		        "Content-Type": "application/x-www-form-urlencoded",
+		      },
+		      body: `childId=${encodeURIComponent(childId)}`
+		    })
+		      .then(res => {
+		        if (res.ok) {
+		          childItem.remove(); // UI에서도 제거
+		        } else {
+		          alert("삭제 실패!");
+		        }
+		      })
+		      .catch(err => {
+		        alert("서버 오류: " + err);
+		      });
+		  }
+		}
 
       // 수정 버튼
       if (e.target && e.target.classList.contains("edit-btn")) {

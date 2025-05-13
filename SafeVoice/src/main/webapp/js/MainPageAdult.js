@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	fetch('/SafeVoice/GetAlertHistory.do')
 		.then(res => res.json())
 		.then(data => {
+		
+			
 			const profileCircle = document.getElementById("popup-profile");
 
 			let sos = 0, danger = 0, caution = 0;

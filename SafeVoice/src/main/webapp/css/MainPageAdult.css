@@ -552,29 +552,10 @@ footer {
   color: #F2B705;
 }
 #alert-level.caution {
-  color: #4CAF50;
+  color: #ffeb3b;
 }
 
-/* 팝업 경고 배경색 강조 */
-.popup.sos {
-  border: 3px solid #f44336;
-}
-.popup.warning {
-  border: 3px solid #F2B705;
-}
-.popup.caution {
-  border: 3px solid #4CAF50;
-}
 
-#popup-profile.sos {
-  border: 4px solid #f44336;
-}
-#popup-profile.warning {
-  border: 4px solid #F2B705;
-}
-#popup-profile.caution {
-  border: 4px solid #4CAF50;
-}
 
 /* alert popup 텍스트 보완 */
 #alert-title {

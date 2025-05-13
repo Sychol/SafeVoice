@@ -27,21 +27,11 @@
 
 	<update id="updateMember" parameterType="membervo">
     UPDATE MEMBERS
-    <set>
-        <if test="email != null and email != ''">
-            EMAIL = #{email},
-        </if>
-        <if test="phone != null and phone != ''">
-            PHONE = #{phone},
-        </if>
-        <if test="address != null and address != ''">
+    SET
+            PW = #{pw},
+            POST_CODE = #{postcode},
             ADDRESS = #{address},
-        </if>
-        <if test="pw != null and pw != ''">
-            PW = #{pw}
-        </if>
-        
-    </set>
+            DETAIL_ADDRESS = #{detailAddress}
     WHERE MEMBER_ID = #{id}
 </update>
 

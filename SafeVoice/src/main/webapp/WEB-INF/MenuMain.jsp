@@ -28,9 +28,9 @@
   <input type="file" id="file-input" style="display:none;" accept="image/*">
 
   <div class="email" id="user-email">userEmail@example.com</div>
-  <div class="name" id="user-name">성이름</div>
+  <div class="name" id="user-name">나엄마</div>
 
-    <button id="edit-user" class="edit-button">수정</button>
+ 
 </div>
 
     <ul class="menu-list">
@@ -60,6 +60,10 @@
 
 
        
+		
+		<div class="menu-footer">
+		  <a href="Logout.do">로그아웃</a> | <a href="SignOut.do">회원탈퇴</a>
+		</div>
       <footer>
         <div class="bottom-navbar">
             <a href = "GoAlertHistory.do"><img src="${pageContext.request.contextPath}/image/알림1.png" alt="알림" /><span>알림</span></a>
@@ -68,7 +72,6 @@
         </div>
     </footer>
 </div>
-
  <script src="${pageContext.request.contextPath}/js/MenuMain.js"></script>
 
 </body>

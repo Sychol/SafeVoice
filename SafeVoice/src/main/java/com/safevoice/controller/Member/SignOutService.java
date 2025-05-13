@@ -1,8 +1,5 @@
 package com.safevoice.controller.Member;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,37 +12,32 @@ import com.safevoice.model.MemberVO;
 public class SignOutService extends HttpServlet implements Command {
 	private static final long serialVersionUID = 1L;
 	
-	// 회원탈퇴
+	// 회원탈퇴 (구현 X)
        
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-        MemberDAO mdao = new MemberDAO();
-        MemberVO mvo = new MemberVO();
-        mvo.setId(id);
-        mvo.setPw(pw);
-        int row = mdao.signOut(mvo);
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
+	    String id = request.getParameter("id");
+	    String pw = request.getParameter("pw");
 
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
+	    MemberDAO mdao = new MemberDAO();
+	    MemberVO mvo = new MemberVO();
+	    mvo.setId(id);
+	    mvo.setPw(pw);
 
-        if (row > 0) {
-            // 로그아웃 처리
-            HttpSession session = request.getSession();
-            session.invalidate();
+	    int row = mdao.signOut(mvo);
 
-            out.println("<script>");
-            out.println("alert('회원 탈퇴 완료 💙');");
-            out.println("location.href='GoLogin.do';");
-            out.println("</script>");
-        } else {
-            out.println("<script>");
-            out.println("alert('회원 탈퇴 실패 😢');");
-            out.println("history.back();");
-            out.println("</script>");
-        }
+	    HttpSession session = request.getSession(false);
 
-        return null; // alert 후 리다이렉트 완료니까 null
-        }
+	    if (row > 0) {
+	        if (session != null) {
+	            session.invalidate(); // 세션 날리고
+	            session = request.getSession(true); // 새로 만들고
+	            session.setAttribute("logoutMsg", "👋 회원 탈퇴가 완료되었습니다. 그동안 고마웠어요!");
+	        }
+	        return "redirect:/GoLogin.do";
+	    } else {
+	        session.setAttribute("logoutMsg", "🚫 회원 탈퇴에 실패했습니다. 비밀번호를 확인해주세요!");
+	        return "redirect:/GoMenuMain.do"; // 또는 탈퇴 페이지로
+	    }
+	}
+
     }

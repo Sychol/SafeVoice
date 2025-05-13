@@ -41,7 +41,8 @@ public class MemberDAO {
 
 	// 회원정보 수정
 	public int updateMember(MemberVO paravo) {
-
+		System.out.println("dao : " + paravo.getPw());
+		System.out.println("dao : " + paravo.getPostcode());
 		SqlSession sqlsession = factory.openSession(true);
 		int row = sqlsession.update("updateMember", paravo);
 		sqlsession.close();

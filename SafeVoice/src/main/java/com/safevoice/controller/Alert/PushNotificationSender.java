@@ -12,11 +12,12 @@ import nl.martijndwars.webpush.PushService;
 
 public class PushNotificationSender {
 	
-	 private static final String VAPID_PUBLIC_KEY = System.getenv("VAPID_PUBLIC_KEY"); // 환경변수에서 로드
-	 private static final String VAPID_PRIVATE_KEY = System.getenv("VAPID_PRIVATE_KEY"); // 환경변수에서 로드
+	 private static final String VAPID_PUBLIC_KEY = "BK47ejYRaSe6EDUclmUHMrqznzElZBnfY7CasYcaTQKWpZQe4BBUNNdqmBo2lR4sVd4m2aLuBHvYo44gwxbjogw"; // 추후에 환경변수에서 로드
+	 private static final String VAPID_PRIVATE_KEY = "E4eeFQbM6SWNFxXLzhBIwpT51CuszqeGD0U04uFr0xU"; // 추후에 환경변수에서 로드
 
 	 public static void send(String subscriptionJson, String title, String body) throws Exception {
 	        MySubscription sub = new Gson().fromJson(subscriptionJson, MySubscription.class);
+	        
 	        
 	        String endpoint = sub.getEndpoint();
 			byte[] authBytes = Base64.decodeBase64(sub.getKeys().getAuth());

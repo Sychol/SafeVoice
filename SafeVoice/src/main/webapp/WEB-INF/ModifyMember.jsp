@@ -29,11 +29,7 @@
   <script defer src="${pageContext.request.contextPath}/js/ModifyMember.js"></script>
 </head>
 <body>
-<div style="padding:10px; background:#f9f9f9; border:1px solid #ccc; margin-bottom:10px;">
-  <strong>form 데이터 확인:</strong><br>
-  아이디: ${form.member_id} <br>
-  이메일: ${form.email} <br>
-</div>
+
 <div class="wrapper">
   <div class="sign-container">
     <div class="form-header-bar">
@@ -58,7 +54,7 @@
           <div class="label">이메일</div>
           <div class="value">
           	<div>
-			<input type="text" id="email-id" placeholder="${form.email}" />
+			<input type="text" id="email-id" placeholder="${form.email}" readonly/>
             </div>
             <!-- <span>@</span>
             <select id="domain-list">

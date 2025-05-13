@@ -18,15 +18,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			// 확인되지 않은 데이터 변수 
 			const uncheckedAlerts = data.filter(item => item.viewOrNot === 0); // 확인되지 않은 알림만 추출
 			
-			console.log("확인되지 않은 알림 목록:", uncheckedAlerts);
-			
+			console.log("확인되지 않은 알림 목록:", uncheckedAlerts);			
 			// 만약 확인되지 않은 데이터 변수가 없다면 팝업창을 출력하지 않음
 			/*if(uncheckedAlerts.length === 0){
 				popupOverlay.style.display = 'none';
 				return;
 			}*/
-/*			const profileCircle = document.getElementById("popup-profile");
-*/		
+
+			//const profileCircle = document.getElementById("popup-profile");
+			
 			let sos = 0, danger = 0, caution = 0;
 
 			if (popupBox) popupBox.classList.remove('sos', 'warning', 'caution');
@@ -56,21 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
 				const desc = document.getElementById("alert-desc");
 				const level = document.getElementById("alert-level");
 
-				// ✅ 위험 유형별 내용 구성
-				if (latest.alertType === 'SOS') {
+					if (latest.alertType === 'SOS') {
 					title.innerHTML = "긴급 위험 감지";
 					desc.textContent = "자녀의 통화에서 긴급 상황이 감지되었습니다";
 					level.textContent = "SOS";
 					level.className = "sos";
-					popupBox.classList.add("sos");
-					profileCircle.classList.add("sos");
+					if (popupBox) popupBox.classList.add("sos");
+					if (profileCircle) profileCircle.classList.add("sos");
 				} else if (latest.alertType === '위험') {
 					title.innerHTML = "학교폭력 위험감지";
 					desc.textContent = "자녀의 통화에서 위험이 감지되었습니다";
 					level.textContent = "경고";
 					level.className = "warning";
-					popupBox.classList.add("warning");
-					profileCircle.classList.add("warning");
+					if (popupBox) popupBox.classList.add("warning");
+					if (profileCircle) profileCircle.classList.add("warning");
 				} else if (latest.alertType === '경고') {
 					title.innerHTML = "주의 필요";
 					desc.textContent = "자녀의 통화에서 주의가 필요한 내용이 감지되었습니다";

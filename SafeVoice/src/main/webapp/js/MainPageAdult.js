@@ -11,10 +11,19 @@ document.addEventListener('DOMContentLoaded', function () {
 	fetch('/SafeVoice/GetAlertHistory.do')
 		.then(res => res.json())
 		.then(data => {
-		
+			console.log("alert data:", data);
+			// 확인되지 않은 데이터 변수 
+			const uncheckedAlerts = data.filter(item => item.viewOrNot === 0); // 확인되지 않은 알림만 추출
 			
+			console.log("확인되지 않은 알림 목록:", uncheckedAlerts);
+			
+			// 만약 확인되지 않은 데이터 변수가 없다면 팝업창을 출력하지 않음
+			if(uncheckedAlerts.length === 0){
+				popupOverlay.style.display = 'none';
+				return;
+			}
 			const profileCircle = document.getElementById("popup-profile");
-
+			
 			let sos = 0, danger = 0, caution = 0;
 
 			if (popupBox) popupBox.classList.remove('sos', 'warning', 'caution');
@@ -22,12 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			data.forEach(item => {
 				const type = item.alertType;
-				if (type === 'S') sos++;
-				else if (type === 'D') danger++;
-				else if (type === 'C') caution++;
+				if (type === 'SOS') sos++;
+				else if (type === '위험') danger++;
+				else if (type === '경고') caution++;
 			});
 
-			const latest = data[0];
+			// 확인하지 않은 아이 알람 중 가장 최근 데이터만 팝업
+			const latest = uncheckedAlerts[0];
 			if (latest && latest.alertType && latest.alertTime) {
 				const alertId = latest.alertType + "_" + latest.alertTime;
 				const confirmedId = localStorage.getItem('confirmedAlertId');
@@ -36,21 +46,21 @@ document.addEventListener('DOMContentLoaded', function () {
 				const desc = document.getElementById("alert-desc");
 				const level = document.getElementById("alert-level");
 
-				if (latest.alertType === 'S') {
+				if (latest.alertType === 'SOS') {
 					title.innerHTML = "긴급 위험 감지";
 					desc.textContent = "자녀의 통화에서 긴급 상황이 감지되었습니다";
 					level.textContent = "SOS";
 					level.className = "sos";
 					if (popupBox) popupBox.classList.add("sos");
 					if (profileCircle) profileCircle.classList.add("sos");
-				} else if (latest.alertType === 'D') {
+				} else if (latest.alertType === '위험') {
 					title.innerHTML = "학교폭력 위험감지";
 					desc.textContent = "자녀의 통화에서 위험이 감지되었습니다";
 					level.textContent = "경고";
 					level.className = "warning";
 					if (popupBox) popupBox.classList.add("warning");
 					if (profileCircle) profileCircle.classList.add("warning");
-				} else if (latest.alertType === 'C') {
+				} else if (latest.alertType === '경고') {
 					title.innerHTML = "주의 필요";
 					desc.textContent = "자녀의 통화에서 주의가 필요한 내용이 감지되었습니다";
 					level.textContent = "주의";

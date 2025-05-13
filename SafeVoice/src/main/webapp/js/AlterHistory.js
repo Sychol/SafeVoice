@@ -70,4 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => {
       console.error("오류:", error);
     });
+	
+	// 진입 시 알람 확인 처리 및 서버 업데이트 
+	// 일단은 주석 처리
+    //localStorage.setItem('alertChecked', 'true');
+	
+	fetch('/SafeVoice/MarkAlertsAsRead.do', {
+		method: 'POST'
+	})
+	.then(res => {
+		if(!res.ok) throw new Error('서버 응답 오류');
+		console.log("서버에 알림 확인 처리 완료");
+	})
+	.catch(err =>{
+		console.error("알림 상태 업데이터 실패:", err);
+	})
 });

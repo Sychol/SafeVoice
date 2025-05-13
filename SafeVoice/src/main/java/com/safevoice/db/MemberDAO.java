@@ -3,6 +3,8 @@ package com.safevoice.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -112,7 +114,7 @@ public class MemberDAO {
 		    SqlSession sqlsession = factory.openSession(true);
 		    List<MemberVO> children = sqlsession.selectList("selectMyChildren", id);
 		    sqlsession.close();
-		    return children;
+		    return children != null ? children : Collections.emptyList();
 	}
 
 }

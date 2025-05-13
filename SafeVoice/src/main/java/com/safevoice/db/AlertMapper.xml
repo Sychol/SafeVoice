@@ -7,14 +7,14 @@
 <mapper namespace="com.safevoice.db.AlertDAO">
 	
 	 <select id="getAlertHistory" parameterType = "String" resultType = "alertvo">
-	 	SELECT MEMBER_ID, ALERT_TYPE, ALERT_TIME, LAT, LON, ALERT_CONTEXT, VIEW_OR_NOT
+	 	SELECT MEMBER_ID, ALERT_TYPE, ALERT_TIME, LAT, LON, VIEW_OR_NOT
 	 	FROM ALERTS
 	 	WHERE MEMBER_ID = #{id}
 	 </select>
 	 
 	 <insert id="setAlertInfo" parameterType = "alertvo">
-	 	INSERT INTO ALERTS (MEMBER_ID, ALERT_TYPE, LAT, LON, ALERT_CONTEXT)
-	 	VALUES (#{memberId}, #{alertType}, #{lat}, #{lon}, #{alertContext})
+	 	INSERT INTO ALERTS (MEMBER_ID, ALERT_TYPE, LAT, LON)
+	 	VALUES (#{memberId}, #{alertType}, #{lat}, #{lon})
 	 </insert>
 	 
 	 <select id="getSubscriptionJsonByUserId" parameterType="string" resultType="string">

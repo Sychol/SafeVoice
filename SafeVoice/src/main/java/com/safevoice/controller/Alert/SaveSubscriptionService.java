@@ -8,40 +8,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.safevoice.controller.Command;
+import com.safevoice.db.MemberDAO;
+import com.safevoice.model.MemberVO;
 
 public class SaveSubscriptionService implements Command {
-    public static String lastSubscriptionJson = "";
+	public static String lastSubscriptionJson = "";
 
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
-    	
-    	response.setContentType("text/html; charset=UTF-8");
-    	response.setCharacterEncoding("UTF-8");
-    	
-    	 try {
-    	        // 🔧 응답 인코딩 설정
-    	        response.setContentType("text/html; charset=UTF-8");
-    	        response.setCharacterEncoding("UTF-8");
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-    	        // 🔍 진입 로그
-    	        System.out.println("📥 SaveSubscriptionService: 구독 정보 받는 중!");
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
-    	        // 🔍 JSON 데이터 읽기
-    	        BufferedReader reader = request.getReader();
-    	        String json = reader.lines().collect(Collectors.joining());
+		try {
+			BufferedReader reader = request.getReader();
+			String json = reader.lines().collect(Collectors.joining());
 
-    	        // ✅ 저장해두기
-    	        lastSubscriptionJson = json;
+			// 🧩 memberId도 함께 받아야 함 (파라미터로 넘겨야 함)
+			String memberId = request.getParameter("memberId");
 
-    	        // 🔍 확인용 출력
-    	        System.out.println("📦 받은 구독 JSON: " + json);
+			if (memberId == null || memberId.isBlank()) {
+				response.getWriter().write("❌ memberId가 없습니다.");
+				return null;
+			}
 
-    	        response.getWriter().write("💌 구독 정보 저장 완료!");
-    	    } catch (Exception e) {
-    	        e.printStackTrace();
-    	        try {
-    	            response.getWriter().write("💥 에러 발생: " + e.getMessage());
-    	        } catch (IOException ignored) {}
-    	    }
-    	    return null;
-    	}
+			// ✅ DB 저장용 객체 구성
+			MemberVO mvo = new MemberVO();
+			mvo.setId(memberId);
+			mvo.setJsonSubscription(json);
+
+			// ✅ DAO 호출
+			MemberDAO dao = new MemberDAO();
+			dao.saveSubscription(mvo); // 이 메서드 필요!
+
+			System.out.println("📦 구독 정보 저장 완료: " + memberId);
+			response.getWriter().write("💌 구독 정보 저장 성공!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				response.getWriter().write("💥 에러 발생: " + e.getMessage());
+			} catch (IOException ignored) {
+			}
+		}
+		return null;
+	}
 }

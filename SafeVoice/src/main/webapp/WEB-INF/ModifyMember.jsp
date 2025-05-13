@@ -39,7 +39,7 @@
       <h1>회원 정보</h1>
     </div>
 
-    <form id="modifyForm" action="${pageContext.request.contextPath}/ModifyMember.do" method="post">
+    <form id="modifyForm" action="UpdateMember.do" method="post">
       <div class="section-card">
         <div class="card-title">계정 정보</div>
 
@@ -100,7 +100,7 @@
             <input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly />
             <button type="button" id="btnPostcode">우편번호 찾기</button>
             <input type="text" id="address" name="address" placeholder="기본 주소" readonly />
-            <input type="text" id="detailAddress" name="address_detail" placeholder="상세 주소" />
+            <input type="text" id="detailAddress" name="detailAddress" placeholder="상세 주소" />
           </div>
         </div>
       </div>

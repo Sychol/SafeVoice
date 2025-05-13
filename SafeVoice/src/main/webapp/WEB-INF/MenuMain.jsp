@@ -62,7 +62,7 @@
        
 		
 		<div class="menu-footer">
-		  <a href="#">로그아웃</a> | <a href="#">회원탈퇴</a>
+		  <a href="Logout.do">로그아웃</a> | <a href="SignOut.do">회원탈퇴</a>
 		</div>
       <footer>
         <div class="bottom-navbar">

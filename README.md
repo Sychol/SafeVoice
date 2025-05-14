@@ -12,6 +12,15 @@
 2022.04.28 ~ 2022.05.14 (2주)
 <br>
 
+## ✅ 제안목적 및 필요성
+![Image](https://github.com/user-attachments/assets/f61fa460-a52f-45e8-b865-5e9846cf7c12)
+![Image](https://github.com/user-attachments/assets/04974e91-969f-4447-8049-67e9538aa42e)
+![Image](https://github.com/user-attachments/assets/a0b92170-6199-4138-9871-ea50d396ecb0)
+![Image](https://github.com/user-attachments/assets/0cf924c9-d223-4cc8-9b66-d05e17b7a4cd)
+
+## 🐕‍🦺 유사 서비스 분석 및 비교
+![image](https://github.com/user-attachments/assets/e1e0b316-f53b-42b6-90b1-84798a103230)
+
 ## ⭐ 주요 기능
 * 기능1
 * 기능2

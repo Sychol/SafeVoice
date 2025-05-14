@@ -24,8 +24,8 @@
 * AI 분석 서비스를 활용
 
 ## ⭐ 주요 기능
-![기능 요약](./image/PPT_Images/기능 요약.png)
-![서비스 세부내용](./image/PPT_Images/서비스 세부내용.png)
+![기능 요약](./image/PPT_Images/기능_요약.png)
+![서비스 세부내용](./image/PPT_Images/서비스_세부내용.png)
 * 누적된 경고 횟수를 아이 날씨로 표현
 * 위험 알림(AI 분석, SOS 알림)
 * 알림 내역 확인
@@ -34,6 +34,13 @@
 <br>
 
 ## ⛏ 기술스택
+![사용언어 및 도구](./image/PPT_Images/사용언어_및_도구.png)
+* Front-end: HTML, CSS, JavaScript
+* Back-end: Java, Python
+* DB: MySQL
+* IDE: Visual Code Studio, Eclipse, Google Colab
+* 기타: Github, Kakao map API
+<!-- 주석 처리함
 <table>
     <tr>
         <th>구분</th>
@@ -85,21 +92,20 @@
         </td>
     </tr>
 </table>
-
+-->
 
 <br>
 
-## ⚙ 시스템 아키텍처(구조) 예시 
-![서비스 아키텍처](https://user-images.githubusercontent.com/25995055/169925538-15867bd9-aa0b-42fc-a39b-88981e926e51.png)
+## ⚙ 시스템 아키텍처(구조)
+![시스템 아키텍처](./image/PPT_Images/시스템_아키텍처.png)
 <br>
 
 ## 📌 SW유스케이스
-![image](https://user-images.githubusercontent.com/25995055/178401023-9a015e66-aa6e-4d74-8564-9b1f9d306649.png)
+![시스템 아키텍처](./image/PPT_Images/시스템_아키텍처.png)
 <br>
 
 ## 📌 서비스 흐름도
-![image](https://user-images.githubusercontent.com/25995055/178401048-d6484bda-a2d7-40e1-998b-2bd195cd9f89.png)
-<br>
+![서비스 흐름도](./image/PPT_Images/서비스_흐름도.png)
 
 ## 📌 ER다이어그램
 ![image](https://user-images.githubusercontent.com/25995055/169925318-102784c2-893f-4fd7-bec9-a54c44b669d4.png)

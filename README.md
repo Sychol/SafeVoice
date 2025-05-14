@@ -119,6 +119,22 @@
 ![활용 데이터](./image/PPT_Images/활용_데이터.png)
 <br>
 
+## 💛 감성분석 BERT 모델
+![감성분석 BERT 모델](./image/PPT_Images/감성분석_BERT_모델.png)
+<br>
+
+## 👁️‍🗨️ 학교폭력 분류 BERT 모델
+![학교폭력 분류 BERT 모델](./image/PPT_Images/학교폭력_분류_BERT_모델.png)
+<br>
+
+## 📊 BERT 모델 평가
+![BERT 모델 평가](./image/PPT_Images/BERT_모델_평가.png)
+<br>
+
+## 📌 통화내용 분석 흐름도
+![통화내용 분석 흐름도](./image/PPT_Images/통화내용_분석_흐름도.png)
+<br>
+
 ## 🖥 화면 구성
 
 ### 로그인/회원가입/회원괸리/회원수정/회원탈퇴
@@ -134,6 +150,9 @@
 <br>
 
 ## 👨‍👩‍👦‍👦 팀원 역할
+![팀원 역할](./image/PPT_Images/팀원_소개.png)
+<br>
+<!--
 <table>
   <tr>
     <td align="center"><img src="https://item.kakaocdn.net/do/fd49574de6581aa2a91d82ff6adb6c0115b3f4e3c2033bfd702a321ec6eda72c" width="100" height="100"/></td>
@@ -164,13 +183,15 @@
     <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
   </tr>
 </table>
+-->
 
 ## 🤾‍♂️ 트러블슈팅
-개념: 문제 해결을 위해 문제의 원인을 논리적이고 체계적으로 찾는 일이며 제품이나 프로세스의 운영을 재개
-프로젝트 진행하는 동안 발생했던 이슈 중 가장 기억에 남았던 문제와 해결 프로세스 나열(2~5가지 정도)
-  
+![트러블 슈팅](./image/PPT_Images/트러블_슈팅.png)
+<!--
+<br>
 * 문제1<br>
  문제점 설명 및 해결방안
  
 * 문제2<br>
  문제점 설명 및 해결방안
+ -->

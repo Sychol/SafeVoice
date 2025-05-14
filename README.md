@@ -135,8 +135,8 @@
 ![BERT 모델 평가](./image/PPT_Images/BERT_모델_평가.png)
 <br>
 
-## 📌 통화내용 분석 흐름도
-![통화내용 분석 흐름도](./image/PPT_Images/통화내용_분석_흐름도.png)
+## 📌 통화내역 분석 흐름도
+![통화내역 분석 흐름도](./image/PPT_Images/통화내역_분석_흐름도.png)
 <br>
 
 ## 🖥 화면 구성

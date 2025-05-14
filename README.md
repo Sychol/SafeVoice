@@ -13,20 +13,24 @@
 <br>
 
 ## ✅ 제안목적 및 필요성
-![Image](https://github.com/user-attachments/assets/f61fa460-a52f-45e8-b865-5e9846cf7c12)
-![Image](https://github.com/user-attachments/assets/04974e91-969f-4447-8049-67e9538aa42e)
-![Image](https://github.com/user-attachments/assets/a0b92170-6199-4138-9871-ea50d396ecb0)
-![Image](https://github.com/user-attachments/assets/0cf924c9-d223-4cc8-9b66-d05e17b7a4cd)
+![제안목적1](./image/PPT_Images/제안목적1.png)
+![제안목적2](./image/PPT_Images/제안목적2.png)
+![제안목적3](./image/PPT_Images/제안목적3.png)
+![제안목적4](./image/PPT_Images/제안목적4.png)
 
 ## 🐕‍🦺 유사 서비스 분석 및 비교
-![image](https://github.com/user-attachments/assets/e1e0b316-f53b-42b6-90b1-84798a103230)
+![유사 서비스](./image/PPT_Images/유사서비스 분석 및 비교.png)
+* 사후적 대처에서 선제적 보호로 전환
+* AI 분석 서비스를 활용
 
 ## ⭐ 주요 기능
-* 기능1
-* 기능2
-* 기능3
-* 기능4
-* 기능5
+![기능 요약](./image/PPT_Images/기능 요약.png)
+![서비스 세부내용](./image/PPT_Images/서비스 세부내용.png)
+* 누적된 경고 횟수를 아이 날씨로 표현
+* 위험 알림(AI 분석, SOS 알림)
+* 알림 내역 확인
+* 아이의 위치 확인
+* 기타 설정 수정
 <br>
 
 ## ⛏ 기술스택

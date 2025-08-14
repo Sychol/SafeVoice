@@ -3,7 +3,7 @@
 
 
 ## 👀 서비스 소개
-![제목](./image/PPT_Images/제목.png)
+![제목](./산출문서/PPT_Images/제목.png)
 * 서비스명:  Whisper&BERT 모델 기반 아동 통화녹음 분석 및 학교폭력 위험 사전 경고 서비스
 * 서비스설명: 상황을 인식하고 표현하는 데 어려움을 겪는 아이들의 학교폭력을 언어 기반 AI 서비스를 사용하여 위험을 사전에 탐지하고 경고하는 것으로 학교폭력 대응 체계를 사후처리에서 선제적 보호로 전환하기 위한 서비스 
 <br>
@@ -13,23 +13,23 @@
 <br>
 
 ## ✅ 제안목적 및 필요성
-![제안목적1](./image/PPT_Images/제안목적1.png)
+![제안목적1](./산출문서/PPT_Images/제안목적1.png)
 <br>
-![제안목적2](./image/PPT_Images/제안목적2.png)
+![제안목적2](./산출문서/PPT_Images/제안목적2.png)
 <br>
-![제안목적3](./image/PPT_Images/제안목적3.png)
+![제안목적3](./산출문서/PPT_Images/제안목적3.png)
 <br>
-![제안목적4](./image/PPT_Images/제안목적4.png)
+![제안목적4](./산출문서/PPT_Images/제안목적4.png)
 <br>
 
 ## 🐕‍🦺 유사 서비스 분석 및 비교
-![유사 서비스](./image/PPT_Images/유사서비스_분석_및_비교.png)
+![유사 서비스](./산출문서/PPT_Images/유사서비스_분석_및_비교.png)
 * 사후적 대처에서 선제적 보호로 전환
 * AI 분석 서비스를 활용
 
 ## ⭐ 주요 기능
-![기능 요약](./image/PPT_Images/기능_요약.png)
-![서비스 세부내용](./image/PPT_Images/서비스_세부내용.png)
+![기능 요약](./산출문서/PPT_Images/기능_요약.png)
+![서비스 세부내용](./산출문서/PPT_Images/서비스_세부내용.png)
 * 누적된 경고 횟수를 아이 날씨로 표현
 * 위험 알림(AI 분석, SOS 알림)
 * 알림 내역 확인
@@ -38,7 +38,7 @@
 <br>
 
 ## ⛏ 기술스택
-![사용언어 및 도구](./image/PPT_Images/사용언어_및_도구.png)
+![사용언어 및 도구](./산출문서/PPT_Images/사용언어_및_도구.png)
 * Front-end: HTML, CSS, JavaScript
 * Back-end: Java, Python
 * DB: MySQL
@@ -101,64 +101,64 @@
 <br>
 
 ## ⚙ 시스템 아키텍처(구조)
-![시스템 아키텍처](./image/PPT_Images/시스템_아키텍처.png)
+![시스템 아키텍처](./산출문서/PPT_Images/시스템_아키텍처.png)
 <br>
 
 ## 📌 SW유스케이스
-![시스템 아키텍처](./image/PPT_Images/유스케이스.png)
+![시스템 아키텍처](./산출문서/PPT_Images/유스케이스.png)
 <br>
 
 ## 📌 서비스 흐름도
-![서비스 흐름도](./image/PPT_Images/서비스_흐름도.png)
+![서비스 흐름도](./산출문서/PPT_Images/서비스_흐름도.png)
 
 ## 📌 ER다이어그램
-![ER다이어그램](./image/PPT_Images/ER다이어그램.png)
+![ER다이어그램](./산출문서/PPT_Images/ER다이어그램.png)
 <br>
 
 ## 🖽 사용 모델 및 선정 이유
-![사용 모델 및 선정 이유](./image/PPT_Images/모델_선정_및_이유.png)
+![사용 모델 및 선정 이유](./산출문서/PPT_Images/모델_선정_및_이유.png)
 <br>
 
 ## 💾 활용 데이터
-![활용 데이터](./image/PPT_Images/활용_데이터.png)
+![활용 데이터](./산출문서/PPT_Images/활용_데이터.png)
 <br>
 
 ## 💛 감성분석 BERT 모델
-![감성분석 BERT 모델](./image/PPT_Images/감성분석_BERT_모델.png)
+![감성분석 BERT 모델](./산출문서/PPT_Images/감성분석_BERT_모델.png)
 <br>
 
 ## 👁️‍🗨️ 학교폭력 분류 BERT 모델
-![학교폭력 분류 BERT 모델](./image/PPT_Images/학교폭력_분류_BERT_모델.png)
+![학교폭력 분류 BERT 모델](./산출문서/PPT_Images/학교폭력_분류_BERT_모델.png)
 <br>
 
 ## 📊 BERT 모델 평가
-![BERT 모델 평가](./image/PPT_Images/BERT_모델_평가.png)
+![BERT 모델 평가](./산출문서/PPT_Images/BERT_모델_평가.png)
 <br>
 
 ## 📌 통화내역 분석 흐름도
-![통화내역 분석 흐름도](./image/PPT_Images/통화내역_분석_흐름도.png)
+![통화내역 분석 흐름도](./산출문서/PPT_Images/통화내역_분석_흐름도.png)
 <br>
 
 ## 🖥 화면 구성
 
 ### 로그인/회원가입
-![로그인모음](./image/PPT_Images/로그인모음.png)
+![로그인모음](./산출문서/PPT_Images/로그인모음.png)
 <br>
 
 ### 아이 위치 / 본인 기준 기관 위치 / 자녀 선택
-![지도 화면](./image/PPT_Images/지도모음.png)
+![지도 화면](./산출문서/PPT_Images/지도모음.png)
 <br>
 
 ### 알림 내역 / 메뉴/자녀 관리 / 알림 설정
-![로그인모음](./image/PPT_Images/알림모음.png)
+![로그인모음](./산출문서/PPT_Images/알림모음.png)
 <br>
 
 ### 메인 페이지 / 자녀 메인 페이지
-![메인 페이지 모음](./image/PPT_Images/메인페이지모음.png)
+![메인 페이지 모음](./산출문서/PPT_Images/메인페이지모음.png)
 <br>
 
 ## 👨‍👩‍👦‍👦 팀원 역할
-![팀원 역할](./image/PPT_Images/팀원_소개.png)
+![팀원 역할](./산출문서/PPT_Images/팀원_소개.png)
 <br>
 <!--
 <table>
@@ -194,7 +194,7 @@
 -->
 
 ## 🤾‍♂️ 트러블슈팅
-![트러블 슈팅](./image/PPT_Images/트러블_슈팅.png)
+![트러블 슈팅](./산출문서/PPT_Images/트러블_슈팅.png)
 <!--
 <br>
 * 문제1<br>
